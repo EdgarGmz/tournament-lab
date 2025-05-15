@@ -1,7 +1,7 @@
 # tournament-lab
 Administrador de Torneos
 
-# 📦 Nombre de la Aplicación (React)
+# 📦 Tournament Lab (React)
 
 Aplicación desarrollada con **React** que sigue una arquitectura de ramas organizada para mantener un flujo de trabajo limpio y controlado.
 
