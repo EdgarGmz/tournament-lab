@@ -13,13 +13,51 @@ Antes de comenzar, asegúrate de tener instalado lo siguiente:
 - [npm](https://www.npmjs.com/) 
 - [Git](https://git-scm.com/)
 
+## Obtener la llave SSH
+Antes de clonar el repositorio en tu equipo debes tener una llave SSH para poder hacerlo, a 
+continuación te muestro los pasos para hacerlo:
+1. Abre la terminal y ejecuta el siguiente código:
+
+   < ssh-keygen -t rsa -b 4096 -C "tu_correo@ejemplo.com" >
+
+    Dónde "tu_correo@ejemplo.com" puede ser tu correo personal o institucional (de preferencia con el que 
+    estas registrado en Azure DevOps)
+
+2. Cuando aparezca este mensaje:
+
+   < Enter file in which to save the key (/c/Users/TuUsuario/.ssh/id_rsa): >
+
+    -> Solo presiona Enter para aceptar la ubicación por defecto.
+
+3. Cuando te pregunte por una 'passphrase' (contraseña opcional), puedes dejarlo en blanco o escribir una para
+mayor seguridad
+
+   < Enter passphrase (empty for no passphrase): >
+
+4. Tu clave SSH se generará en:
+
+    C:\Users\TuUsuario\.ssh\id_rsa      (clave privada)
+    C:\Users\TuUsuario\.ssh\id_rsa.pub  (clave pública)
+
+5. Para copiar tu clave pública al portapapeles, ejecuta en la Terminal:
+
+    clip < ~/.ssh/id_rsa.pub
+
+6. Una vez copiado la clave te diriges a:
+
+    [text](https://dev.azure.com/ProyectoUTSC02/_usersSettings/keys)
+
+7. Presionas el botón +New Key, y proporcionas una nombre y pegas la clave.
+
+
 ## 🚀 Instalación y ejecución local
 
 Sigue estos pasos para clonar y correr el proyecto localmente:
 
 1. Clona este repositorio:
    
-   git clone git@github.com:EdgarGmz/tournament-lab.git
+   git clone git@ssh.dev.azure.com:v3/ProyectoUTSC02/tournament-lab/tournament-lab
+
 
 2. Accede al repositorio del proyecto:
 
