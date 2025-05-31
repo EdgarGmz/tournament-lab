@@ -28,7 +28,6 @@ export default function Login() {
                 <label className='form-label'>Usuario</label>
                 <input
                     type="text"
-                    placeholder='Ingresa tu usuario'
                     value={usuario}
                     onChange={(e) => setUsuario(e.target.value)}
                     required
@@ -40,7 +39,6 @@ export default function Login() {
                 <label className='form-label'>Password</label>
                 <input
                     type="password"
-                    placeholder='Ingresa tu contraseña'
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required

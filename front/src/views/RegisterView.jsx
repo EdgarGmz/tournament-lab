@@ -2,7 +2,11 @@ import Register from "../components/Register";
 
 const RegisterView = () => {
     return (
-        <Register/>
+        <div className="d-flex justify-content-center">
+            <div className="p-4 shadow rounded bg-white" >
+                <Register />
+            </div>
+        </div>
     );
 }
 

@@ -1,23 +1,21 @@
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import DashBoardView from './views/DashBoardView'
 import LoginView from './views/LoginView'
+import Main from './views/Main'
 import RegisterView from './views/RegisterView'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-
-
 
 function App() {
-
-  return (    
+  return (
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<DashBoardView />} />
+          <Route path="/" element={<Main />} />
           <Route path="/login" element={<LoginView />} />
           <Route path="/register" element={<RegisterView />} />
           <Route path="/home" element={<DashBoardView />} />
         </Routes>
-      </BrowserRouter>    
+      </BrowserRouter>
   )
 }
 

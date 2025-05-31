@@ -4,7 +4,7 @@ const Register = () => {
     return (
         <div className="container mt-5 d-flex justify-content-center">
             <form className="bg-light p-4 rounded shadow-sm" style={{ maxWidth: '500px', width: '100%' }}>
-                <h1 className="text-center text-primary mb-4">Crea una nueva cuenta</h1>
+                <h1 className="text-center text-primary mb-3">Crea una nueva cuenta</h1>
 
                 {/* Nombre de usuario */}
                 <div className="mb-3">
@@ -12,7 +12,6 @@ const Register = () => {
                     <input
                         type="text"
                         className="form-control"
-                        placeholder="Nombre de usuario"
                         required
                     />
                 </div>
@@ -23,7 +22,6 @@ const Register = () => {
                     <input
                         type="email"
                         className="form-control"
-                        placeholder="Correo electrónico"
                         required
                     />
                 </div>
@@ -34,7 +32,6 @@ const Register = () => {
                     <input
                         type="password"
                         className="form-control"
-                        placeholder="Contraseña"
                         required
                     />
                 </div>
@@ -45,7 +42,6 @@ const Register = () => {
                     <input
                         type="password"
                         className="form-control"
-                        placeholder="Confirmar contraseña"
                         required
                     />
                 </div>
@@ -59,19 +55,7 @@ const Register = () => {
 
                 {/* Enlaces y ayuda */}
                 <p className="mt-3 text-center">
-                    ¿Ya tienes cuenta? <Link to="/">Inicia sesión</Link>
-                </p>
-                <p className="text-center">
-                    <a href="/forgot-password">¿Olvidaste tu contraseña?</a>
-                </p>
-                <p className="text-center small">
-                    Al registrarte, aceptas nuestros <a href="/terms">términos y condiciones</a>.
-                </p>
-                <p className="text-center small">
-                    Consulta nuestra <a href="/privacy-policy">política de privacidad</a>.
-                </p>
-                <p className="text-center small">
-                    ¿Necesitas ayuda? Contacta a <a href="/support">soporte técnico</a>.
+                    ¿Ya tienes cuenta? <Link to="/login">Inicia sesión</Link>
                 </p>
             </form>
         </div>
