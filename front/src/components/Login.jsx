@@ -13,7 +13,7 @@ export default function Login() {
         // Lógica básica simulada (luego conecta a la API)
         if (usuario === 'admin' && password === 'Admin123') {
             alert('Login correcto')
-            navigate('/home')
+            navigate('/dashboard')
         } else {
             alert('Login incorrecto')
         }
