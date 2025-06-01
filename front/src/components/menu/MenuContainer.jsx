@@ -10,7 +10,7 @@ const MenuContainer = () => {
             </div>
 
             {/* Tarjetas */}
-            <div className="row row-cols-1 g-3">
+            <div className="row row-cols-1 g-2">
                 <MenuItemCard
                     title="Total Tournaments"
                     value="10"
