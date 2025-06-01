@@ -1,106 +1,82 @@
-# tournament-lab
-Administrador de Torneos
+# 🎮 Tournament Lab
 
-# 📦 Tournament Lab (React)
+> **Administrador de Torneos Universitarios**  
+> Aplicación web construida con **React** y **Bootstrap 5**, pensada para facilitar el registro, inicio de sesión y visualización del panel administrativo de torneos.
 
-Aplicación desarrollada con **React** que sigue una arquitectura de ramas organizada para mantener un flujo de trabajo limpio y controlado.
+---
 
-## ✅ Requisitos
+## ⚙️ Requisitos del sistema
 
 Antes de comenzar, asegúrate de tener instalado lo siguiente:
 
-- [Node.js](https://nodejs.org/) (versión recomendada: 18.x o superior)
-- [npm](https://www.npmjs.com/) 
-- [Git](https://git-scm.com/)
+- ✅ [Node.js](https://nodejs.org/) 18.x o superior
+- ✅ [npm](https://www.npmjs.com/)
+- ✅ [Git](https://git-scm.com/)
 
-## Obtener la llave SSH
-Antes de clonar el repositorio en tu equipo debes tener una llave SSH para poder hacerlo, a 
-continuación te muestro los pasos para hacerlo:
-1. Abre la terminal y ejecuta el siguiente código:
+---
 
-    ssh-keygen -t rsa -b 4096 -C "tu_correo@ejemplo.com" 
+## 🔐 Configurar llave SSH (Azure DevOps)
 
-    Dónde "tu_correo@ejemplo.com" puede ser tu correo personal o institucional (de preferencia con el que 
-    estas registrado en Azure DevOps)
+1. Ejecuta en la terminal:
 
-2. Cuando aparezca este mensaje:
+   ```bash
+   ssh-keygen -t rsa -b 4096 -C "tu_correo@ejemplo.com"
 
-    Enter file in which to save the key (/c/Users/TuUsuario/.ssh/id_rsa): 
+2. Pulsa 'enter' para aceptar la ubicación por defecto.
 
-    -> Solo presiona Enter para aceptar la ubicación por defecto.
+3. (Opcional) Agrega una 'passphrase' si deseas mayor seguridad.
 
-3. Cuando te pregunte por una 'passphrase' (contraseña opcional), puedes dejarlo en blanco o escribir una para
-mayor seguridad
+4. Tu clave pública estará en:
 
-    Enter passphrase (empty for no passphrase): 
+                        C:\Users\TuUsuario\.ssh\id_rsa.pub
 
-4. Tu clave SSH se generará en:
+5. Para copiarla al portapapeles:
 
-    C:\Users\TuUsuario\.ssh\id_rsa      (clave privada)
-    C:\Users\TuUsuario\.ssh\id_rsa.pub  (clave pública)
+                        cat ~/.ssh/id_rsa.pub
 
-5. Para copiar tu clave pública al portapapeles, ejecuta en la Terminal:
-
-    cat ~/.ssh/id_rsa.pub
+6. Añádela a Azure DevOps SSH Key.
 
 
-6. Una vez copiado la clave te diriges a:
+# Instalación y ejecución local
+## Clonar el repositorio
+git clone git@ssh.dev.azure.com:v3/ProyectoUTSC02/tournament-lab/tournament-lab
 
-    [click aquí](https://dev.azure.com/ProyectoUTSC02/_usersSettings/keys)
+## Acceder al proyecto
+cd tournament-lab
 
-7. Presionas el botón +New Key, y proporcionas una nombre y pegas la clave.
+## Instalar dependencias
+npm install
 
-
-## 🚀 Instalación y ejecución local
-
-Sigue estos pasos para clonar y correr el proyecto localmente:
-
-1. Clona este repositorio:
-   
-   git clone git@ssh.dev.azure.com:v3/ProyectoUTSC02/tournament-lab/tournament-lab
+## Ejecutar en modo desarrollo
+npm run dev
 
 
-2. Accede al repositorio del proyecto:
+# Flujo de Trabajo GIT
+- main → Rama estable para producción
 
-    cd tournament-lab
+- develop → Rama base para integrar cambios
 
-3. Instala las dependencias:
+# 🛠️ Reglas
+No trabajes directo en main ni develop.
 
-    npm install ó npm i
+Crea ramas desde develop:
 
-4. Ejecuta la aplicación en modo desarrollo:
+- ft/ para features nuevas
 
-    npm start
+- fix/ para correcciones
 
-# Flujo de Trabajo con GIT
-Este proyecto utiliza un flujo basado en ramas con dos ramas principales:
-- main -> Rama estable y lista para producción.
-- develop -> Rama de pruebas, donde se integran nuevas funcionalidades y correcciones antes ser pasadas a main.
+# Ejemplo:
+# Crear rama para una funcionalidad
+               git checkout develop
+               git checkout -b ft/login-form
 
-## Reglas para trabajar el repositorio
-- NO TRABAJES directamente en main ni en develop.
-- Para cada nueva característica o arreglo de errores, crea una rama a partir de develop.
-- Usa los siguientes prefijos para nombrar tus ramas:
-    - ft/ -> para nuevas funcionalidades (feature).
-    - fx/ -> para correcciones de errores (fix).
+# Subir cambios
+               git push origin ft/login-form
 
-# Ejemplos de nombres de ramas
-## Para agregar una nueva funcionalidad
-git checkout develop
-git checkout -b ft/login-form
-
-## Para corregir un error
-git checkout develop
-git checkout -b fix/button-alignment
-
-# Flujo típico de trabajo 
-1. Crea una nueva rama a partir de develop con el prefijo adecuado.
-2. Realiza cambios y haz commits con mensajes claros.
-3. Haz push de tu rama principal remoto:
-    git push origin ft/login-form
-4. Crea un pull request (PR) hacia la rama develop.
-5. Una vez aprobados los cambios, se integran a develop.
-6. Los cambios acumulados en develop serán eventualmente integrados en main para una nueva versión de producción.
 
 # Contribuciones 
-¡Las contribuciones son bienvenidas! Por favor, abre un issue o crea un pull request siguiendo las normas del repositorio.
+¡Son bienvenidas! Abre un Issue o un pull request y asegúrate de seguir la guía de estilos y ramas.
+
+# 🧠 Créditos
+Desarrollado con ❤️ por estudiantes de UT para la gestión eficiente de torneos.
+
