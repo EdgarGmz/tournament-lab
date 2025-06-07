@@ -1,4 +1,6 @@
-import MenuContainer from "../components/menu/MenuContainer";
+import MenuContainer from "../components/menu-container/MenuContainer";
+import TournamentList from "../components/tournament-container/TournamentList";
+
 const Dashboard = () => {
     return (
         <div className="d-flex">
@@ -8,21 +10,7 @@ const Dashboard = () => {
             </div>
 
             {/* Contenido principal */}
-            <div className="flex-grow-1 p-4 text-light bg-dark">
-                <h1>Dashboard</h1>
-                <p>Bienvenido al panel de control.</p>
-                <p>Aquí puedes ver tus estadísticas y gestionar tu cuenta.</p>
-
-                <div className="dashboard-content mt-4">
-                    <h2>Estadísticas</h2>
-                    <p>Contenido de estadísticas aquí...</p>
-                </div>
-
-                <div className="account-management mt-4">
-                    <h2>Gestión de cuenta</h2>
-                    <p>Contenido de gestión de cuenta aquí...</p>
-                </div>
-            </div>
+            <TournamentList/>
         </div>
     );
 }
