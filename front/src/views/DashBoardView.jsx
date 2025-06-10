@@ -1,16 +1,22 @@
-import MenuContainer from "../components/menu-container/MenuContainer";
-import TournamentList from "../components/tournament-container/TournamentList";
+// HOOKS
+import { useState } from "react";
+
+// COMPONENTS
+import Header from "../components/Header";
+import NavBar from "../components/menu/NavBar";
+
+
 
 const Dashboard = () => {
-    return (
-        <div className="d-flex">
-            {/* Sidebar izquierdo */}
-            <div className="bg-light border-end" style={{ width: '250px', minHeight: '100vh' }}>
-                <MenuContainer />
-            </div>
 
-            {/* Contenido principal */}
-            <TournamentList/>
+    const [menuOpen, setMenuOpen] = useState(false)
+
+    const toggleMenu = () => setMenuOpen(!menuOpen)
+
+    return (
+        <div className="App">
+            <Header toggleMenu={toggleMenu} menuOpen ={menuOpen} />
+            <NavBar isOpen={menuOpen} />
         </div>
     );
 }
