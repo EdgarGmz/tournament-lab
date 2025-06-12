@@ -1,52 +1,101 @@
-// Hooks
 import { useState } from "react";
+import {
+  FaCheckCircle, FaCog, FaPlayCircle, FaPlusCircle, FaQuestionCircle,
+  FaSearch, FaSignOutAlt, FaTimesCircle, FaTrophy
+} from 'react-icons/fa';
 
-// CSS
-import '../../css/menu.css';
+import ItemNavBar from './ItemNavBar';
+import ButtonBar from "./ButtonBar";
+import '../../css/menu.css'
 
-// Components
-import { FaCheckCircle, FaCog, FaPlayCircle, FaPlusCircle, FaQuestionCircle, FaSearch, FaSignOutAlt, FaTimesCircle, FaTrophy } from 'react-icons/fa';
-import ItemNavBar from './ItemNavBar'; // asegúrate de que esté bien la ruta
+const NavBar = ({ menuOpen, toggleMenu, onSelectSection }) => {
+  const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
 
+  const toggleSubmenu = () => setIsSubMenuOpen(!isSubMenuOpen);
 
-const NavBar = ({ isOpen }) => {
-    const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
+  return (
+    <div className={`sidenav ${menuOpen ? '' : 'collapsed'}`}>
+      <div className="menu-header">
+        {/* Botón menú */}
+        <ButtonBar toggleMenu={toggleMenu} menuOpen={menuOpen} />
 
-    const toggleSubmenu = () => {
-        setIsSubMenuOpen(!isSubMenuOpen);
-    };
+        {/* LOGO */}
+        {/* {menuOpen && <img src='../../img/logo2.png' alt="logo" />} */}
+      </div>
 
-    return (
-        <div className={`sidenav ${isOpen ? 'active' : ''}`}>
-            <img src='../../img/logo2.png' alt="logo" />
+        <ul>
+            <li><ItemNavBar 
+            icon={FaPlusCircle} 
+            name="Crear Torneo" 
+            /></li>
 
-            <ul>
-                <li onClick={toggleSubmenu}>
-                    Torneos {isSubMenuOpen ? '▲' : '▼'}
-                </li>
-                <ul className={`submenu ${isSubMenuOpen ? 'open' : ''}`}>
-                    <li><ItemNavBar icon={FaTrophy} name="Totales" link="/totales" /></li>
-                    <li><ItemNavBar icon={FaCheckCircle} name="Completados" link="/completados" /></li>
-                    <li><ItemNavBar icon={FaPlayCircle} name="Activos" link="/activos" /></li>
-                    <li><ItemNavBar icon={FaTimesCircle} name="Cancelados" link="/cancelados" /></li>
-                </ul>
+            <li><ItemNavBar 
+            icon={FaSearch} 
+            name="Buscar" 
+             /></li>
+        </ul>
+
+        <span className="line"></span>
+        {/* SUB MENU */}
+        <ul>
+            <li onClick={toggleSubmenu} className="item-navbar">
+                <FaTrophy size={20} />
+                <span className="item-label">Torneos {isSubMenuOpen ? '▲' : '▼'}</span>
+            </li>
+
+            {isSubMenuOpen && (
+            <ul className={`submenu ${isSubMenuOpen ? 'open': ''}`}>
+                <ItemNavBar 
+                    icon={FaTrophy} 
+                    name="Totales" 
+                    onClick={() => onSelectSection("totales")}
+                />
+
+                {/* COMPLETADOS */}
+                <ItemNavBar 
+                    icon={FaCheckCircle} 
+                    name="Completados" 
+                    onClick={() => onSelectSection("completados")}
+                />
+
+                {/* ACTIVOS */}
+                <ItemNavBar 
+                    icon={FaPlayCircle} 
+                    name="Activos" 
+                    onClick={() => onSelectSection("activos")}
+                 />
+
+                {/* CANCELADOS */}
+                <ItemNavBar 
+                    icon={FaTimesCircle} 
+                    name="Cancelados" 
+                    onClick={() => onSelectSection("cancelados")}
+                />
             </ul>
+            )}
+      </ul>
 
-            <span className="line"></span>
 
-            <ul>
-                <li><ItemNavBar icon={FaPlusCircle} name="Crear Torneo" link="/crear" /></li>
-                <li><ItemNavBar icon={FaSearch} name="Buscar" link="/buscar" /></li>
-            </ul>
+      <span className="line"></span>
 
-            <span className="line"></span>
+        <ul>
+            <li><ItemNavBar 
+            icon={FaCog} 
+            name="Configuración" 
+            link="/configuracion" /></li>
 
-            <ul>
-                <li><ItemNavBar icon={FaCog} name="Configuración" link="/configuracion" /></li>
-                <li><ItemNavBar icon={FaQuestionCircle} name="Ayuda" link="/ayuda" /></li>
-                <li><ItemNavBar icon={FaSignOutAlt} name="Cerrar Sesión" link="/logout" /></li>
-            </ul>
-        </div>
-    )
-}
-export default NavBar
+            <li><ItemNavBar 
+            icon={FaQuestionCircle} 
+            name="Ayuda" 
+            link="/ayuda" /></li>
+
+            <li><ItemNavBar 
+            icon={FaSignOutAlt} 
+            name="Cerrar Sesión" 
+            link="/logout" /></li>
+        </ul>
+    </div>
+  );
+};
+
+export default NavBar;  
