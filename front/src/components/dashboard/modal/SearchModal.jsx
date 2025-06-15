@@ -2,7 +2,7 @@
 import { useState } from 'react';
 
 // CSS
-import '../../css/searchmodal.css';
+import '../../../css/search-modal.css';
 
 const SearchModal = ({ isOpen, onClose }) => {
   const [nombre, setNombre] = useState("");

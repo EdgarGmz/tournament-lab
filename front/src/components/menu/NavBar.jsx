@@ -4,22 +4,42 @@ import {
   FaCheckCircle, FaCog, FaPlayCircle, FaPlusCircle, FaQuestionCircle,
   FaSearch, FaSignOutAlt, FaTimesCircle, FaTrophy
 } from 'react-icons/fa'
-import SearchModal from "../dashboard/SearchModal"
 import ItemNavBar from './ItemNavBar'
 import ButtonBar from "./ButtonBar"
+import { useNavigate } from "react-router-dom"
+
+// Pantallas Modales
+import SearchModal from "../dashboard/modal/SearchModal"
+import CreateModal from "../dashboard/modal/CreateModal"
+import SettingsModal from "../dashboard/modal/SettingsModal"
 
 // CSS
-import '../../css/menu.css'
+import '../../css/menu-bar.css'
 
 const NavBar = ({ menuOpen, toggleMenu, onSelectSection }) => {
-  const [isSubMenuOpen, setIsSubMenuOpen] = useState(false)
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  // Modales
+  const [isSearchModalOpen, setIsSearchModalOpen] = useState(false)
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false)  
+  const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false)  
+  
+  const openSearchModal = () => setIsSearchModalOpen(true)
+  const closeSearchModal = () => setIsSearchModalOpen(false)
 
-  // const toggleSubmenu = () => setIsSubMenuOpen(!isSubMenuOpen)
-  const openModal = () => setIsModalOpen(true)
-  const closeModal = () => setIsModalOpen(false)
+  const openCreateModal = () => setIsCreateModalOpen(true)
+  const closeCreateModal = () => setIsCreateModalOpen(false)
+
+  const openSettingsModal = () => setIsSettingsModalOpen(true)
+  const closeSettingsModal = () => setIsSettingsModalOpen(false)
+
+  // Navigation
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    navigate('/')
+  }
   
   return (
+
     <div className={`sidenav ${menuOpen ? '' : 'collapsed'}`}>
       <div className="menu-header">
         {/* Botón menú */}
@@ -34,6 +54,7 @@ const NavBar = ({ menuOpen, toggleMenu, onSelectSection }) => {
               <ItemNavBar 
                 icon={FaPlusCircle} 
                 name="Crear Torneo" 
+                onClick={openCreateModal}
             /></li>
 
             {/* BUSCAR TORNEO */}
@@ -41,7 +62,7 @@ const NavBar = ({ menuOpen, toggleMenu, onSelectSection }) => {
               <ItemNavBar 
                 icon={FaSearch}   
                 name="Buscar" 
-                onClick={openModal}
+                onClick={openSearchModal}
              /></li>
         </ul>
 
@@ -84,8 +105,8 @@ const NavBar = ({ menuOpen, toggleMenu, onSelectSection }) => {
           <li>
             <ItemNavBar 
               icon={FaCog} 
-              name="Configuración" 
-              link="/configuracion" />
+              name="Configuración"              
+              onClick={openSettingsModal}/>
           </li>
 
           <li>
@@ -93,12 +114,14 @@ const NavBar = ({ menuOpen, toggleMenu, onSelectSection }) => {
             <ItemNavBar 
               icon={FaSignOutAlt} 
               name="Cerrar Sesión" 
-              link="/logout" />
+              onClick= {handleLogout}/>
           </li>
       </ul>
 
-      {/* SEARCH MODAL */}
-      <SearchModal isOpen={isModalOpen} onClose={closeModal}/>
+      {/* CLOSE MODAL */}
+      <SearchModal isOpen={isSearchModalOpen} onClose={closeSearchModal}/>
+      <CreateModal isOpen={isCreateModalOpen} onClose={closeCreateModal}/>
+      <SettingsModal isOpen={isSettingsModalOpen} onClose={closeSettingsModal}/>
     </div>
   );
 };

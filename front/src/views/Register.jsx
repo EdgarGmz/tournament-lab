@@ -2,13 +2,14 @@ import { Link } from "react-router-dom";
 
 const Register = () => {
     return (
-        <div className="container mt-5 d-flex justify-content-center">
-            <form className="bg-light p-4 rounded shadow-sm" style={{ maxWidth: '500px', width: '100%' }}>
-                <h1 className="text-center text-primary mb-3">Crea una nueva cuenta</h1>
+        <div className="auth-container" >
+            <div className="auth-card">
+                <form>
+                <h1 >Crea una nueva cuenta</h1>
 
                 {/* Nombre de usuario */}
-                <div className="mb-3">
-                    <label className="form-label">Nombre de usuario</label>
+                <div >
+                    <label>Nombre de usuario</label>
                     <input
                         type="text"
                         className="form-control"
@@ -17,8 +18,8 @@ const Register = () => {
                 </div>
 
                 {/* Correo electrónico */}
-                <div className="mb-3">
-                    <label className="form-label">Correo electrónico</label>
+                <div>
+                    <label>Correo electrónico</label>
                     <input
                         type="email"
                         className="form-control"
@@ -27,8 +28,8 @@ const Register = () => {
                 </div>
 
                 {/* Contraseña */}
-                <div className="mb-3">
-                    <label className="form-label">Contraseña</label>
+                <div>
+                    <label>Contraseña</label>
                     <input
                         type="password"
                         className="form-control"
@@ -37,8 +38,8 @@ const Register = () => {
                 </div>
 
                 {/* Confirmar contraseña */}
-                <div className="mb-3">
-                    <label className="form-label">Confirmar contraseña</label>
+                <div >
+                    <label>Confirmar contraseña</label>
                     <input
                         type="password"
                         className="form-control"
@@ -47,17 +48,18 @@ const Register = () => {
                 </div>
 
                 {/* Botón de registro */}
-                <div className="d-grid">
-                    <button type="submit" className="btn btn-primary">Registrar</button>
+                <div>
+                    <button type="submit">Registrar</button>
                 </div>
 
                 <hr />
 
                 {/* Enlaces y ayuda */}
-                <p className="mt-3 text-center">
+                <p>
                     ¿Ya tienes cuenta? <Link to="/login">Inicia sesión</Link>
                 </p>
             </form>
+            </div>
         </div>
     );
 }
