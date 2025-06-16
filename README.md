@@ -47,7 +47,11 @@ cd tournament-lab
 ## Instalar dependencias
 npm install
 
-## Ejecutar en modo desarrollo
+## Te posicionas en la carpeta 'front'
+
+cd front
+
+# Y por último:
 npm run dev
 
 
