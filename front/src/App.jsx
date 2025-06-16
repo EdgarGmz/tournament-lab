@@ -1,22 +1,18 @@
-// Bootstrap
-import 'bootstrap-icons/font/bootstrap-icons.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-
+// VIEWS
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import DashBoardView from './views/DashBoardView';
-import LoginView from './views/LoginView';
-import Main from './views/Main';
-import RegisterView from './views/RegisterView';
+import DashBoard from './views/DashBoard';
+import Login from './views/Login';
+import LandingPage from './views/LandingPage';
+import Register from './views/Register';
 
 function App() {
   return (
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/login" element={<LoginView />} />
-          <Route path="/register" element={<RegisterView />} />
-          <Route path="/dashboard" element={<DashBoardView />} />
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/login" element={<Login/>} />
+          <Route path="/register" element={<Register/>} />
+          <Route path="/dashboard" element={<DashBoard/>} />
         </Routes>
       </BrowserRouter>
   )

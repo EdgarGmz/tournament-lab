@@ -1,52 +1,129 @@
-// Hooks
-import { useState } from "react";
+// COMPONENTS
+import { useState } from "react"
+import {
+  FaCheckCircle, FaCog, FaPlayCircle, FaPlusCircle, FaQuestionCircle,
+  FaSearch, FaSignOutAlt, FaTimesCircle, FaTrophy
+} from 'react-icons/fa'
+import ItemNavBar from './ItemNavBar'
+import ButtonBar from "./ButtonBar"
+import { useNavigate } from "react-router-dom"
+
+// Pantallas Modales
+import SearchModal from "../dashboard/modal/SearchModal"
+import CreateModal from "../dashboard/modal/CreateModal"
+import SettingsModal from "../dashboard/modal/SettingsModal"
 
 // CSS
-import '../../css/menu.css';
+import '../../css/menu-bar.css'
 
-// Components
-import { FaCheckCircle, FaCog, FaPlayCircle, FaPlusCircle, FaQuestionCircle, FaSearch, FaSignOutAlt, FaTimesCircle, FaTrophy } from 'react-icons/fa';
-import ItemNavBar from './ItemNavBar'; // asegúrate de que esté bien la ruta
+const NavBar = ({ menuOpen, toggleMenu, onSelectSection }) => {
+  // Modales
+  const [isSearchModalOpen, setIsSearchModalOpen] = useState(false)
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false)  
+  const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false)  
+  
+  const openSearchModal = () => setIsSearchModalOpen(true)
+  const closeSearchModal = () => setIsSearchModalOpen(false)
+
+  const openCreateModal = () => setIsCreateModalOpen(true)
+  const closeCreateModal = () => setIsCreateModalOpen(false)
+
+  const openSettingsModal = () => setIsSettingsModalOpen(true)
+  const closeSettingsModal = () => setIsSettingsModalOpen(false)
+
+  // Navigation
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    navigate('/')
+  }
+  
+  return (
+
+    <div className={`sidenav ${menuOpen ? '' : 'collapsed'}`}>
+      <div className="menu-header">
+        {/* Botón menú */}
+        <ButtonBar toggleMenu={toggleMenu} menuOpen={menuOpen} />
+      
+      </div>
+
+        <ul>
+
+            {/* CREAR TORNEO */}
+            <li>
+              <ItemNavBar 
+                icon={FaPlusCircle} 
+                name="Crear Torneo" 
+                onClick={openCreateModal}
+            /></li>
+
+            {/* BUSCAR TORNEO */}
+            <li>
+              <ItemNavBar 
+                icon={FaSearch}   
+                name="Buscar" 
+                onClick={openSearchModal}
+             /></li>
+        </ul>
+
+        <span className="line"></span>
+
+        <ul>
+          <ItemNavBar 
+              icon={FaTrophy} 
+              name="Totales" 
+              onClick={() => onSelectSection("totales")}
+          />
+
+          {/* COMPLETADOS */}
+          <ItemNavBar 
+              icon={FaCheckCircle} 
+              name="Completados" 
+              onClick={() => onSelectSection("completados")}
+          />
+
+          {/* ACTIVOS */}
+          <ItemNavBar 
+              icon={FaPlayCircle} 
+              name="Activos" 
+              onClick={() => onSelectSection("activos")}
+            />
+
+          {/* CANCELADOS */}
+          <ItemNavBar 
+              icon={FaTimesCircle} 
+              name="Cancelados" 
+              onClick={() => onSelectSection("cancelados")}
+          />
+      </ul>
 
 
-const NavBar = ({ isOpen }) => {
-    const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
+      <span className="line"></span>
 
-    const toggleSubmenu = () => {
-        setIsSubMenuOpen(!isSubMenuOpen);
-    };
+      <ul>
+          {/* CONFIGURACIÓN */}
+          <li>
+            <ItemNavBar 
+              icon={FaCog} 
+              name="Configuración"              
+              onClick={openSettingsModal}/>
+          </li>
 
-    return (
-        <div className={`sidenav ${isOpen ? 'active' : ''}`}>
-            <img src='../../img/logo2.png' alt="logo" />
+          <li>
+            {/* CERRAR SESION */}
+            <ItemNavBar 
+              icon={FaSignOutAlt} 
+              name="Cerrar Sesión" 
+              onClick= {handleLogout}/>
+          </li>
+      </ul>
 
-            <ul>
-                <li onClick={toggleSubmenu}>
-                    Torneos {isSubMenuOpen ? '▲' : '▼'}
-                </li>
-                <ul className={`submenu ${isSubMenuOpen ? 'open' : ''}`}>
-                    <li><ItemNavBar icon={FaTrophy} name="Totales" link="/totales" /></li>
-                    <li><ItemNavBar icon={FaCheckCircle} name="Completados" link="/completados" /></li>
-                    <li><ItemNavBar icon={FaPlayCircle} name="Activos" link="/activos" /></li>
-                    <li><ItemNavBar icon={FaTimesCircle} name="Cancelados" link="/cancelados" /></li>
-                </ul>
-            </ul>
+      {/* CLOSE MODAL */}
+      <SearchModal isOpen={isSearchModalOpen} onClose={closeSearchModal}/>
+      <CreateModal isOpen={isCreateModalOpen} onClose={closeCreateModal}/>
+      <SettingsModal isOpen={isSettingsModalOpen} onClose={closeSettingsModal}/>
+    </div>
+  );
+};
 
-            <span className="line"></span>
-
-            <ul>
-                <li><ItemNavBar icon={FaPlusCircle} name="Crear Torneo" link="/crear" /></li>
-                <li><ItemNavBar icon={FaSearch} name="Buscar" link="/buscar" /></li>
-            </ul>
-
-            <span className="line"></span>
-
-            <ul>
-                <li><ItemNavBar icon={FaCog} name="Configuración" link="/configuracion" /></li>
-                <li><ItemNavBar icon={FaQuestionCircle} name="Ayuda" link="/ayuda" /></li>
-                <li><ItemNavBar icon={FaSignOutAlt} name="Cerrar Sesión" link="/logout" /></li>
-            </ul>
-        </div>
-    )
-}
-export default NavBar
+export default NavBar;  
