@@ -1,3 +1,5 @@
+import ContainerFilter from "../components/dashboard/container-filter/ContainerFilter";
+
 export const getTitle = (section) => {
         switch(section){
             case "totales" : return "Torneos Totales";
@@ -10,10 +12,14 @@ export const getTitle = (section) => {
 
 export const renderSection = (section) => {
     switch(section){
-        case "totales" : return <p>Aqui va el contenido de torneos totales</p>;
-        case "completados" : return <p>Aqui va el contenido de torneos completados</p>;
-        case "activos" : return <p>Aqui va el contenido de torneos activos</p>;
-        case "cancelados" : return <p>Aqui va el contenido de torneos cancelados</p>;
-        default: return <p>Panel de control</p>
+        case 'totales':
+            return <ContainerFilter statusFilter='Totales' />
+        case 'activos':
+            return <ContainerFilter statusFilter='Activo' />
+        case 'cancelados':
+            return <ContainerFilter statusFilter='Cancelado' />
+        case 'completados':
+            return <ContainerFilter statusFilter='Completado' />
+        default: return <p>Sección no Disponible</p>
     }
-}       
+}

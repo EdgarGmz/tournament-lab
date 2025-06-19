@@ -2,17 +2,18 @@
 import { useState } from "react"
 
 // COMPONENTS
+import Container from "../components/menu/Container"
 import NavBar from "../components/menu/NavBar"
-import Container from "../components/dashboard/Container"
 
 // CSS
 import '../css/dashboard.css'
 
 // LOGIC
-import {getTitle, renderSection} from '../logic/Logic'
+import { getTitle, renderSection } from '../logic/Logic'
 
 const Dashboard = () => {
-    const [ menuOpen, setMenuOpen ] = useState(true)
+    const [menuOpen, setMenuOpen] = useState(true)
+    
     const [ activeSection, setActiveSection ] = useState("totales")
 
     const toggleMenu = () => setMenuOpen(!menuOpen)
@@ -33,7 +34,7 @@ const Dashboard = () => {
                 isMenuCollapsed = {!menuOpen}
             >
                 {renderSection(activeSection)}
-            </Container>            
+            </Container>
         </div>
     );
 }
