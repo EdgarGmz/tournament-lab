@@ -6,6 +6,7 @@ import { BsGrid3X3GapFill } from "react-icons/bs";
 import { TfiViewListAlt } from "react-icons/tfi";
 import { tournaments } from '../../../constants/tournaments.js';
 import TournamentCard from './TournamentCard.jsx';
+import { MdOutlineSearch } from "react-icons/md";
 
 // CSS
 import '../../../css/container-filter.css';
@@ -13,6 +14,7 @@ import '../../../css/container-filter.css';
 const ContainerFilter = ({statusFilter}) => {
     const  [ order, setOrder ]  = useState('recent')
     const [ view, setView ]  = useState('grid')
+    const [ searchTerm, setSearchTerm ] = useState("")
     
     const filtered = statusFilter === "Totales"
         ? tournaments
@@ -25,9 +27,17 @@ const ContainerFilter = ({statusFilter}) => {
         return order === 'recent' ? dateB - dateA : dateA - dateB
     })
 
+
     return (
         <div className="container-filter">
             <div className="filter-toolbar">
+                <div>
+                    <input 
+                        type="text" 
+                        placeholder="Buscar torneo..."                    
+                    />
+                    <MdOutlineSearch />
+                </div>
                 <div>
                     <label>Ordenar por:</label>
                     <select
@@ -39,6 +49,8 @@ const ContainerFilter = ({statusFilter}) => {
                         <option value="oldest">Más antiguo</option>
                     </select>
                 </div>
+
+
 
                 <div className="view-toggle">
                     <button
