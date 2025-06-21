@@ -31,13 +31,14 @@ const ContainerFilter = ({statusFilter}) => {
     return (
         <div className="container-filter">
             <div className="filter-toolbar">
-                <div>
+                <div className='search-box'>
                     <input 
                         type="text" 
                         placeholder="Buscar torneo..."                    
                     />
-                    <MdOutlineSearch />
+                    <MdOutlineSearch className='search-icon'/>
                 </div>
+
                 <div>
                     <label>Ordenar por:</label>
                     <select

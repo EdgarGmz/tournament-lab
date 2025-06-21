@@ -5,6 +5,7 @@ export const tournaments = [
       participants: 16,
       description: "Un emocionante torneo de ajedrez con los mejores jugadores.",
       date: "2025-06-10T10:00:00",
+      reason_cancellation: "",
       champion: null
     },
     {
@@ -13,6 +14,7 @@ export const tournaments = [
       participants: 32,
       description: "El campeonato de fútbol más esperado del año.",
       date: "2025-07-01T14:00:00",
+      reason_cancellation: "",
       champion: null
     },
     {
@@ -21,6 +23,7 @@ export const tournaments = [
       participants: 64,
       description: "Competencia intensa en los videojuegos más populares.",
       date: "2025-05-15T18:00:00",
+      reason_cancellation: "",
       champion: "PlayerX"
     },
     {
@@ -29,6 +32,7 @@ export const tournaments = [
       participants: 8,
       description: "Un torneo de tenis con los mejores jugadores locales.",
       date: "2025-06-12T09:00:00",
+      reason_cancellation: "",
       champion: null
     },
     {
@@ -37,6 +41,7 @@ export const tournaments = [
       participants: 1000,
       description: "La maratón más grande de la ciudad, abierta a todos.",
       date: "2025-07-20T07:00:00",
+      reason_cancellation: "",
       champion: null
     },
     {
@@ -45,6 +50,7 @@ export const tournaments = [
       participants: 50,
       description: "Desafía tus habilidades en programación con este torneo.",
       date: "2025-04-25T16:00:00",
+      reason_cancellation: "",
       champion: "CoderPro"
     },
     {
@@ -53,6 +59,7 @@ export const tournaments = [
         participants: 24,
         description: "Un duelo entre planeswalkers con los mejores mazos del multiverso.",
         date: "2025-04-02T15:00:00",
+        reason_cancellation: "",
         champion: "LilianaMaster"
       },
       {
@@ -61,6 +68,7 @@ export const tournaments = [
         participants: 48,
         description: "Combates intensos entre los mejores jugadores de Smash.",
         date: "2025-06-14T12:00:00",
+        reason_cancellation: "",
         champion: null
       },
       {
@@ -69,6 +77,7 @@ export const tournaments = [
         participants: 60,
         description: "Un torneo estudiantil de estrategia y reflejos con Clash Royale.",
         date: "2025-06-25T17:00:00",
+        reason_cancellation: "",
         champion: null
       },
       {
@@ -77,6 +86,7 @@ export const tournaments = [
         participants: 12,
         description: "Torneo recreativo de ping pong para todos los niveles.",
         date: "2025-06-15T11:00:00",
+        reason_cancellation: "",
         champion: null
       },
       {
@@ -85,6 +95,7 @@ export const tournaments = [
         participants: 20,
         description: "Rondas rápidas de ajedrez con límite de tiempo de 5 minutos.",
         date: "2025-03-10T10:00:00",
+        reason_cancellation: "",
         champion: "Magnusito"
       }      
   ];

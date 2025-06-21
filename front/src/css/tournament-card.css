@@ -1,4 +1,5 @@
 .tournament-card {
+    border-radius: 12px;
     background-color: rgb(46, 219, 205);
     padding: 1.5rem;
     border-radius: 10px;
@@ -44,4 +45,17 @@
 .description {
     font-size: 0.95rem;
     color: #555
+}
+
+.card-actions {
+    margin-top: 1rem;
+}
+
+.action-btn {
+    background-color: #004080;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
 }

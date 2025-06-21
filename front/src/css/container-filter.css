@@ -58,3 +58,35 @@
 }
 
 /* Search */
+.search-box {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    width: 100%;
+    max-width: 400px;
+    transition: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-box:hover,
+.search-box:focus-within {
+    border-color: #007BFF;
+}
+
+.search-box input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    background-color: transparent;
+    padding-right: 0.5rem;
+    color: #333;
+}
+
+.search-icon {
+    color: #007bff;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
