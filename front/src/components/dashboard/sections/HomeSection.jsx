@@ -20,7 +20,7 @@ const HomeSection = () => {
         </ul>
 
         <div className='admin-image-placeholder'>
-          <img src="" alt='Adminsitrador Dashboard' style={{maxWidth: '100%', borderRadius: '8px' }}/>
+          <img src='../assets/img/logo2.png' alt='Adminsitrador Dashboard' style={{maxWidth: '100%', borderRadius: '8px' }}/>
         </div>
       </div>
     </div>

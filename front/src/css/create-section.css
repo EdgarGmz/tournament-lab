@@ -1,73 +1,67 @@
-/* Estilos para CreateSection.jsx */
-
-.create-section-container {
-    max-width: 600px;
-    margin: 40px auto;
-    padding: 32px 24px;
-    background: #fff;
+.section-container {
+    background-color: #ffffff;
     border-radius: 12px;
-    box-shadow: 0 2px 16px rgba(0,0,0,0.08);
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+    padding: 2rem;
+    max-width: 800px;
+    margin: 2rem auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.create-section-title {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #22223b;
-    margin-bottom: 8px;
+.section-container h3 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #0a4c91;
 }
 
-.create-section-form {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
+.form-group {
+    margin-bottom: 1.5rem;
 }
 
-.create-section-label {
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.6rem 1rem;
     font-size: 1rem;
-    color: #4a4e69;
-    margin-bottom: 4px;
-}
-
-.create-section-input,
-.create-section-textarea,
-.create-section-select {
-    padding: 10px 12px;
-    border: 1px solid #c9c9c9;
-    border-radius: 6px;
-    font-size: 1rem;
-    background: #f8f8fa;
-    transition: border-color 0.2s;
-}
-
-.create-section-input:focus,
-.create-section-textarea:focus,
-.create-section-select:focus {
-    border-color: #5f6dff;
+    border: 1px solid #cfd8dc;
+    border-radius: 8px;
     outline: none;
+    transition: border 0.3s ease;
 }
 
-.create-section-button {
-    padding: 12px 0;
-    background: #5f6dff;
-    color: #fff;
-    font-size: 1.1rem;
-    font-weight: 600;
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #2196f3;    
+}
+
+.section-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
     border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background 0.2s;
+    border-radius: 8px;
+    cursor:pointer;
 }
 
-.create-section-button:hover {
-    background: #364fc7;
+.btn-primary {
+    background-color: #2196f3;
+    color: #ffffff;
 }
 
-.create-section-error {
-    color: #e63946;
-    font-size: 0.95rem;
-    margin-top: -10px;
-    margin-bottom: 8px;
+.btn-primary:hover {
+    background-color: #1976d2;
 }
+
+
