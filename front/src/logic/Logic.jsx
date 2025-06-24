@@ -7,7 +7,7 @@ import ContainerFilter from '../components/dashboard/tournaments-filter/Containe
 // CONSTANTS
 import { sectionTitles, statusFilters } from '../constants/constanst';
 
-export const getTitle = (section) => sectionTitles[section] || "DashBoard";
+export const getTitle = (section) => sectionTitles[section] || "Bienvenido a Tournament-Lab";
 
 const sectionComponentMap = {
     inicio: <HomeSection />,

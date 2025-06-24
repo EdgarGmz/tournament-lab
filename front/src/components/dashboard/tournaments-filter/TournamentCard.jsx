@@ -1,5 +1,6 @@
 import { FcInfo } from "react-icons/fc";
 import "../../../css/tournament-card.css";
+import { useNavigate } from "react-router-dom";
 
 const statusConfig = {
     activo: {
@@ -32,6 +33,7 @@ const statusConfig = {
 };
 
 const TournamentCard = (props) => {
+    const navigate = useNavigate()
     const lowerStatus = props.status?.toLowerCase();
     const config = statusConfig[lowerStatus];
 
@@ -57,7 +59,7 @@ const TournamentCard = (props) => {
                 )}
                 
                 <div className="card-actions">
-                    <button className="action-button">
+                    <button className="action-button" onClick={navigate(`/detail/${props.id}`)}>
                        INFO <FcInfo /> 
                     </button>
                 </div>

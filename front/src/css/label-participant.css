@@ -1,19 +1,27 @@
 .container-participant {
-    background: #13a73a;
-    color: #fff;
-    text-align: center;
     display: flex;
     align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    width: 80%;
-    margin: 10px;
+    gap: 8px;
+    background-color: green;
+    padding: 8px 12px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
 }
 
-.container-participant button {
-    background: none;
-    padding: 0;
-    border: none;
-    color: inherit;
-    cursor: pointer;
+.participant-name {
+    font-size: 14px;
+    color: whitesmoke;
+}
+
+.icon-remove {
+    display: none;
+    font-size: 16px;
+    color: white;
+    transition: opacity 0.2 ease;
+}
+
+.container-participant:hover .icon-remove {
+    display: inline;
 }

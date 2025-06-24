@@ -6,6 +6,7 @@ const tournamentBase = (overrides) => ({
 
 export const tournaments = [
   tournamentBase({
+    id: 1,
     name: "Torneo de Ajedrez",
     status: "Activo",
     participants: [
@@ -18,6 +19,7 @@ export const tournaments = [
     type_tournament: "Juego de Mesa"
   }),
   tournamentBase({
+    id: 2,
     name: "Liga de Videojuegos",
     status: "Completado",
     participants: [
@@ -31,6 +33,7 @@ export const tournaments = [
     type_tournament: "Video Juegos"
   }),
   tournamentBase({
+    id: 3,
     name: "Campeonato de Fútbol",
     status: "Cancelado",
     participants: [
@@ -44,6 +47,7 @@ export const tournaments = [
     reason_cancelation: "Clima adverso"
   }),
   tournamentBase({
+    id: 4,
     name: "Torneo de Tenis",
     status: "Activo",
     participants: [
@@ -56,6 +60,7 @@ export const tournaments = [
     type_tournament: "Deporte"
   }),
   tournamentBase({
+    id: 5,
     name: "Maratón Anual",
     status: "Completado",
     participants: [
@@ -69,6 +74,7 @@ export const tournaments = [
     type_tournament: "Deporte"
   }),
   tournamentBase({
+    id: 6,
     name: "Competencia de Programación",
     status: "Completado",
     participants: [
@@ -82,6 +88,7 @@ export const tournaments = [
     type_tournament: "Concurso escolar"
   }),
   tournamentBase({
+    id: 7,
     name: "Reto de Matemáticas",
     status: "Activo",
     participants: [
@@ -94,6 +101,7 @@ export const tournaments = [
     type_tournament: "Concurso escolar"
   }),
   tournamentBase({
+    id: 8,
     name: "Torneo Smash Bros",
     status: "Completado",
     participants: [
@@ -107,6 +115,7 @@ export const tournaments = [
     type_tournament: "Video Juegos"
   }),
   tournamentBase({
+    id: 9,
     name: "Campeonato de Pintura",
     status: "Cancelado",
     participants: [
@@ -120,6 +129,7 @@ export const tournaments = [
     reason_cancelation: "Falta de inscripciones"
   }),
   tournamentBase({
+    id: 10,
     name: "Liga Valorant",
     status: "Completado",
     participants: [
@@ -133,6 +143,7 @@ export const tournaments = [
     type_tournament: "Video Juegos"
   }),
   tournamentBase({
+    id: 11,
     name: "Torneo Yu-Gi-Oh!",
     status: "Activo",
     participants: [
@@ -145,6 +156,7 @@ export const tournaments = [
     type_tournament: "Tcg"
   }),
   tournamentBase({
+    id: 12,
     name: "Batalla de Dibujo",
     status: "Completado",
     participants: [
@@ -158,6 +170,7 @@ export const tournaments = [
     type_tournament: "Arte"
   }),
   tournamentBase({
+    id: 13,
     name: "Hackathon Universitario",
     status: "Completado",
     participants: [
@@ -171,6 +184,7 @@ export const tournaments = [
     type_tournament: "Concurso escolar"
   }),
   tournamentBase({
+    id: 14,
     name: "Torneo de Debate",
     status: "Cancelado",
     participants: [
@@ -184,6 +198,7 @@ export const tournaments = [
     reason_cancelation: "No se consiguió jurado"
   }),
   tournamentBase({
+    id: 15,
     name: "FIFA Ultimate Cup",
     status: "Completado",
     participants: [
@@ -197,6 +212,7 @@ export const tournaments = [
     type_tournament: "Video Juegos"
   }),
   tournamentBase({
+    id: 16,
     name: "Torneo de Mario Kart",
     status: "Activo",
     participants: [
@@ -209,6 +225,7 @@ export const tournaments = [
     type_tournament: "Video Juegos"
   }),
   tournamentBase({
+    id: 17,
     name: "Batalla de Rap",
     status: "Completado",
     participants: [
@@ -222,6 +239,7 @@ export const tournaments = [
     type_tournament: "Arte"
   }),
   tournamentBase({
+    id: 18,
     name: "Just Dance Showdown",
     status: "Completado",
     participants: [
@@ -235,6 +253,7 @@ export const tournaments = [
     type_tournament: "Video Juegos"
   }),
   tournamentBase({
+    id: 19,
     name: "Carrera de Robots",
     status: "Activo",
     participants: [
@@ -247,6 +266,7 @@ export const tournaments = [
     type_tournament: "Concurso escolar"
   }),
   tournamentBase({
+    id: 20,
     name: "Concurso de Fotografía",
     status: "Completado",
     participants: [
@@ -260,6 +280,7 @@ export const tournaments = [
     type_tournament: "Arte"
   }),
   tournamentBase({
+    id: 21,
     name: "Torneo de Ping Pong",
     status: "Activo",
     participants: [
@@ -272,6 +293,7 @@ export const tournaments = [
     type_tournament: "Deporte"
   }),
   tournamentBase({
+    id: 22,
     name: "Competencia de Cocina",
     status: "Completado",
     participants: [
@@ -285,6 +307,7 @@ export const tournaments = [
     type_tournament: "Concurso escolar"
   }),
   tournamentBase({
+    id: 23,
     name: "Rally de Ciencias",
     status: "Activo",
     participants: [
@@ -297,6 +320,7 @@ export const tournaments = [
     type_tournament: "Concurso escolar"
   }),
   tournamentBase({
+    id: 24,
     name: "Torneo de Poker",
     status: "Completado",
     participants: [
@@ -310,6 +334,7 @@ export const tournaments = [
     type_tournament: "Juego de Mesa"
   }),
   tournamentBase({
+    id: 25,
     name: "Competencia de Baile",
     status: "Cancelado",
     participants: [
