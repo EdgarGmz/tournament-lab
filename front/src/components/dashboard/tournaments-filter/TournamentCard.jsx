@@ -59,7 +59,7 @@ const TournamentCard = (props) => {
                 )}
                 
                 <div className="card-actions">
-                    <button className="action-button" onClick={navigate(`/detail/${props.id}`)}>
+                    <button className="action-button">
                        INFO <FcInfo /> 
                     </button>
                 </div>
