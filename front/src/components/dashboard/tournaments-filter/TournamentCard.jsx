@@ -1,10 +1,10 @@
 import { FcInfo } from "react-icons/fc";
-import "../../../css/tournament-card.css";
 import { useNavigate } from "react-router-dom";
+import "../../../css/tournament-card.css";
 
 const statusConfig = {
     activo: {
-        bgColor: "lightblue",
+        bgColor: "#FFF9C4", 
         fields: [
             { label: "Status", key: "status" },
             { label: "Participantes", key: "participants", render: (v) => v.length },
@@ -12,7 +12,7 @@ const statusConfig = {
         ]
     },
     cancelado: {
-        bgColor: "lightcoral",
+        bgColor: "#FFCDD2",
         fields: [
             { label: "Status", key: "status" },
             { label: "Participantes", key: "participants", render: (v) => v.length },
@@ -22,7 +22,7 @@ const statusConfig = {
         ]
     },
     completado: {
-        bgColor: "lightsalmon",
+        bgColor: "#A5D6A7",
         fields: [
             { label: "Status", key: "status" },
             { label: "Fecha de creación", key: "startDate" },
@@ -59,9 +59,14 @@ const TournamentCard = (props) => {
                 )}
                 
                 <div className="card-actions">
-                    <button className="action-button">
-                       INFO <FcInfo /> 
-                    </button>
+                    <a
+                        className="action-button"
+                        href={`/tournament/${props.id}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        INFO <FcInfo />
+                    </a>
                 </div>
             </div>
         </div>

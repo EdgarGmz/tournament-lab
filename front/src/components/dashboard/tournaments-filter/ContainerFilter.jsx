@@ -20,12 +20,34 @@ const ContainerFilter = ( { statusFilter } ) => {
         ? tournaments
         : tournaments.filter(t => t.status.toLocaleLowerCase()
                 .includes(statusFilter
-                .toLocaleLowerCase()))
+                    .toLocaleLowerCase()))
     
-    const sorted = [...filtered].sort((a, b) => {
-        const dateA = new Date(a.date || "2023-01-01")
-        const dateB = new Date(b.date || "2023-01-01")
-        return order === 'recent' ? dateB - dateA : dateA - dateB
+    const searched = filtered.filter(t =>
+        t.name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())
+     )
+    
+    const sorted = [...searched].sort((a, b) => {
+        const startA = new Date(a.startDate || "1900-01-01")
+        const startB = new Date(b.startDate || "1900-01-01")
+        const endA = new Date(a.endDate || "2100-01-01")
+        const endB = new Date(a.endDate || "2100-01-01")
+
+        switch (order) {
+            case 'startDateAsc':
+                return startA - startB
+            case 'startDateDesc':
+                return startB - startA
+            case 'endDateAsc':
+                return endA - endB
+            case 'endDateDesc':
+                return endB - endA
+            case 'oldest':
+                return startA - startB
+            case 'recent':
+            default: 
+                return startB -startA
+            
+        }
     })
 
 
@@ -38,6 +60,8 @@ const ContainerFilter = ( { statusFilter } ) => {
                     <input
                         type="text"
                         placeholder="Buscar torneo..."
+                        value={ searchTerm }
+                        onChange={(e) => { setSearchTerm(e.target.value) } }
                     />
                     <MdOutlineSearch className='search-icon'/>
                 </div>
@@ -50,8 +74,13 @@ const ContainerFilter = ( { statusFilter } ) => {
                         value={order}
                         onChange={(e) => setOrder(e.target.value)}
                     >
-                        <option value="recent">Más reciente</option>
-                        <option value="oldest">Más antiguo</option>
+                        <option value="recent"> Más reciente </option>
+                        <option value="oldest"> Más antiguo </option>
+                        <option value="startDateAsc">Fecha de inicio ↑</option>
+                        <option value="startDateDesc">Fecha de inicio ↓</option>
+                        <option value="endDateAsc">Fecha de fin ↑</option>
+                        <option value="endDateDesc">Fecha de fin ↓</option>
+
                     </select>
                 </div>
 
@@ -78,9 +107,10 @@ const ContainerFilter = ( { statusFilter } ) => {
 
             {/* TOURNAMENT-CARDS */}
             <div className={view === "grid" ? "grid-view" : "list-view"}>
-                {sorted.map((tournament, index) => (
+                {sorted.map((tournament) => (
                     <TournamentCard
-                        key={ index }
+                        key={ tournament.id }
+                        id= { tournament.id }
                         name={ tournament.name }
                         status={ tournament.status }
                         participants={ tournament.participants.length }
