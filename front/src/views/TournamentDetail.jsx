@@ -1,6 +1,7 @@
 // HOOKS
 import { useParams } from 'react-router-dom';
 import { tournaments } from '../constants/constanst';
+import TournamentMatch from '../components/dashboard/TournamentMatch';
 
 // COMPONENTS
 
@@ -20,7 +21,8 @@ const TournamentDetail = () => {
             case 'activo':
                 return (
                     <>
-                        Componente para inicializar el torneo (rondas)
+                        <TournamentMatch participants={torneo.participants} />
+                        <p>Componente para detalles del torneo activo</p>
                     </>
                 );
             case 'cancelado':
@@ -41,21 +43,26 @@ const TournamentDetail = () => {
     };
 
     return (
-        <div className="tournament-detail">
-            <h2>{torneo.name}</h2>
-            <p><b>Estado:</b> {torneo.status}</p>
-            <p><b>Descripción:</b> {torneo.description}</p>
-            <p><b>Participantes:</b></p>
-            <ul>
-                {torneo.participants && torneo.participants.length > 0 ? (
-                    torneo.participants.map((p, idx) => (
-                        <li key={idx}>{p}</li>
-                    ))
-                ) : (
-                    <li>No hay participantes</li>
-                )}
-            </ul>
-            {renderStatusComponent()}
+        <div>
+            <div className="tournament-detail">
+                <h2>{torneo.name}</h2>
+                <p><b>Estado:</b> {torneo.status}</p>
+                <p><b>Descripción:</b> {torneo.description}</p>
+                <p><b>Participantes:</b></p>
+                <ul>
+                    {torneo.participants && torneo.participants.length > 0 ? (
+                        torneo.participants.map((p, idx) => (
+                            <li key={idx}>{p}</li>
+                        ))
+                    ) : (
+                        <li>No hay participantes</li>
+                    )}
+                </ul>
+                
+            </div>
+            <div>
+                {renderStatusComponent()}
+            </div>
         </div>
     );
 };

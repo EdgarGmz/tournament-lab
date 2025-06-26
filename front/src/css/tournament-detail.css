@@ -1,41 +1,15 @@
 .tournament-detail {
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 24px;
-    background-color: #f7f9fc;
-    border-radius: 12px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
-}
-
-.tournament-detail h2 {
-    font-size: 28px;
-    color: #1a237a;
-    margin-bottom: 16px;
-}
-
-.tournament-detail p {
-    margin: 8px 0;
-    font-size: 16px;
-    color: #333;
-}
-
-.tournament-detail b {
-    color: #0d47a1;
-}
-
-.tournament-detail ul {
-    list-style-type: disc;
-    margin-left: 24px;
-    margin-top: 10px;
-    padding-left: 0;
-}
-
-.tournament-detail li {
-    margin: 4px 0;
-    font-size: 15px;
-    color: #444;
-}
-
-.tournament-detail section {
-    margin-top: 24px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 320px;
+    height: 100vh;
+    margin: 0;
+    padding: 32px 24px;
+    background-color: #307ced;
+    color: white;
+    border-radius: 0 12px 12px 0;
+    box-shadow: 2px 0 16px rgba(0, 0, 0, 0.08);
+    overflow-y: auto;
+    z-index: 1000;
 }
