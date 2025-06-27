@@ -1,3 +1,7 @@
+// COMPONENTS
+import { FcCancel, FcExport, FcIdea, FcManager, FcOk, FcPlus, FcSettings } from "react-icons/fc"
+import { TfiCup } from "react-icons/tfi"
+
 const tournamentBase = (overrides) => ({
   champion: "",
   reason_cancelation: "",
@@ -365,3 +369,58 @@ export const statusFilters = {
   cancelados: "cancelado",
   completados: "completado",
 };
+
+export const navSections = [
+  {
+    items: [
+      {
+        icon: FcManager,
+        name: "Inicio",
+        section: "inicio",
+      },
+      {
+        icon: FcPlus,
+        name: "Crear Torneo",
+        section: "crear",
+      },
+    ],
+  },
+  {
+    items: [
+      {
+        icon: TfiCup,
+        name: "Totales",
+        section: "totales",
+      },
+      {
+        icon: FcOk,
+        name: "Completados",
+        section: "completados",
+      },
+      {
+        icon: FcIdea,
+        name: "Activos",
+        section: "activos",
+      },
+      {
+        icon: FcCancel,
+        name: "Cancelados",
+        section: "cancelados",
+      },
+    ],
+  },
+  {
+    items: [
+      {
+        icon: FcSettings,
+        name: "Configuración",
+        section: "configuracion",
+      },
+      {
+        icon: FcExport,
+        name: "Cerrar Sesión",
+        logout: true,
+      },
+    ],
+  },
+];

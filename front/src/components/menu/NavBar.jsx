@@ -1,70 +1,13 @@
 // HOOKS
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"
 
 // COMPONENTS
-import { FcCancel, FcExport, FcIdea, FcManager, FcOk, FcPlus, FcSettings } from "react-icons/fc";
-import { TfiCup } from "react-icons/tfi";
-import ButtonBar from "./ButtonBar";
-import ItemNavBar from "./ItemNavBar";
-
+import { navSections } from "../../constants/constanst"
+import ButtonBar from "./ButtonBar"
+import ItemNavBar from "./ItemNavBar"
 
 // CSS
-import "../../css/menu-bar.css";
-
-const navSections = [
-  {
-    items: [
-      {
-        icon: FcManager,
-        name: "Inicio",
-        section: "inicio",
-      },
-      {
-        icon: FcPlus,
-        name: "Crear Torneo",
-        section: "crear",
-      },
-    ],
-  },
-  {
-    items: [
-      {
-        icon: TfiCup,
-        name: "Totales",
-        section: "totales",
-      },
-      {
-        icon: FcOk,
-        name: "Completados",
-        section: "completados",
-      },
-      {
-        icon: FcIdea,
-        name: "Activos",
-        section: "activos",
-      },
-      {
-        icon: FcCancel,
-        name: "Cancelados",
-        section: "cancelados",
-      },
-    ],
-  },
-  {
-    items: [
-      {
-        icon: FcSettings,
-        name: "Configuración",
-        section: "configuracion",
-      },
-      {
-        icon: FcExport,
-        name: "Cerrar Sesión",
-        logout: true,
-      },
-    ],
-  },
-];
+import "../../css/menu-bar.css"
 
 const NavBar = ({ menuOpen, toggleMenu, onSelectSection }) => {
   const navigate = useNavigate();
@@ -73,7 +16,6 @@ const NavBar = ({ menuOpen, toggleMenu, onSelectSection }) => {
     if (item.section) onSelectSection(item.section)
     else if(item.logout) navigate("/")
   }
-
   
   return (
     <div className={`sidenav ${menuOpen ? "" : "collapsed"}`}>
