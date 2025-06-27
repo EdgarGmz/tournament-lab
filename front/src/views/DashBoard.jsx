@@ -1,43 +1,34 @@
 // HOOKS
-import { useState } from "react"
+import { useState } from "react";
 
 // COMPONENTS
-import Container from "../components/menu/Container"
-import NavBar from "../components/menu/NavBar"
+import Container from "../components/menu/Container";
+import NavBar from "../components/menu/NavBar";
+import { getTitle, renderSection } from '../logic/Logic';
 
 // CSS
-import '../css/dashboard.css'
-
-// LOGIC
-import { getTitle, renderSection } from '../logic/Logic'
+import '../css/dashboard.css';
 
 const Dashboard = () => {
-    const [menuOpen, setMenuOpen] = useState(true)
-    
-    const [ activeSection, setActiveSection ] = useState("totales")
+    const [menuOpen, setMenuOpen] = useState(true);
+    const [activeSection, setActiveSection] = useState("inicio");
 
-    const toggleMenu = () => setMenuOpen(!menuOpen)
-    
     return (
-        <div className="dashboard">     
-            {/* NAVBAR */}
-            <NavBar 
-                isOpen={menuOpen} 
-                toggleMenu={toggleMenu} 
+        <div className="dashboard">
+            <NavBar
+                isOpen={menuOpen}
+                toggleMenu={() => setMenuOpen(open => !open)}
                 menuOpen={menuOpen}
-                onSelectSection = {setActiveSection} 
+                onSelectSection={setActiveSection}
             />
-            
-            {/* CONTAINER */}
-            <Container 
+            <Container
                 title={getTitle(activeSection)}
-                isMenuCollapsed = {!menuOpen}
+                isMenuCollapsed={!menuOpen}
             >
                 {renderSection(activeSection)}
             </Container>
         </div>
     );
-}
+};
 
 export default Dashboard;
-

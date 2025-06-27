@@ -1,25 +1,22 @@
-import ContainerFilter from "../components/dashboard/container-filter/ContainerFilter";
+// COMPONENTS
+import CreateSection from '../components/dashboard/sections/CreateSection';
+import HomeSection from '../components/dashboard/sections/HomeSection';
+import SettingsSection from '../components/dashboard/sections/SettingsSection';
+import ContainerFilter from '../components/dashboard/tournaments-filter/ContainerFilter';
 
-export const getTitle = (section) => {
-        switch(section){
-            case "totales" : return "Torneos Totales";
-            case "completados" : return "Torneos Completados";
-            case "activos" : return "Torneos Activos";
-            case "cancelados" : return "Torneos Cancelados";
-            default: return "DashBoard"
-        }
-    }
+// CONSTANTS
+import { sectionTitles, statusFilters } from '../constants/constanst';
 
-export const renderSection = (section) => {
-    switch(section){
-        case 'totales':
-            return <ContainerFilter statusFilter='Totales' />
-        case 'activos':
-            return <ContainerFilter statusFilter='Activo' />
-        case 'cancelados':
-            return <ContainerFilter statusFilter='Cancelado' />
-        case 'completados':
-            return <ContainerFilter statusFilter='Completado' />
-        default: return <p>Sección no Disponible</p>
-    }
-}
+export const getTitle = (section) => sectionTitles[section] || "Bienvenido a Tournament-Lab";
+
+const sectionComponentMap = {
+    inicio: <HomeSection />,
+    crear: <CreateSection />,
+    configuracion: <SettingsSection />,
+    totales: <ContainerFilter statusFilter={statusFilters.totales} />,
+    completados: <ContainerFilter statusFilter={statusFilters.completados} />,
+    activos: <ContainerFilter statusFilter={statusFilters.activos} />,
+    cancelados: <ContainerFilter statusFilter={statusFilters.cancelados} />
+};
+
+export const renderSection = (section) => sectionComponentMap[section] || <HomeSection />;
