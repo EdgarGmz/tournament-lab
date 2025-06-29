@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "iqTnDs3pz3U=",
+  "dgSpecHash": "gwWLK1n0UFc=",
   "success": true,
-  "projectFilePath": "C:\\tournament-lab\\back\\src\\src\\TournamentLab.Api\\TournamentLab.Api.csproj",
+  "projectFilePath": "C:\\tournament-lab\\back\\src\\TournamentLab.Api\\TournamentLab.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\edgar\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.6\\microsoft.aspnetcore.openapi.9.0.6.nupkg.sha512",
     "C:\\Users\\edgar\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512"

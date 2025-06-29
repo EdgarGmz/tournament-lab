@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\tournament-lab\\back\\src\\src\\TournamentLab.Core\\TournamentLab.Core.csproj",
+      "projectUniqueName": "C:\\tournament-lab\\back\\src\\TournamentLab.Core\\TournamentLab.Core.csproj",
       "projectName": "TournamentLab.Core",
-      "projectPath": "C:\\tournament-lab\\back\\src\\src\\TournamentLab.Core\\TournamentLab.Core.csproj",
+      "projectPath": "C:\\tournament-lab\\back\\src\\TournamentLab.Core\\TournamentLab.Core.csproj",
       "packagesPath": "C:\\Users\\edgar\\.nuget\\packages\\",
-      "outputPath": "C:\\tournament-lab\\back\\src\\src\\TournamentLab.Core\\obj\\",
+      "outputPath": "C:\\tournament-lab\\back\\src\\TournamentLab.Core\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\edgar\\AppData\\Roaming\\NuGet\\NuGet.Config",

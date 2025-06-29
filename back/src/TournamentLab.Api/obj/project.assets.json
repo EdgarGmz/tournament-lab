@@ -33,6 +33,29 @@
             "related": ".pdb;.xml"
           }
         }
+      },
+      "TournamentLab.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "compile": {
+          "bin/placeholder/TournamentLab.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TournamentLab.Core.dll": {}
+        }
+      },
+      "TournamentLab.Infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "TournamentLab.Core": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/TournamentLab.Infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TournamentLab.Infrastructure.dll": {}
+        }
       }
     }
   },
@@ -67,11 +90,23 @@
         "microsoft.openapi.1.6.17.nupkg.sha512",
         "microsoft.openapi.nuspec"
       ]
+    },
+    "TournamentLab.Core/1.0.0": {
+      "type": "project",
+      "path": "../TournamentLab.Core/TournamentLab.Core.csproj",
+      "msbuildProject": "../TournamentLab.Core/TournamentLab.Core.csproj"
+    },
+    "TournamentLab.Infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../TournamentLab.Infrastructure/TournamentLab.Infrastructure.csproj",
+      "msbuildProject": "../TournamentLab.Infrastructure/TournamentLab.Infrastructure.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net9.0": [
-      "Microsoft.AspNetCore.OpenApi >= 9.0.6"
+      "Microsoft.AspNetCore.OpenApi >= 9.0.6",
+      "TournamentLab.Core >= 1.0.0",
+      "TournamentLab.Infrastructure >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -80,11 +115,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\tournament-lab\\back\\src\\src\\TournamentLab.Api\\TournamentLab.Api.csproj",
+      "projectUniqueName": "C:\\tournament-lab\\back\\src\\TournamentLab.Api\\TournamentLab.Api.csproj",
       "projectName": "TournamentLab.Api",
-      "projectPath": "C:\\tournament-lab\\back\\src\\src\\TournamentLab.Api\\TournamentLab.Api.csproj",
+      "projectPath": "C:\\tournament-lab\\back\\src\\TournamentLab.Api\\TournamentLab.Api.csproj",
       "packagesPath": "C:\\Users\\edgar\\.nuget\\packages\\",
-      "outputPath": "C:\\tournament-lab\\back\\src\\src\\TournamentLab.Api\\obj\\",
+      "outputPath": "C:\\tournament-lab\\back\\src\\TournamentLab.Api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\edgar\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -101,7 +136,14 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\tournament-lab\\back\\src\\TournamentLab.Core\\TournamentLab.Core.csproj": {
+              "projectPath": "C:\\tournament-lab\\back\\src\\TournamentLab.Core\\TournamentLab.Core.csproj"
+            },
+            "C:\\tournament-lab\\back\\src\\TournamentLab.Infrastructure\\TournamentLab.Infrastructure.csproj": {
+              "projectPath": "C:\\tournament-lab\\back\\src\\TournamentLab.Infrastructure\\TournamentLab.Infrastructure.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

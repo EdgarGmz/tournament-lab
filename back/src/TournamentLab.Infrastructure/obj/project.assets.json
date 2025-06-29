@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net9.0": {}
+    "net9.0": {
+      "TournamentLab.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "compile": {
+          "bin/placeholder/TournamentLab.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TournamentLab.Core.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "TournamentLab.Core/1.0.0": {
+      "type": "project",
+      "path": "../TournamentLab.Core/TournamentLab.Core.csproj",
+      "msbuildProject": "../TournamentLab.Core/TournamentLab.Core.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net9.0": []
+    "net9.0": [
+      "TournamentLab.Core >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\edgar\\.nuget\\packages\\": {}
@@ -13,11 +32,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\tournament-lab\\back\\src\\src\\TournamentLab.Infrastructure\\TournamentLab.Infrastructure.csproj",
+      "projectUniqueName": "C:\\tournament-lab\\back\\src\\TournamentLab.Infrastructure\\TournamentLab.Infrastructure.csproj",
       "projectName": "TournamentLab.Infrastructure",
-      "projectPath": "C:\\tournament-lab\\back\\src\\src\\TournamentLab.Infrastructure\\TournamentLab.Infrastructure.csproj",
+      "projectPath": "C:\\tournament-lab\\back\\src\\TournamentLab.Infrastructure\\TournamentLab.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\edgar\\.nuget\\packages\\",
-      "outputPath": "C:\\tournament-lab\\back\\src\\src\\TournamentLab.Infrastructure\\obj\\",
+      "outputPath": "C:\\tournament-lab\\back\\src\\TournamentLab.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\edgar\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -34,7 +53,11 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\tournament-lab\\back\\src\\TournamentLab.Core\\TournamentLab.Core.csproj": {
+              "projectPath": "C:\\tournament-lab\\back\\src\\TournamentLab.Core\\TournamentLab.Core.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
