@@ -39,6 +39,50 @@ app.MapGet("/api/tournaments", async (TournamentLabDbContext dbContext) =>
     return Results.Ok(tournaments);
 });
 
+app.MapGet("/api/tournaments/{id}", async (int id, TournamentLabDbContext dbContext) =>
+{
+    var tournament = await dbContext.Tournaments.FindAsync(id);
+    if (tournament == null)
+    {
+        return Results.NotFound();
+    }
+    return Results.Ok(tournament);
+});
+
+app.MapPut("/api/tournaments/{id}", async (int id, Tournament updatedTournament, TournamentLabDbContext dbContext) =>
+{
+    var tournament = await dbContext.Tournaments.FindAsync(id);
+    if (tournament == null)
+    {
+        return Results.NotFound();
+    }
+
+    tournament.Name = updatedTournament.Name;
+    tournament.Status = updatedTournament.Status;
+    tournament.Participants = updatedTournament.Participants;
+    tournament.StartDate = updatedTournament.StartDate;
+    tournament.EndDate = updatedTournament.EndDate;
+    tournament.Description = updatedTournament.Description;
+    tournament.Tournament_Type = updatedTournament.Tournament_Type;
+
+    await dbContext.SaveChangesAsync();
+    return Results.Ok(tournament);
+});
+
+app.MapDelete("/api/tournaments/{id}", async (int id, TournamentLabDbContext dbContext) =>
+{
+    var tournament = await dbContext.Tournaments.FindAsync(id);
+    if (tournament == null)
+    {
+        return Results.NotFound();
+    }
+
+    dbContext.Tournaments.Remove(tournament);
+    await dbContext.SaveChangesAsync();
+    return Results.NoContent();
+});
+
+
 app.Run();
 
 
