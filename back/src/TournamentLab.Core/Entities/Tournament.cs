@@ -6,11 +6,15 @@ namespace TournamentLab.Core.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Status { get; set; } 
+        public string Status { get; set; }
         public List<string> Participants { get; set; } = new List<string>();
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public string Description { get; set; }
-        public string Tournament_Type { get; set; } 
+        public string Tournament_Type { get; set; }
+
+        // Foregein Key
+        public int UserId { get; set; }
+        public User User { get; set; } = null!;
     }
 }   

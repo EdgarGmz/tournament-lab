@@ -1,9 +1,17 @@
 using Microsoft.EntityFrameworkCore;
 using TournamentLab.Core.Entities;
 using TournamentLab.Infrastructure.Data;
+using TournamentLab.Api.DTOs;
+using static BCrypt.Net.BCrypt;
+using System.Text;
+using System.Security.Claims;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.IdentityModel.Tokens;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Configurar Servicios
 builder.Services.AddDbContext<TournamentLabDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
@@ -12,9 +20,10 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configurar el pipeline de la aplicación
 if (app.Environment.IsDevelopment())
 {
+    // Aplica migraciones automáticamente al iniciar 
     using (var scope = app.Services.CreateScope())
     {
         var dbContext = scope.ServiceProvider.GetRequiredService<TournamentLabDbContext>();
@@ -26,6 +35,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+// ENDPOINTS - TOURNAMENTS
+// Post: Crear un nuevo torneo
 app.MapPost("/api/tournaments", async (Tournament tournament, TournamentLabDbContext dbContext) =>
 {
     dbContext.Tournaments.Add(tournament);
@@ -33,22 +44,21 @@ app.MapPost("/api/tournaments", async (Tournament tournament, TournamentLabDbCon
     return Results.Created($"/api/tournaments/{tournament.Id}", tournament);
 });
 
+// Get: Obtener todos los torneos 
 app.MapGet("/api/tournaments", async (TournamentLabDbContext dbContext) =>
 {   
     var tournaments = await dbContext.Tournaments.ToListAsync();
     return Results.Ok(tournaments);
 });
 
+// Get: Obtener un torneo por ID
 app.MapGet("/api/tournaments/{id}", async (int id, TournamentLabDbContext dbContext) =>
 {
     var tournament = await dbContext.Tournaments.FindAsync(id);
-    if (tournament == null)
-    {
-        return Results.NotFound();
-    }
-    return Results.Ok(tournament);
+    return tournament is not null ? Results.Ok(tournament) : Results.NotFound();
 });
 
+// Put: Actualizar un torneo existente
 app.MapPut("/api/tournaments/{id}", async (int id, Tournament updatedTournament, TournamentLabDbContext dbContext) =>
 {
     var tournament = await dbContext.Tournaments.FindAsync(id);
@@ -66,9 +76,10 @@ app.MapPut("/api/tournaments/{id}", async (int id, Tournament updatedTournament,
     tournament.Tournament_Type = updatedTournament.Tournament_Type;
 
     await dbContext.SaveChangesAsync();
-    return Results.Ok(tournament);
+    return Results.NoContent();
 });
 
+// Delete: Eliminar un torneo por ID
 app.MapDelete("/api/tournaments/{id}", async (int id, TournamentLabDbContext dbContext) =>
 {
     var tournament = await dbContext.Tournaments.FindAsync(id);
@@ -82,6 +93,79 @@ app.MapDelete("/api/tournaments/{id}", async (int id, TournamentLabDbContext dbC
     return Results.NoContent();
 });
 
+
+// ENDPOINTS - USERS
+// Post: Crear un nuevo usuario
+app.MapPost("/api/auth/register", async (RegisterUserDto registerDto, TournamentLabDbContext dbContext) =>
+{
+    // Validar si el usuario existe
+    var userExist = await dbContext.Users.AnyAsync(u => u.Username == registerDto.Username || u.Email == registerDto.Email);
+    if (userExist)
+    {
+        return Results.Conflict("Usurio con ese nombre o correo ya existe!");
+    }
+
+    // Hashear la contraseña
+    var passwordHash = HashPassword(registerDto.Password);
+
+    // Crear el nuevo usuario
+    var newUser = new User
+    {
+        Username = registerDto.Username,
+        Email = registerDto.Email,
+        PasswordHash = passwordHash
+    };
+
+    // Guardar la base de datos
+    dbContext.Users.Add(newUser);
+    await dbContext.SaveChangesAsync();
+
+    return Results.StatusCode(201);
+}
+
+);
+
+// Post: Login de usuario
+app.MapPost("/api/auth/login", async (LoginUserDto loginDto, TournamentLabDbContext dbContext, IConfiguration config) =>
+{
+    // Buscar el usuario por su nombre de usuario
+    var user = await dbContext.Users.FirstOrDefaultAsync(u => u.Username == loginDto.Username);
+    if (user == null)
+    {
+        // Ususario no encontrado
+        return Results.Unauthorized();
+    }
+
+    // Veririficar la contraseña
+    if (!Verify(loginDto.Password, user.PasswordHash))
+    {
+        // Contraseña incorrecta
+        return Results.Unauthorized();
+    }
+
+    // Generar el token JWT si las credenciales son correctas
+    var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["Jwt:Key"]!));
+    var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
+    var claims = new[]{
+        new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
+        new Claim(JwtRegisteredClaimNames.Name, user.Username),
+        new Claim(JwtRegisteredClaimNames.Email, user.Email),
+        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+    };
+
+    var token = new JwtSecurityToken(
+        issuer: config["Jwt:Issuer"],
+        audience: config["Jwt:Audience"],
+        claims: claims,
+        expires: DateTime.Now.AddHours(5),
+        signingCredentials: credentials);
+
+    var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
+
+    // Devolver el token JWT
+    return Results.Ok(new { Token = tokenString });
+});
 
 app.Run();
 
