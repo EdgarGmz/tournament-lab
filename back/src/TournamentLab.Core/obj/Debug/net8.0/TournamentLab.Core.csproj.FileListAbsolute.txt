@@ -1,0 +1,12 @@
+C:\tournament-lab\back\src\TournamentLab.Core\bin\Debug\net8.0\TournamentLab.Core.deps.json
+C:\tournament-lab\back\src\TournamentLab.Core\bin\Debug\net8.0\TournamentLab.Core.dll
+C:\tournament-lab\back\src\TournamentLab.Core\bin\Debug\net8.0\TournamentLab.Core.pdb
+C:\tournament-lab\back\src\TournamentLab.Core\obj\Debug\net8.0\TournamentLab.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\tournament-lab\back\src\TournamentLab.Core\obj\Debug\net8.0\TournamentLab.Core.AssemblyInfoInputs.cache
+C:\tournament-lab\back\src\TournamentLab.Core\obj\Debug\net8.0\TournamentLab.Core.AssemblyInfo.cs
+C:\tournament-lab\back\src\TournamentLab.Core\obj\Debug\net8.0\TournamentLab.Core.csproj.CoreCompileInputs.cache
+C:\tournament-lab\back\src\TournamentLab.Core\obj\Debug\net8.0\TournamentLab.Core.sourcelink.json
+C:\tournament-lab\back\src\TournamentLab.Core\obj\Debug\net8.0\TournamentLab.Core.dll
+C:\tournament-lab\back\src\TournamentLab.Core\obj\Debug\net8.0\refint\TournamentLab.Core.dll
+C:\tournament-lab\back\src\TournamentLab.Core\obj\Debug\net8.0\TournamentLab.Core.pdb
+C:\tournament-lab\back\src\TournamentLab.Core\obj\Debug\net8.0\ref\TournamentLab.Core.dll

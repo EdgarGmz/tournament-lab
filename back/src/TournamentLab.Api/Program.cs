@@ -18,8 +18,6 @@ builder.Services.AddDbContext<TournamentLabDbContext>(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var app = builder.Build();
-
 // Autenticación JWT
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         .AddJwtBearer(options =>
@@ -31,21 +29,19 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 ValidateLifetime = true,
                 ValidateIssuerSigningKey = true,
                 ValidIssuer = builder.Configuration["Jwt:Issuer"],
+                ValidAudience = builder.Configuration["Jwt:Audience"],
                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!))
             };
         });
-
+// Añadir servicio de autorización
 builder.Services.AddAuthorization();
+
+// Construir la aplicación
+var app = builder.Build();
 
 // Configurar el pipeline de la aplicación
 if (app.Environment.IsDevelopment())
 {
-    // Aplica migraciones automáticamente al iniciar 
-    using (var scope = app.Services.CreateScope())
-    {
-        var dbContext = scope.ServiceProvider.GetRequiredService<TournamentLabDbContext>();
-        dbContext.Database.Migrate();
-    }
     app.UseSwagger();
     app.UseSwaggerUI();
 }
@@ -56,6 +52,10 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 // ENDPOINTS - TOURNAMENTS
+
+// Endpoint de pruebas
+app.MapGet("/", () => "Api is runnig!");
+
 // Post: Crear un nuevo torneo
 app.MapPost("/api/tournaments", async (Tournament tournament, TournamentLabDbContext dbContext) =>
 {
