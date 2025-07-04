@@ -7,7 +7,7 @@ using System.Text;
 using System.Security.Claims;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.IdentityModel.Tokens;
-
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +19,23 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+// Autenticación JWT
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        .AddJwtBearer(options =>
+        {
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true,
+                ValidIssuer = builder.Configuration["Jwt:Issuer"],
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!))
+            };
+        });
+
+builder.Services.AddAuthorization();
 
 // Configurar el pipeline de la aplicación
 if (app.Environment.IsDevelopment())
@@ -35,6 +52,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
+app.UseAuthorization();
+
 // ENDPOINTS - TOURNAMENTS
 // Post: Crear un nuevo torneo
 app.MapPost("/api/tournaments", async (Tournament tournament, TournamentLabDbContext dbContext) =>
@@ -42,7 +62,7 @@ app.MapPost("/api/tournaments", async (Tournament tournament, TournamentLabDbCon
     dbContext.Tournaments.Add(tournament);
     await dbContext.SaveChangesAsync();
     return Results.Created($"/api/tournaments/{tournament.Id}", tournament);
-});
+}).RequireAuthorization();
 
 // Get: Obtener todos los torneos 
 app.MapGet("/api/tournaments", async (TournamentLabDbContext dbContext) =>
@@ -77,7 +97,7 @@ app.MapPut("/api/tournaments/{id}", async (int id, Tournament updatedTournament,
 
     await dbContext.SaveChangesAsync();
     return Results.NoContent();
-});
+}).RequireAuthorization();
 
 // Delete: Eliminar un torneo por ID
 app.MapDelete("/api/tournaments/{id}", async (int id, TournamentLabDbContext dbContext) =>
@@ -91,7 +111,7 @@ app.MapDelete("/api/tournaments/{id}", async (int id, TournamentLabDbContext dbC
     dbContext.Tournaments.Remove(tournament);
     await dbContext.SaveChangesAsync();
     return Results.NoContent();
-});
+}).RequireAuthorization();
 
 
 // ENDPOINTS - USERS

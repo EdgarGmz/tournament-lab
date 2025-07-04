@@ -12,7 +12,7 @@ using TournamentLab.Infrastructure.Data;
 namespace TournamentLab.Infrastructure.Migrations
 {
     [DbContext(typeof(TournamentLabDbContext))]
-    [Migration("20250703021105_InitialCreate")]
+    [Migration("20250704003809_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

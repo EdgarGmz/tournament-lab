@@ -8,7 +8,9 @@ C:\tournament-lab\back\src\TournamentLab.Api\bin\Debug\net9.0\TournamentLab.Api.
 C:\tournament-lab\back\src\TournamentLab.Api\bin\Debug\net9.0\TournamentLab.Api.pdb
 C:\tournament-lab\back\src\TournamentLab.Api\bin\Debug\net9.0\Azure.Core.dll
 C:\tournament-lab\back\src\TournamentLab.Api\bin\Debug\net9.0\Azure.Identity.dll
+C:\tournament-lab\back\src\TournamentLab.Api\bin\Debug\net9.0\BCrypt.Net-Next.dll
 C:\tournament-lab\back\src\TournamentLab.Api\bin\Debug\net9.0\Humanizer.dll
+C:\tournament-lab\back\src\TournamentLab.Api\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\tournament-lab\back\src\TournamentLab.Api\bin\Debug\net9.0\Microsoft.AspNetCore.OpenApi.dll
 C:\tournament-lab\back\src\TournamentLab.Api\bin\Debug\net9.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\tournament-lab\back\src\TournamentLab.Api\bin\Debug\net9.0\Microsoft.Build.Locator.dll
@@ -168,4 +170,3 @@ C:\tournament-lab\back\src\TournamentLab.Api\obj\Debug\net9.0\refint\TournamentL
 C:\tournament-lab\back\src\TournamentLab.Api\obj\Debug\net9.0\TournamentLab.Api.pdb
 C:\tournament-lab\back\src\TournamentLab.Api\obj\Debug\net9.0\TournamentLab.Api.genruntimeconfig.cache
 C:\tournament-lab\back\src\TournamentLab.Api\obj\Debug\net9.0\ref\TournamentLab.Api.dll
-C:\tournament-lab\back\src\TournamentLab.Api\bin\Debug\net9.0\BCrypt.Net-Next.dll
