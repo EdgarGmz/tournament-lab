@@ -8,7 +8,8 @@
     "update:db": "dotnet ef database update --project src/TournamentLab.Api/TournamentLab.Api.csproj",
     "build": "dotnet build TournamentLab.sln",
     "restore": "dotnet restore TournamentLab.sln",
-    "drop:db": "dotnet ef database drop -p src/TournamentLab.Infrastructure -s src/TournamentLab.Api"
+    "drop:db": "dotnet ef database drop -p src/TournamentLab.Infrastructure -s src/TournamentLab.Api",
+    "docker:build":"docker-compose up --build"
   },
   "keywords": [],
   "author": "",

@@ -1,6 +1,3 @@
-# Versión de formato de Docker Compose.
-version: '3.8'
-
 # Definición de los servicios (contenedores) que se van a ejecutar.
 services:
   # 1. Servicio para nuestra Api de .NET
@@ -17,7 +14,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:8080
-      - ConnectionStrings__DefaultConnection=Server=db;Database=TournamentLabDb;UserId=sa;Password=${DB_PASSWORD};TrustServerCertificate=True;
+      - ConnectionStrings__DefaultConnection=Server=db;Database=TournamentLabDb;User ID=sa;Password=${DB_PASSWORD};TrustServerCertificate=True;
     # Hacemos que este servicio dependa del servicio 'db'.
     # Docker Compose se asegurará de que el contenedor 'db' se inicie antes que el 'api'.
     depends_on:
@@ -38,3 +35,9 @@ services:
     # conectarse a la base de datos con una herramienta como DBeaver o SSMS.
     ports:
       - "1433:1433"
+      
+
+
+
+      # Pendiente .env para las claves
+      

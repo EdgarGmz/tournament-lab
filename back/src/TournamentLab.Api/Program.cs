@@ -39,6 +39,22 @@ builder.Services.AddAuthorization();
 // Construir la aplicación
 var app = builder.Build();
 
+// Aplicar migraciones de EF Core al iniciar la aplicación.
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        var dbContext = services.GetRequiredService<TournamentLabDbContext>();
+        dbContext.Database.Migrate();
+    }
+    catch (Exception ex)
+    {
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "Ocurrió un error durante la migración de la base de datos.");
+    }
+}
+
 // Configurar el pipeline de la aplicación
 if (app.Environment.IsDevelopment())
 {
@@ -141,9 +157,7 @@ app.MapPost("/api/auth/register", async (RegisterUserDto registerDto, Tournament
     await dbContext.SaveChangesAsync();
 
     return Results.StatusCode(201);
-}
-
-);
+});
 
 // Post: Login de usuario
 app.MapPost("/api/auth/login", async (LoginUserDto loginDto, TournamentLabDbContext dbContext, IConfiguration config) =>
