@@ -40,5 +40,24 @@ namespace TournamentLab.Core.Services
 
             return newUser;
         }
+
+        // Método asíncrono para iniciar sesión de un usuario 
+        public async Task<User?> LoginUserAsync(string username, string password)
+        {
+            // Buscar el usaurio
+            var user = await _authRepository.GetUserByUsernameOrEmailAsync(username, username); // <- busca por username o email
+            if (user == null)
+            {
+                return null;
+            }
+
+            // Verificar la contraseña
+            if (!Verify(password, user.PasswordHash))
+            {
+                return null; // <- Contraseña Incorrecta
+            }
+
+            return user; // <- Devolvemos el usuario si las credenciales son correctas
+        }
     }
 }

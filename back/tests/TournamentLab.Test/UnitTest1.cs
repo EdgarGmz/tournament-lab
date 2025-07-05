@@ -77,7 +77,84 @@ namespace TournamentLab.Test
                 // Verificamos que no se añadió un nuevo usuario con ese nombre
                 var userCount = await dbContext.Users.CountAsync(u => u.Username == username);
                 Assert.Equal(1, userCount);
-                
+
+            }
+        }
+
+        // Para verificar el login exitoso
+        [Fact]
+        public async Task LoginUserAsync_ShouldReturnUser_WhenCredentialsAreCorrect()
+        {
+            // Arrange
+            var options = new DbContextOptionsBuilder<TournamentLabDbContext>()
+                                .UseInMemoryDatabase(databaseName: "TestDb_LoginSucces")
+                                .Options;
+
+            using (var dbContext = new TournamentLabDbContext(options))
+            {
+                // Añadimos un usuario de prueba con una contraseña hasheada
+                var hashedPassword = BCrypt.Net.BCrypt.HashPassword("CorrectPassword123!");
+                dbContext.Users.Add(new User { Username = "loginuser", Email = "login@example.com", PasswordHash = hashedPassword });
+                await dbContext.SaveChangesAsync();
+
+                var authRepository = new AuthRepository(dbContext);
+                var authService = new AuthService(authRepository);
+
+                // Act
+                var result = await authService.LoginUserAsync("loginuser", "CorrectPassword123!");
+
+                // Assert
+                Assert.NotNull(result);
+                Assert.Equal("loginuser", result.Username);
+            }
+        }
+
+        // Prueba para veirificar el login fallido por contraseña incorrecta
+        [Fact]
+        public async Task LoginUserAsync_ShouldReturnNull_WhenPasswordIsIncorrect()
+        {
+            // Arrange
+            var options = new DbContextOptionsBuilder<TournamentLabDbContext>()
+                                .UseInMemoryDatabase(databaseName: "TestDb_LoginIncorrectPassword")
+                                .Options;
+
+            using (var dbContext = new TournamentLabDbContext(options))
+            {
+                var hashedPassword = BCrypt.Net.BCrypt.HashPassword("CorrectPassword123!");
+                dbContext.Users.Add(new User { Username = "wronguser", Email = "worngpass@example.com", PasswordHash = hashedPassword });
+                await dbContext.SaveChangesAsync();
+
+                var authRepository = new AuthRepository(dbContext);
+                var authService = new AuthService(authRepository);
+
+                // Act 
+                var result = await authService.LoginUserAsync("wrongpassuser", "IncorrectPassword!");
+
+                // Assert
+                Assert.Null(result); // <- El resultado debería ser nulo
+            }
+        }
+
+        // Prueba para verificar el login fallido por usuario no existente
+        [Fact]
+        public async Task LoginUserAsync_ShouldReturnNull_WhenUserDoesNotExists()
+        {
+            // Arrange
+            var options = new DbContextOptionsBuilder<TournamentLabDbContext>()
+                                .UseInMemoryDatabase(databaseName: "TestDb_LoginUserDoesNotExists")
+                                .Options;
+
+            using (var dbContext = new TournamentLabDbContext(options))
+            {
+                // No añadimos ningún usuario a la base de datos en memoria
+                var authRepository = new AuthRepository(dbContext);
+                var authService = new AuthService(authRepository);
+
+                // Act
+                var result = await authService.LoginUserAsync("nonexistentuser", "AnyPassword");
+
+                // Assert
+                Assert.Null(result);
             }
         }
     }

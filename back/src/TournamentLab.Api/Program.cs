@@ -166,25 +166,17 @@ app.MapPost("/api/auth/register", async (RegisterUserDto registerDto, Tournament
 });
 
 // Post: Login de usuario
-app.MapPost("/api/auth/login", async (LoginUserDto loginDto, TournamentLabDbContext dbContext, IConfiguration config) =>
+app.MapPost("/api/auth/login", async (LoginUserDto loginDto, AuthService authService, IConfiguration config) =>
 {
-    // Buscar el usuario por su nombre de usuario
-    var user = await dbContext.Users.FirstOrDefaultAsync(u => u.Username == loginDto.Username);
+    var user = await authService.LoginUserAsync(loginDto.Username, loginDto.Password);
+
     if (user == null)
     {
-        // Ususario no encontrado
-        return Results.Unauthorized();
+        return Results.Unauthorized(); // <- Usuario no encontrado o contraseña incorrecta
     }
 
-    // Veririficar la contraseña
-    if (!Verify(loginDto.Password, user.PasswordHash))
-    {
-        // Contraseña incorrecta
-        return Results.Unauthorized();
-    }
-
-    // Generar el token JWT si las credenciales son correctas
-    var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["Jwt:Key"]!));
+    // Generar el JWT si las credenciales son correctas 
+    var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["Jwt:Key"]));
     var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
     var claims = new[]{
@@ -195,16 +187,17 @@ app.MapPost("/api/auth/login", async (LoginUserDto loginDto, TournamentLabDbCont
     };
 
     var token = new JwtSecurityToken(
-        issuer: config["Jwt:Issuer"],
-        audience: config["Jwt:Audience"],
-        claims: claims,
-        expires: DateTime.Now.AddHours(5),
-        signingCredentials: credentials);
+                    issuer: config["Jwt:Issuer"],
+                    audience: config["Jwt:Audience"],
+                    claims: claims,
+                    expires: DateTime.Now.AddHours(5),
+                    signingCredentials: credentials);
 
     var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
 
     // Devolver el token JWT
     return Results.Ok(new { Token = tokenString });
+    
 });
 
 app.Run();
