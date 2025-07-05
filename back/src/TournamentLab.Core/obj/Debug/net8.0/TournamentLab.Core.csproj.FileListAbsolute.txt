@@ -10,3 +10,4 @@ C:\tournament-lab\back\src\TournamentLab.Core\obj\Debug\net8.0\TournamentLab.Cor
 C:\tournament-lab\back\src\TournamentLab.Core\obj\Debug\net8.0\refint\TournamentLab.Core.dll
 C:\tournament-lab\back\src\TournamentLab.Core\obj\Debug\net8.0\TournamentLab.Core.pdb
 C:\tournament-lab\back\src\TournamentLab.Core\obj\Debug\net8.0\ref\TournamentLab.Core.dll
+C:\tournament-lab\back\src\TournamentLab.Core\obj\Debug\net8.0\TournamentLab.Core.csproj.AssemblyReference.cache

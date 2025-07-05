@@ -1568,6 +1568,10 @@
       "TournamentLab.Core/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "BCrypt.Net-Next": "4.0.3",
+          "Microsoft.EntityFrameworkCore": "8.0.6"
+        },
         "compile": {
           "bin/placeholder/TournamentLab.Core.dll": {}
         },

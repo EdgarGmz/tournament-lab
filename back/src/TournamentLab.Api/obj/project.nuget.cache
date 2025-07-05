@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "9EfXAvgNW6wGEhkFcyhLz8/JSWxn/RxK4974sGg/xXrw31gONosIwUdlyKdqNvldl8qGkUdUafyaAVH9uG0DDA==",
+  "dgSpecHash": "16Z22Ba/uSc4n/5BfZwnhTgS5HpXkjV67LXHtS4cEdxI67yUIdSK/XaIa4V5qvaK1aqzqWm3iwLIf3KLWYU87Q==",
   "success": true,
   "projectFilePath": "C:\\tournament-lab\\back\\src\\TournamentLab.Api\\TournamentLab.Api.csproj",
   "expectedPackageFiles": [

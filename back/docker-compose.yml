@@ -36,8 +36,4 @@ services:
     ports:
       - "1433:1433"
       
-
-
-
-      # Pendiente .env para las claves
       
