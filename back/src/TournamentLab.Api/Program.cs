@@ -22,7 +22,9 @@ builder.Services.AddSwaggerGen();
 
 // Pruebas
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
+builder.Services.AddScoped<ITournamentRepository, TournamentRepository>();
 builder.Services.AddScoped<AuthService>();
+builder.Services.AddScoped<TournamentService>();
 
 // Autenticación JWT
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
