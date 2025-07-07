@@ -1,86 +1,119 @@
 # 🎮 Tournament Lab
 
 > **Administrador de Torneos Universitarios**  
-> Aplicación web construida con **React** y **Bootstrap 5**, pensada para facilitar el registro, inicio de sesión y visualización del panel administrativo de torneos.
+> Aplicación web full-stack construida con **React** y **.NET** para facilitar el registro, la gestión y la visualización de torneos.
 
 ---
 
-## ⚙️ Requisitos del sistema
+## ✨ Descripción General
 
-Antes de comenzar, asegúrate de tener instalado lo siguiente:
+Tournament Lab es una solución completa que consta de dos partes principales:
 
-- ✅ [Node.js](https://nodejs.org/) 18.x o superior
-- ✅ [npm](https://www.npmjs.com/)
-- ✅ [Git](https://git-scm.com/)
+-   **Frontend:** Una aplicación de página única (SPA) moderna y reactiva construida con React y Vite, que ofrece una interfaz de usuario intuitiva.
+-   **Backend:** Una potente API RESTful construida con .NET, que maneja toda la lógica de negocio, la autenticación y la persistencia de datos.
+
+## 🛠️ Pila Tecnológica
+
+| Área      | Tecnología                                        |
+| :-------- | :------------------------------------------------ |
+| **Frontend**  | React, Vite, Bootstrap 5, JavaScript (ES6+)       |
+| **Backend**   | .NET, ASP.NET Core, Entity Framework Core, C#     |
+| **Base de Datos** | SQL Server                                        |
+| **DevOps**    | Docker, Docker Compose, Git, NPM                  |
+| **Pruebas**   | xUnit, Moq                                        |
 
 ---
 
-## 🔐 Configurar llave SSH (Azure DevOps)
+## 🚀 Cómo Empezar (Método Recomendado con Docker)
 
-1. Ejecuta en la terminal:
+Esta es la forma más sencilla de poner en funcionamiento todo el entorno de desarrollo (Backend API + Base de Datos + Frontend).
 
-   ```bash
-   ssh-keygen -t rsa -b 4096 -C "tu_correo@ejemplo.com"
+### **Prerrequisitos**
 
-2. Pulsa 'enter' para aceptar la ubicación por defecto.
+-   ✅ [Docker Desktop](https://www.docker.com/products/docker-desktop/) instalado y en ejecución.
+-   ✅ [Node.js](https://nodejs.org/) 18.x o superior (para el frontend).
+-   ✅ [Git](https://git-scm.com/)
 
-3. (Opcional) Agrega una 'passphrase' si deseas mayor seguridad.
+### **Paso 1: Iniciar el Backend y la Base de Datos**
 
-4. Tu clave pública estará en:
+1.  **Clona el repositorio:**
+    ```bash
+    git clone git@ssh.dev.azure.com:v3/ProyectoUTSC02/tournament-lab/tournament-lab
+    cd tournament-lab
+    ```
 
-                        C:\Users\TuUsuario\.ssh\id_rsa.pub
+2.  **Navega al directorio del backend:**
+    ```bash
+    cd back
+    ```
 
-5. Para copiarla al portapapeles:
+3.  **Configura las variables de entorno del backend:**
+    Copia el archivo de ejemplo `.env.example` a un nuevo archivo `.env` y establece una contraseña segura para la base de datos.
+    ```bash
+    cp .env.example .env
+    ```
 
-                        cat ~/.ssh/id_rsa.pub
+4.  **Levanta los contenedores de Docker:**
+    Este comando construirá y ejecutará la API del backend y la base de datos de SQL Server.
+    ```bash
+    docker-compose up --build
+    ```
+    La primera vez puede tardar unos minutos. Una vez finalizado, tendrás la API corriendo en `http://localhost:8080`.
 
-6. Añádela a Azure DevOps SSH Key.
+### **Paso 2: Iniciar el Frontend**
 
+1.  Abre una **nueva terminal**.
 
-# Instalación y ejecución local
-## Clonar el repositorio
-git clone git@ssh.dev.azure.com:v3/ProyectoUTSC02/tournament-lab/tournament-lab
+2.  **Navega al directorio del frontend:**
+    ```bash
+    # Desde la raíz del proyecto 'tournament-lab'
+    cd front
+    ```
 
-## Acceder al proyecto
-cd tournament-lab
+3.  **Instala las dependencias del frontend:**
+    ```bash
+    npm install
+    ```
 
-## Instalar dependencias
-npm install
+4.  **Ejecuta el servidor de desarrollo del frontend:**
+    ```bash
+    npm run dev
+    ```
 
-## Te posicionas en la carpeta 'front'
+### **Paso 3: ¡Listo!**
 
-cd front
+¡Felicidades! La aplicación completa ya está en funcionamiento.
 
-# Y por último:
-npm run dev
+-   Visita la **aplicación web** en la URL que te indique la terminal de `npm run dev` (normalmente `http://localhost:5173`).
+-   La **API del backend** está disponible en `http://localhost:8080`.
 
+---
 
-# Flujo de Trabajo GIT
-- main → Rama estable para producción
+## Git Workflow y Contribuciones
 
-- develop → Rama base para integrar cambios
+### Flujo de Trabajo
+-   `main` → Rama estable para producción.
+-   `develop` → Rama base para integrar cambios.
 
-# 🛠️ Reglas
-No trabajes directo en main ni develop.
+### Reglas
+-   **No trabajes directo en `main` ni `develop`.**
+-   Crea ramas desde `develop` usando los prefijos `ft/` para features nuevas o `fix/` para correcciones.
 
-Crea ramas desde develop:
+**Ejemplo:**
+```bash
+# Crear y cambiar a una nueva rama para una funcionalidad
+git checkout develop
+git checkout -b ft/login-form
 
-- ft/ para features nuevas
+# Subir cambios al repositorio remoto
+git push origin ft/login-form
+```
 
-- fix/ para correcciones
+### Contribuciones
+¡Son bienvenidas! Abre un Issue o un Pull Request y asegúrate de seguir la guía de estilos y ramas.
 
-# Ejemplo:
-# Crear rama para una funcionalidad
-               git checkout develop
-               git checkout -b ft/login-form
+### Configurar llave SSH (Azure DevOps)
+Para contribuir al repositorio en Azure DevOps, es posible que necesites una clave SSH. Sigue los pasos de la [documentación oficial](https://learn.microsoft.com/en-us/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops) para generarla y añadirla a tu cuenta.
 
-# Subir cambios
-               git push origin ft/login-form
-
-
-# Contribuciones 
-¡Son bienvenidas! Abre un Issue o un pull request y asegúrate de seguir la guía de estilos y ramas.
-
-# 🧠 Créditos
+## 🧠 Créditos
 Desarrollado con ❤️ por estudiantes de UT para la gestión eficiente de torneos.
-
