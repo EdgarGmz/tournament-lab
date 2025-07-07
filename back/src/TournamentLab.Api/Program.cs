@@ -81,88 +81,148 @@ app.UseAuthorization();
 app.MapGet("/", () => "Api is runnig!");
 
 // Post: Crear un nuevo torneo
-app.MapPost("/api/tournaments", async (Tournament tournament, TournamentLabDbContext dbContext) =>
+app.MapPost("/api/tournaments", async (
+    CreateTournamentDto tournamentDto,
+    TournamentService tournamentService,
+    HttpContext httpContext) =>
 {
-    dbContext.Tournaments.Add(tournament);
-    await dbContext.SaveChangesAsync();
-    return Results.Created($"/api/tournaments/{tournament.Id}", tournament);
+    // Obtener el ID del usuario que hace la petición desde el token JWT
+    var userIdClaim = httpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+    if (userIdClaim == null)
+    {
+        return Results.Unauthorized();
+    }
+
+    var userId = int.Parse(userIdClaim.Value);
+
+    // Llamar al servicio "desempacando" los datos del DTO
+    var newTournamentEntity = await tournamentService.CreateTournamentAsync(
+        tournamentDto.Name,
+        tournamentDto.Description,
+        tournamentDto.Participants,
+        userId,
+        tournamentDto.StartDate,
+        tournamentDto.EndDate,
+        tournamentDto.Tournament_Type
+    );
+
+    // Mapear la entidad de respuesta a un DTO para no exponer la entidad de BD
+    var tournamentResponseDto = new TournamentDto
+    {
+        Id = newTournamentEntity.Id,
+        Name = newTournamentEntity.Name,
+        Status = newTournamentEntity.Status,
+        Participants = newTournamentEntity.Participants,
+        StartDate = newTournamentEntity.StartDate,
+        EndDate = newTournamentEntity.EndDate,
+        Description = newTournamentEntity.Description,
+        Tournament_Type = newTournamentEntity.Tournament_Type,
+        UserId = newTournamentEntity.UserId
+    };
+
+    return Results.Created($"/api/tournaments/{tournamentResponseDto.Id}", tournamentResponseDto);
+    
 }).RequireAuthorization();
 
 // Get: Obtener todos los torneos 
-app.MapGet("/api/tournaments", async (TournamentLabDbContext dbContext) =>
+app.MapGet("/api/tournaments", async (TournamentService tournamentService) =>
 {   
-    var tournaments = await dbContext.Tournaments.ToListAsync();
+    var tournaments = await tournamentService.GetAllTournamentsAsync();
+
+    var tournamentDto = tournaments.Select(t => new TournamentDto
+    {
+        Id = t.Id,
+        Name = t.Name,
+        Status = t.Status,
+        Participants = t.Participants,
+        StartDate = t.StartDate,
+        EndDate = t.EndDate,
+        Description = t.Description,
+        Tournament_Type = t.Tournament_Type,
+        UserId = t.UserId
+    });
+
     return Results.Ok(tournaments);
 });
 
 // Get: Obtener un torneo por ID
-app.MapGet("/api/tournaments/{id}", async (int id, TournamentLabDbContext dbContext) =>
+app.MapGet("/api/tournaments/{id}", async (int id, TournamentService tournamentService) =>
 {
-    var tournament = await dbContext.Tournaments.FindAsync(id);
-    return tournament is not null ? Results.Ok(tournament) : Results.NotFound();
+    var tournament = await tournamentService.GetTournamentByIdAsync(id);
+
+    if (tournament == null)
+    {
+        return Results.NotFound();
+    }
+
+    // Mapear la entidad a un DTO para la respuesta
+    var tournamentDto = new TournamentDto
+    {
+        Id = tournament.Id,
+        Name = tournament.Name,
+        Status = tournament.Status,
+        Participants = tournament.Participants,
+        StartDate = tournament.StartDate,
+        EndDate = tournament.EndDate,
+        Description = tournament.Description,
+        Tournament_Type = tournament.Tournament_Type,
+        UserId = tournament.UserId
+    };
+
+    return Results.Ok(tournamentDto);
 });
 
 // Put: Actualizar un torneo existente
-app.MapPut("/api/tournaments/{id}", async (int id, Tournament updatedTournament, TournamentLabDbContext dbContext) =>
+app.MapPut("/api/tournaments/{id}", async (int id,
+    CreateTournamentDto tournamentDto,
+    TournamentService tournamentService) =>
 {
-    var tournament = await dbContext.Tournaments.FindAsync(id);
-    if (tournament == null)
+    var UpdatedTournament = await tournamentService.UpdateTournamentAsync(
+        id,
+        tournamentDto.Name,
+        tournamentDto.Description,
+        tournamentDto.Participants,
+        tournamentDto.StartDate,
+        tournamentDto.EndDate,
+        tournamentDto.Tournament_Type
+    );
+
+    if (UpdatedTournament is null)
     {
         return Results.NotFound();
     }
 
-    tournament.Name = updatedTournament.Name;
-    tournament.Status = updatedTournament.Status;
-    tournament.Participants = updatedTournament.Participants;
-    tournament.StartDate = updatedTournament.StartDate;
-    tournament.EndDate = updatedTournament.EndDate;
-    tournament.Description = updatedTournament.Description;
-    tournament.Tournament_Type = updatedTournament.Tournament_Type;
-
-    await dbContext.SaveChangesAsync();
     return Results.NoContent();
+    
 }).RequireAuthorization();
 
 // Delete: Eliminar un torneo por ID
-app.MapDelete("/api/tournaments/{id}", async (int id, TournamentLabDbContext dbContext) =>
+app.MapDelete("/api/tournaments/{id}", async (int id, TournamentService tournamentService) =>
 {
-    var tournament = await dbContext.Tournaments.FindAsync(id);
-    if (tournament == null)
+    var success = await tournamentService.DeleteTournamentAsync(id);
+    if (!success)
     {
         return Results.NotFound();
     }
-
-    dbContext.Tournaments.Remove(tournament);
-    await dbContext.SaveChangesAsync();
+        
     return Results.NoContent();
 }).RequireAuthorization();
 
 
 // ENDPOINTS - USERS
 // Post: Crear un nuevo usuario
-app.MapPost("/api/auth/register", async (RegisterUserDto registerDto, TournamentLabDbContext dbContext) =>
+app.MapPost("/api/auth/register", async (RegisterUserDto registerDto, AuthService authService) =>
 {
-    // Validar si el usuario existe
-    var userExist = await dbContext.Users.AnyAsync(u => u.Username == registerDto.Username || u.Email == registerDto.Email);
-    if (userExist)
+    var newUser = await authService.RegisterUserAsync(
+        registerDto.Username,
+        registerDto.Email,
+        registerDto.Password
+    );
+
+    if (newUser is null)
     {
         return Results.Conflict("Usurio con ese nombre o correo ya existe!");
     }
-
-    // Hashear la contraseña
-    var passwordHash = HashPassword(registerDto.Password);
-
-    // Crear el nuevo usuario
-    var newUser = new User
-    {
-        Username = registerDto.Username,
-        Email = registerDto.Email,
-        PasswordHash = passwordHash
-    };
-
-    // Guardar la base de datos
-    dbContext.Users.Add(newUser);
-    await dbContext.SaveChangesAsync();
 
     return Results.StatusCode(201);
 });
