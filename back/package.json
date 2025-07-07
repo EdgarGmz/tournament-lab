@@ -1,23 +1,18 @@
 {
-  "name": "app-backend",
+  "name": "back",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "api": "dotnet run --project src/TournamentLab.Api/TournamentLab.Api.csproj",
+    "migration": "dotnet ef database update -p src/TournamentLab.Infrastructure -s src/TournamentLab.Api",
+    "update:db": "dotnet ef database update --project src/TournamentLab.Api/TournamentLab.Api.csproj",
+    "build": "dotnet build TournamentLab.sln",
+    "restore": "dotnet restore TournamentLab.sln",
+    "drop:db": "dotnet ef database drop -p src/TournamentLab.Infrastructure -s src/TournamentLab.Api",
+    "docker:build":"docker-compose up --build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
-  "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^16.5.0",
-    "express": "^5.1.0",
-    "mongoose": "^8.15.0"
-  },
-  "devDependencies": {
-    "nodemon": "^3.1.10"
-  }
+  "description": ""
 }
