@@ -574,7 +574,10 @@
           "Microsoft.EntityFrameworkCore": "8.0.6"
         },
         "runtime": {
-          "TournamentLab.Core.dll": {}
+          "TournamentLab.Core.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }

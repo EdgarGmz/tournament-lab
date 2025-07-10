@@ -151,7 +151,6 @@ C:\tournament-lab\back\tests\TournamentLab.Test\obj\Debug\net8.0\TournamentLab.T
 C:\tournament-lab\back\tests\TournamentLab.Test\obj\Debug\net8.0\TournamentLab.Test.AssemblyInfo.cs
 C:\tournament-lab\back\tests\TournamentLab.Test\obj\Debug\net8.0\TournamentLab.Test.csproj.CoreCompileInputs.cache
 C:\tournament-lab\back\tests\TournamentLab.Test\obj\Debug\net8.0\TournamentLab.Test.sourcelink.json
-C:\tournament-lab\back\tests\TournamentLab.Test\obj\Debug\net8.0\TournamentLab.Test.csproj.CopyComplete
 C:\tournament-lab\back\tests\TournamentLab.Test\obj\Debug\net8.0\TournamentLab.Test.dll
 C:\tournament-lab\back\tests\TournamentLab.Test\obj\Debug\net8.0\refint\TournamentLab.Test.dll
 C:\tournament-lab\back\tests\TournamentLab.Test\obj\Debug\net8.0\TournamentLab.Test.pdb
@@ -318,3 +317,4 @@ D:\tournament-lab\back\tests\TournamentLab.Test\obj\Debug\net8.0\refint\Tourname
 D:\tournament-lab\back\tests\TournamentLab.Test\obj\Debug\net8.0\TournamentLab.Test.pdb
 D:\tournament-lab\back\tests\TournamentLab.Test\obj\Debug\net8.0\TournamentLab.Test.genruntimeconfig.cache
 D:\tournament-lab\back\tests\TournamentLab.Test\obj\Debug\net8.0\ref\TournamentLab.Test.dll
+C:\tournament-lab\back\tests\TournamentLab.Test\obj\Debug\net8.0\Tourname.3C4AFCDB.Up2Date
