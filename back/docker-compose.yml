@@ -35,5 +35,5 @@ services:
     # conectarse a la base de datos con una herramienta como DBeaver o SSMS.
     ports:
       - "1433:1433"
-      
+       
       
