@@ -1,12 +1,19 @@
-# React + Vite
+# Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este directorio contiene el código fuente y la configuración del frontend de Tournament Lab.
 
-Currently, two official plugins are available:
+## Tecnologías
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+*   **React:** Biblioteca para la construcción de la interfaz de usuario.
+*   **Vite:** Herramienta de desarrollo para el frontend.
 
-## Expanding the ESLint configuration
+## Estructura del Proyecto
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+El frontend está estructurado de la siguiente manera:
+
+*   `src/assets`: Contiene los recursos estáticos, como imágenes y fuentes.
+*   `src/components`: Contiene los componentes de React reutilizables.
+*   `src/constants`: Contiene las constantes utilizadas en la aplicación.
+*   `src/css`: Contiene los archivos de estilos CSS.
+*   `src/logic`: Contiene la lógica de la aplicación, como la gestión del estado y las llamadas a la API.
+*   `src/views`: Contiene las vistas principales de la aplicación, que se corresponden con las diferentes páginas.
