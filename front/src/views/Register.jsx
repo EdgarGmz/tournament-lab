@@ -1,21 +1,22 @@
-import { Link, useNavigate} from "react-router-dom";
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 
 const Register = () => {
     // Creamos los estados para cada uno de los campos del formulario
-    const[username, setUserName] = useState('')    
-    const[email, setEmail] = useState('')    
-    const[password, setPassword] = useState('')    
-    const[confirmPassword, setConfirmPassword] = useState('')    
+    const[username, setUserName] = useState('')
+    const[email, setEmail] = useState('')
+    const[password, setPassword] = useState('')
+    const[confirmPassword, setConfirmPassword] = useState('')
     const navigate = useNavigate()
 
     // Función para manejar el envío de formulario
     const handleSubmit = async (e) =>{
-        e.preventDefautl();
-
+        e.preventDefault();
+        
         const API_URL = import.meta.env.VITE_API_URL
-
+        console.log("La URL de la API que se está usando es:", import.meta.env.VITE_API_URL);
+        
         // Validación simple: Las contraseñas deven coincidir
         if(password !== confirmPassword){
             alert('Las contraseñas no coinciden')

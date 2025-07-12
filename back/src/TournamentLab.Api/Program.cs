@@ -10,8 +10,21 @@ using static BCrypt.Net.BCrypt;
 using System.Text;
 using System.Security.Claims;
 using System.IdentityModel.Tokens.Jwt;
+using System.ComponentModel.DataAnnotations;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// CORS
+var MyAllowSpecificOrigins = "_myAllowEspecificOrigins";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins, policy =>
+    {
+        // ¡Importante! Esta es la URL donde corre el frontend
+        // El puerto 5173 es el que se usa en Vite por defecto. Cambiar si es necesario.
+        policy.WithOrigins("http://localhost:5174").AllowAnyHeader().AllowAnyMethod();
+    });
+});
 
 // Configurar Servicios
 builder.Services.AddDbContext<TournamentLabDbContext>(options =>
@@ -71,6 +84,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors(MyAllowSpecificOrigins);
 
 app.UseAuthentication();
 app.UseAuthorization();
@@ -213,6 +227,26 @@ app.MapDelete("/api/tournaments/{id}", async (int id, TournamentService tourname
 // Post: Crear un nuevo usuario
 app.MapPost("/api/auth/register", async (RegisterUserDto registerDto, AuthService authService) =>
 {
+    var validationResult = new List<ValidationResult>();
+    var validationContext = new ValidationContext(registerDto, null, null);
+
+    // Intentamos validar el objeto DTO explicitamente
+    bool isValid = Validator.TryValidateObject(registerDto, validationContext, validationResult, true);
+
+    // Si no es válido, devolvemos un error 400 con los detalles
+    if (!isValid)
+    {
+    // Creamos un diccionario para que los errores sean dificiles de leer en el frontend
+    var errors = validationResult
+                        .GroupBy(e => e.MemberNames.First())
+                        .ToDictionary(
+                            g => g.Key, // La clave es el nombre del campo (ej. 'Password')
+                            g => g.Select( e => e.ErrorMessage!).ToArray() // El valor es un array con todos sus errores
+                        );
+
+        return Results.ValidationProblem(errors);
+    }
+
     var newUser = await authService.RegisterUserAsync(
         registerDto.Username,
         registerDto.Email,

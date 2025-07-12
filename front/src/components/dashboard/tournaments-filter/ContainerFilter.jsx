@@ -23,8 +23,7 @@ const ContainerFilter = ( { statusFilter } ) => {
                     .toLocaleLowerCase()))
     
     const searched = filtered.filter(t =>
-        t.name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())
-     )
+        t.name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()))
     
     const sorted = [...searched].sort((a, b) => {
         const startA = new Date(a.startDate || "1900-01-01")

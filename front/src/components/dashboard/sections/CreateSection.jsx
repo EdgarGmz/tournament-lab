@@ -129,14 +129,14 @@ const CreateSection = () => {
         </div>
 
         {participantsList.length > 0 && (
-          <div className="list-participants">            
+          <div className="list-participants">
             <label>Participantes agregados {participantsList.length}: <br/></label>
             {participantsList.map((p) => (
                 <LabelParticipant
                   key={p}
                   name={p}
                   onClick={() => handleDeleteParticipant(p)}
-                />              
+                />
             ))}
           </div>
         )}

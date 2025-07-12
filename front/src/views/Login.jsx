@@ -3,10 +3,10 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // Define API_URL or import it from your config
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const API_URL = import.meta.env.VITE_API_URL;
 
 // CSS
-import '../css/auth.css'
+import '../css/auth.css';
 
 const Login = () => {
     const [usuario, setUsuario] = useState('')
@@ -27,21 +27,25 @@ const Login = () => {
                     username: usuario,
                     password: password,
                 })
-            });               
+            });
 
             // Si la respuesta es exitosa (código 200-299)
             if(response.ok){
                 const data = await response.json()
+
+                // Guardamos el token en el almacenamiento local del servidor
+                localStorage.setItem('token', data.token)
+
                 // Aquí podrías guardar el token de autenticación (lo veremos después)
-                console.log('Login exitoso: ', data)
+                console.log('Login exitoso. Token: ', data.token)
                 alert('Login Correcto!')
 
                 // Nos rederigimos al dashboard
                 navigate('/dashboard')
             } else{
-                // Si hay un error en la respuesta (ej. credenciales incorrectas)
-                const errorData = await response.json()
-                console.log(`Error: ${errorData.message || 'Credenciales Incorrectas' }`)
+                const errorText = await response.text()
+                alert(`Error: ${errorText || 'Credenciales Incorrectas'}`)
+                console.log(`Error: ${errorText || 'Credenciales Incorrectas'}`)
             }
         }catch (error){
             // Si hay un error en la conexión de la API
