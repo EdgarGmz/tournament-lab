@@ -29,4 +29,4 @@ D:\tournament-lab\back\src\TournamentLab.Infrastructure\obj\Debug\net8.0\Tournam
 D:\tournament-lab\back\src\TournamentLab.Infrastructure\obj\Debug\net8.0\refint\TournamentLab.Infrastructure.dll
 D:\tournament-lab\back\src\TournamentLab.Infrastructure\obj\Debug\net8.0\TournamentLab.Infrastructure.pdb
 D:\tournament-lab\back\src\TournamentLab.Infrastructure\obj\Debug\net8.0\ref\TournamentLab.Infrastructure.dll
-C:\tournament-lab\back\src\TournamentLab.Infrastructure\obj\Debug\net8.0\Tourname.7C76E91A.Up2Date
+C:\tournament-lab\back\src\TournamentLab.Infrastructure\obj\Debug\net8.0\TournamentLab.Infrastructure.csproj.CopyComplete

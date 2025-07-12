@@ -14,7 +14,15 @@ const NavBar = ({ menuOpen, toggleMenu, onSelectSection }) => {
 
   const handleItemClick = (item) => {
     if (item.section) onSelectSection(item.section)
-    else if(item.logout) navigate("/")
+    else if (item.logout) {
+      // Borramos el token del almacenamiento local
+      localStorage.removeItem('token')
+
+      // Mostramos una alerta al usuario
+      alert('Haz cerrado sesión!')
+
+      navigate('/')
+    }
   }
   
   return (
