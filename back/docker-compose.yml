@@ -1,39 +1,19 @@
-# Definición de los servicios (contenedores) que se van a ejecutar.
 services:
-  # 1. Servicio para nuestra Api de .NET
   api:
-    # Le decimos a Docker que construya la imagen usando Dockerfile.
     build: .
-    # Mapeo de puertos: Expone el puerto 8080 de nuestro contenedor 
-    # al puerto 8080 de nuestra máquina local (host).
-    # Así podremos acceder a la API desde http://localhost:8080.
     ports: 
       - "8080:8080"
-    # Variables de entorno para la API.
-    # Aquí le decimos a la API cómo conectarse a la base de datos.
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:8080
       - ConnectionStrings__DefaultConnection=Server=db;Database=TournamentLabDb;User ID=sa;Password=${DB_PASSWORD};TrustServerCertificate=True;
-    # Hacemos que este servicio dependa del servicio 'db'.
-    # Docker Compose se asegurará de que el contenedor 'db' se inicie antes que el 'api'.
     depends_on:
       - db
 
-  # 2. El servicio de nuestra base de datos SQL Server
   db: 
-    # Usamos la imagen oficial de SQL Server para Linux de Microsoft.
     image: "mcr.microsoft.com/mssql/server:2022-latest"
-    # Variables de entorno requeridas por la imagen SQL Server.
     environment:
-      #  Aceptamos los términos de la licencia.
       - ACCEPT_EULA=Y
-      # Establecemos la contraseña para el superusuario 'sa'.
       - SA_PASSWORD=${DB_PASSWORD}
-    # Mapeo de puertos: Expone el puerto 1433 de SQL Server del contenedor
-    # al puerto 1433 de nuestra máquina. Esto es opcional, pero útil si quieres 
-    # conectarse a la base de datos con una herramienta como DBeaver o SSMS.
     ports:
       - "1433:1433"
-       
-      

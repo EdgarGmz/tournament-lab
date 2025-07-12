@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -22,11 +23,16 @@ builder.Services.AddCors(options =>
     {
         // ¡Importante! Esta es la URL donde corre el frontend
         // El puerto 5173 es el que se usa en Vite por defecto. Cambiar si es necesario.
-        policy.WithOrigins("http://localhost:5174").AllowAnyHeader().AllowAnyMethod();
+                policy.WithOrigins("http://localhost:5173").AllowAnyHeader().AllowAnyMethod();
     });
 });
 
 // Configurar Servicios
+builder.Services.Configure<ForwardedHeadersOptions>(options =>
+{
+    options.ForwardedHeaders =
+        ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+});
 builder.Services.AddDbContext<TournamentLabDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
@@ -83,6 +89,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseForwardedHeaders();
 app.UseHttpsRedirection();
 app.UseCors(MyAllowSpecificOrigins);
 

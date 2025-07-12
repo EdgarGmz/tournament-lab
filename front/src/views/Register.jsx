@@ -23,6 +23,20 @@ const Register = () => {
             return
         }
 
+        // Validación de seguridad de la contraseña
+        const validatePassword = (password) => {
+            const hasUpperCase = /[A-Z]/.test(password);
+            const hasNumber = /[0-9]/.test(password);
+            const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+            const hasMinLength = password.length >= 8;
+            return hasUpperCase && hasNumber && hasSpecialChar && hasMinLength;
+        };
+
+        if (!validatePassword(password)) {
+            alert('La contraseña debe contener al menos una letra mayúscula, un número, un carácter especial y tener una longitud mínima de 8 caracteres.');
+            return;
+        }
+
         try{
             // Petición POST al endpoint de registro
             const response = await fetch(`${API_URL}/auth/register`,{
