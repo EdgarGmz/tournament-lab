@@ -1,0 +1,19 @@
+services:
+  api:
+    build: .
+    ports: 
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
+      - ConnectionStrings__DefaultConnection=Server=db;Database=TournamentLabDb;User ID=sa;Password=${DB_PASSWORD};TrustServerCertificate=True;
+    depends_on:
+      - db
+
+  db: 
+    image: "mcr.microsoft.com/mssql/server:2022-latest"
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=${DB_PASSWORD}
+    ports:
+      - "1433:1433"

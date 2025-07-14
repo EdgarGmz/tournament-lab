@@ -1,0 +1,24 @@
+.dashboard {
+    display: flex;
+    min-height: 100vh;
+    background: #f0f2f5;
+    color: #000;
+}
+
+.dashboard-content {
+    margin-left: 240px;
+    padding: 2rem;
+    width: 100%;
+    transition: margin-left 0.3s;
+}
+
+.sidenav.collapsed ~ .dashboard-content {
+    margin-left: 80px;
+}
+
+.dashboard-content > .content-box {
+    background: #fff;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}

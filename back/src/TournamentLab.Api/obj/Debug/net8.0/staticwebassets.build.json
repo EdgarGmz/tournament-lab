@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "VGFqpJntOV0qjbPSCoYg3EXN8cLEabuz4tJsD4hzT1M=",
+  "Source": "TournamentLab.Api",
+  "BasePath": "_content/TournamentLab.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

@@ -1,0 +1,68 @@
+.tournament-container {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    height: 100vh;
+    background-color: #f3f4f6;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+/* Sidebar izquierdo */
+.tournament-detail {
+    background-color: #1e40af; /* azul oscuro sobrio */
+    color: #fff;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+}
+
+.tournament-detail h2 {
+    font-size: 1.6em;
+    margin-bottom: 10px;
+    color: #93c5fd; /* azul celeste claro */
+}
+
+.tournament-detail p, 
+.tournament-detail li {
+    font-size: 0.95em;
+    margin: 8px 0;
+}
+
+.tournament-detail ul {
+    margin-top: 5px;
+    padding-left: 18px;
+}
+
+/* Botones */
+.tournament-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.tournament-actions button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3b82f6;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.tournament-actions button:hover {
+    background-color: #2563eb;
+}
+
+/* Área derecha (matches/bracket) */
+.tournament-bracket {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    overflow: auto;
+}

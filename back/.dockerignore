@@ -1,0 +1,20 @@
+# Ignorar todos los directiorios de salida de compilación
+**/bin
+**/obj
+
+# Ignorar archivos de configuración local y de usuario
+*.user
+*.userosscache
+*.sln.docstates
+
+# Ignorar directirios de herramientas y de IDE
+.vs
+.vscode
+.idea
+
+# Ignorar los logs y archivos de Docker Locales
+Dockerfile
+.dockerignore
+docker-compose.yml
+docker-compose.override.yml
+*.log

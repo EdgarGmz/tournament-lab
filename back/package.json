@@ -1,0 +1,18 @@
+{
+  "name": "back",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "api": "dotnet run --project src/TournamentLab.Api/TournamentLab.Api.csproj",
+    "migration": "dotnet ef database update -p src/TournamentLab.Infrastructure -s src/TournamentLab.Api",
+    "update:db": "dotnet ef database update --project src/TournamentLab.Api/TournamentLab.Api.csproj",
+    "build": "dotnet build TournamentLab.sln",
+    "restore": "dotnet restore TournamentLab.sln",
+    "drop:db": "dotnet ef database drop -p src/TournamentLab.Infrastructure -s src/TournamentLab.Api",
+    "docker:build":"docker compose up --build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
