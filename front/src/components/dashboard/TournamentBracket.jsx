@@ -1,15 +1,15 @@
 // HOOKS
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 
 // CSS
-import '../../css/tournament-match.css'
+import '../../css/tournament-match.css';
 
 
 function shuffleArray(array) {
     return [...array].sort(() => Math.random() - 0.5);
 }
 
-function TournamentBracket({ participants }) {
+function TournamentBracket({ participants, onChampionDetermined }) {
     const [rounds, setRounds] = useState([]);
     const [currentRoundIndex, setCurrentRoundIndex] = useState(0);
 
@@ -43,6 +43,10 @@ function TournamentBracket({ participants }) {
             return;
         }
         if (winners.length === 1) {
+            const champion = winners[0]
+            if (onChampionDetermined) {
+                onChampionDetermined(champion) // <- Llama a la función callback con el campeón
+            }
             return; // Torneo finalizado
         }
         const newMatches = [];

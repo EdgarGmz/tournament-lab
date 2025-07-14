@@ -1,15 +1,120 @@
+/* Contenedor principal de los detalles y botones */
 .tournament-detail {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 320px;
-    height: 100vh;
-    margin: 0;
-    padding: 32px 24px;
-    background-color: #307ced;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Sección de detalles alineada a la izquierda */
+.tournament-detail .details-section {
+    width: 100%;
+    max-width: 800px;
+    align-self: flex-start;
+    margin-bottom: 20px;
+}
+
+.tournament-detail .details-section p {
+    margin-bottom: 8px;
+}
+
+.tournament-detail .details-section p b {
+    color: #333;
+}
+
+/* Lista de participantes alineada a la izquierda */
+.tournament-detail .details-section ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tournament-detail .details-section ul li {
+    background-color: #e9ecef;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 0.9em;
+    color: #495057;
+}
+
+/* Contenedor de botones de acción centrado */
+.tournament-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 800px;
+}
+
+/* Estilos base para los botones */
+.tournament-actions button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
     color: white;
-    border-radius: 0 12px 12px 0;
-    box-shadow: 2px 0 16px rgba(0, 0, 0, 0.08);
-    overflow-y: auto;
-    z-index: 1000;
+    min-width: 180px;
+}
+
+/* Botón Cancelar Torneo */
+.tournament-actions button:first-child {
+    background-color: #dc3545;
+}
+.tournament-actions button:first-child:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+}
+
+/* Botón Finalizar Torneo */
+.tournament-actions button:last-child {
+    background-color: #28a745;
+}
+.tournament-actions button:last-child:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+/* Contenedor del bracket */
+.bracket-container {
+    text-align: center;
+    width: 100%;
+    max-width: 800px;
+}
+
+/* Título del campeón */
+.bracket-container h2 {
+    color: #007bff;
+    margin-top: 20px;
+    font-size: 1.8em;
+}
+
+/* Botón "Siguiente Ronda" */
+.bracket-container .next-round {
+    display: block;
+    width: fit-content;
+    margin: 20px auto;
+    padding: 12px 30px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.bracket-container .next-round:hover {
+    background-color: #0056b3;
 }

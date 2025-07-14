@@ -1,17 +1,18 @@
 // HOOKS
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 // Components
 import { BsGrid3X3GapFill } from "react-icons/bs";
 import { MdOutlineSearch } from "react-icons/md";
 import { TfiViewListAlt } from "react-icons/tfi";
-import { tournaments } from '../../../constants/constanst.js';
+// import { tournaments } from '../../../constants/constanst.js';
 import TournamentCard from './TournamentCard.jsx';
 
 // CSS
 import '../../../css/container-filter.css';
 
-const ContainerFilter = ( { statusFilter } ) => {
+const ContainerFilter = ({ statusFilter }) => {
+    const [tournaments, setTournaments] = useState([]);
     const  [ order, setOrder ]  = useState('recent')
     const [ view, setView ]  = useState('grid')
     const [ searchTerm, setSearchTerm ] = useState("")
@@ -48,6 +49,41 @@ const ContainerFilter = ( { statusFilter } ) => {
             
         }
     })
+
+    useEffect(() => {
+        const fetchTournament = async () => {
+            // Obtenemos el Token del localStorage
+            const token = localStorage.getItem('token')
+            if (!token) {
+                console.log("No se encontró el token de aunteticación!")
+                return
+            }
+
+            try {
+                // Hacemos la patición a la API, incluyendo el token en las cabeceras
+                const apiUrl = `${import.meta.env.VITE_API_URL}/tournaments`
+
+                const response = await fetch(apiUrl, {
+                    headers: {
+                        'Autorization': `Bearer ${token}`
+                    }
+                })
+                // Si la respuesta es exitosa
+                if (response.ok) {
+                    const data = await response.json() // <- Convertimos la respuesta a json.
+                    setTournaments(data)
+                } else {
+                    // Si hay un error en la respuesta (ejemplo: 401 No autorizado)
+                    console.log('Error al obtener los torneos', response.statusText)
+                }
+            } catch (error) {
+                // Si hay un error en la conexión (ejemplo: API no disponible)
+                console.error('Error en la petición para obtener torneos', error)
+            }
+        }
+        // Llamamos a la función que queremos acabamos de crear
+        fetchTournament()
+    }, []) // <- El [] vacío significa que este código se ejecutará solo una vez 
 
 
     return (

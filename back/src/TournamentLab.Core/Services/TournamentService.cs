@@ -67,7 +67,10 @@ namespace TournamentLab.Core.Services
             List<string> participants,
             DateTime startDate,
             DateTime? endDate,
-            string tournamentType
+            string tournamentType,
+            string? status = null,
+            string? champion = null,
+            string? ReasonCancellation = null
         )
         {
             var existingTournament = await _tournamentRepository.GetTournamentByIdAsync(id);
@@ -83,6 +86,21 @@ namespace TournamentLab.Core.Services
             existingTournament.StartDate = startDate;
             existingTournament.EndDate = endDate ?? existingTournament.EndDate;
             existingTournament.Tournament_Type = tournamentType;
+
+            if (status != null)
+            {
+                existingTournament.Status = status;
+            }
+
+            if (champion != null)
+            {
+                existingTournament.Champion = champion;
+            }
+
+            if (ReasonCancellation != null)
+            {
+                existingTournament.ReasonCancellation = ReasonCancellation;
+            }
 
             await _tournamentRepository.SaveChangeAsync();
 

@@ -11,5 +11,7 @@ namespace TournamentLab.Api.DTOs
         public string Description { get; set; } = string.Empty;
         public string Tournament_Type { get; set; } = string.Empty;
         public int UserId { get; set; }
+        public string Champion { get; set; } = string.Empty;
+        public string ReasonCancellation { get; set; } = string.Empty;
     }
 }

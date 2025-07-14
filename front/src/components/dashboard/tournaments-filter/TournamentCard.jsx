@@ -1,31 +1,30 @@
 import { FcInfo } from "react-icons/fc";
-import { useNavigate } from "react-router-dom";
 import "../../../css/tournament-card.css";
 
 const statusConfig = {
-    activo: {
+    upcoming: {
         bgColor: "#FFF9C4", 
         fields: [
             { label: "Status", key: "status" },
-            { label: "Participantes", key: "participants", render: (v) => v.length },
-            { label: "Fecha de creación", key: "startDate" }
+            { label: "Participantes", key: "participants" },
+            { label: "Inicio de torneo", key: "startDate" }
         ]
     },
-    cancelado: {
+    canceled: {
         bgColor: "#FFCDD2",
         fields: [
             { label: "Status", key: "status" },
             { label: "Participantes", key: "participants", render: (v) => v.length },
-            { label: "Fecha de creación", key: "startDate" },
+            { label: "Inicio de torneo", key: "startDate" },
             { label: "Fecha de finalización", key: "endDate" },
             { label: "Razón de cancelación", key: "reason_cancellation" }
         ]
     },
-    completado: {
+    completed: {
         bgColor: "#A5D6A7",
         fields: [
             { label: "Status", key: "status" },
-            { label: "Fecha de creación", key: "startDate" },
+            { label: "Inicio de torneo", key: "startDate" },
             { label: "Fecha de finalización", key: "endDate" },
             { label: "Campeón", key: "champion" }
         ]
@@ -33,7 +32,7 @@ const statusConfig = {
 };
 
 const TournamentCard = (props) => {
-    const navigate = useNavigate()
+
     const lowerStatus = props.status?.toLowerCase();
     const config = statusConfig[lowerStatus];
 
@@ -59,14 +58,17 @@ const TournamentCard = (props) => {
                 )}
                 
                 <div className="card-actions">
-                    <a
-                        className="action-button"
-                        href={`/tournament/${props.id}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        INFO <FcInfo />
-                    </a>
+                    {/* Renderizado condicional */}
+                    {props.status.toLowerCase() === 'upcoming' && (
+                        <a
+                            className="action-button"
+                            href={`/tournament/${props.id}`}
+                            target="_blanck"
+                            rel="nooper noreferrer"
+                        >
+                            Iniciar <FcInfo />
+                        </a>
+                    )}
                 </div>
             </div>
         </div>

@@ -122,7 +122,7 @@ app.MapPost("/api/tournaments", async (
         tournamentDto.Description,
         tournamentDto.Participants,
         userId,
-        tournamentDto.StartDate,
+        tournamentDto.StartDate ?? DateTime.Today,
         tournamentDto.EndDate,
         tournamentDto.Tournament_Type
     );
@@ -147,7 +147,7 @@ app.MapPost("/api/tournaments", async (
 
 // Get: Obtener todos los torneos 
 app.MapGet("/api/tournaments", async (TournamentService tournamentService) =>
-{   
+{
     var tournaments = await tournamentService.GetAllTournamentsAsync();
 
     var tournamentDto = tournaments.Select(t => new TournamentDto
@@ -160,10 +160,12 @@ app.MapGet("/api/tournaments", async (TournamentService tournamentService) =>
         EndDate = t.EndDate,
         Description = t.Description,
         Tournament_Type = t.Tournament_Type,
-        UserId = t.UserId
+        UserId = t.UserId,
+        Champion = t.Champion,
+        ReasonCancellation = t.ReasonCancellation
     });
 
-    return Results.Ok(tournaments);
+    return Results.Ok(tournamentDto);
 });
 
 // Get: Obtener un torneo por ID
@@ -187,7 +189,9 @@ app.MapGet("/api/tournaments/{id}", async (int id, TournamentService tournamentS
         EndDate = tournament.EndDate,
         Description = tournament.Description,
         Tournament_Type = tournament.Tournament_Type,
-        UserId = tournament.UserId
+        UserId = tournament.UserId,
+        Champion = tournament.Champion,
+        ReasonCancellation = tournament.ReasonCancellation
     };
 
     return Results.Ok(tournamentDto);
@@ -203,9 +207,12 @@ app.MapPut("/api/tournaments/{id}", async (int id,
         tournamentDto.Name,
         tournamentDto.Description,
         tournamentDto.Participants,
-        tournamentDto.StartDate,
+        tournamentDto.StartDate ?? DateTime.Today,
         tournamentDto.EndDate,
-        tournamentDto.Tournament_Type
+        tournamentDto.Tournament_Type,
+        tournamentDto.Status,
+        tournamentDto.Champion,
+        tournamentDto.ReasonCancellation
     );
 
     if (UpdatedTournament is null)

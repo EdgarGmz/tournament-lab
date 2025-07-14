@@ -1,6 +1,6 @@
 // COMPONENTS
-import { FcCancel, FcExport, FcIdea, FcManager, FcOk, FcPlus, FcSettings } from "react-icons/fc"
-import { TfiCup } from "react-icons/tfi"
+import { FcCancel, FcExport, FcIdea, FcManager, FcOk, FcPlus, FcSettings } from "react-icons/fc";
+import { TfiCup } from "react-icons/tfi";
 
 const tournamentBase = (overrides) => ({
   champion: "",
@@ -365,9 +365,9 @@ export const sectionTitles = {
 
 export const statusFilters = {
   totales: "totales",
-  activos: "activo",
-  cancelados: "cancelado",
-  completados: "completado",
+  activos: "upcoming",
+  cancelados: "canceled",
+  completados: "completed",
 };
 
 export const navSections = [
