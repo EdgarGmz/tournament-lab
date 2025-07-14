@@ -1,17 +1,20 @@
 // HOOKS
 import { useCallback, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 // COMPONENTS
 import TournamentBracket from '../components/dashboard/TournamentBracket';
+
+// Css
 import '../css/tournament-detail.css';
 
 const TournamentDetail = () => {
     const { id } = useParams();
+    const navigate = useNavigate();
     const [ torneo, setTorneo ] = useState( null )
     const [ loading, setLoading ] = useState( true )
     const [ error, setError ] = useState( null )
-    const [ determinedChampion, setDeterminedChampion ] = useState( null )
+    
 
     const fetchTournament = useCallback(async () => {
         const token = localStorage.getItem('token')
@@ -49,8 +52,9 @@ const TournamentDetail = () => {
     // Handlers
     const handleCancelTournament = async() => {
         const reason = prompt('Por favor, introduce la razón de la cancelación: ')
-        if (reason === null && reason.trim() === '') {
+        if (reason === null || reason.trim() === '') {
             alert('La razón de cancelación no puede estar vacía')
+            return;
         }
 
         const token = localStorage.getItem('token')
@@ -68,18 +72,14 @@ const TournamentDetail = () => {
                     'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify({
-                    name: torneo.name,
-                    description: torneo.description,
-                    startDate: torneo.startDate,
-                    endDate: torneo.endDate,
-                    tournament_type: torneo.tournament_type,
                     status: 'canceled',
+                    champion: 'none',
                     reasonCancellation: reason
                 })
             })
             if (response.ok) {
                 alert(`¡Torneo "${torneo.name}" cancelado con éxito!`)
-                fetchTournament();
+                navigate('/dashboard');
             } else {
                 const errorData = await response.json()
                 console.log('Error al cancelar el torneo: ', errorData)
@@ -93,24 +93,11 @@ const TournamentDetail = () => {
         }
     }
 
-    const handleFinalizeTournament = async() => {
-        let finalChampion = determinedChampion // <- Intentamos usar al campeón del bracket primero
-
-        // Si no hay campeón determinado por el bracket, pedimos uno manualmente
-        if (!finalChampion) {
-            const promptedChampion = prompt('Por favor, introduce el nombre del campeón: ')
-            if (promptedChampion === null || promptedChampion.trim() === '') {
-                alert('El nombre del campeón no puede estar vacío')
-                return
-            }
-            finalChampion = promptedChampion.trim()
-        }
-
-        // Ahora que tenemos al campeón (ya sea por el bracket o del prompt)
-        // Podemos enviar la petición al backend
+    const handleFinalize = async (championName) => {
+        // Validamos el token
         const token = localStorage.getItem('token')
         if (!token) {
-            alert("Tu sesión ha expirado. Por favor, inicia sesión de nuevo")
+            alert('Tu sesión ha expirado. Por favor inicie sesión nuevamente')
             return
         }
 
@@ -124,21 +111,21 @@ const TournamentDetail = () => {
                 },
                 body: JSON.stringify({
                     status: "completed",
-                    champion: finalChampion
+                    champion: championName
                 })
-
             })
 
             if (response.ok) {
-                alert(`¡Torneo "${torneo.name}" finalizado con éxito! Campeón: ${finalChampion}`)
+                alert(`Torneo "${torneo.name}" finalizado con éxito. Campeón: ${championName}`)
+                navigate('/dashboard')
             } else {
                 const errorData = await response.json()
-                console.log('Error al finalizar el torneo: ', errorData)
+                console.log('Error en finalizar el torneo: ', errorData)
                 alert('Hubo un error al finalizar el torneo. Intenta de nuevo.')
             }
         } catch (error) {
-            console.error('Error de conexión al finalizar el torneo: ', error)
-            alert('No se pudo conectar con el servidor. Revisa tu conexión de internet')
+            console.error('Error en finalizar el torneo. ', error)
+            alert('No se pudo conectar al servidor. Por favor verifique su conexión de internet.')
         }
     }
 
@@ -152,56 +139,48 @@ const TournamentDetail = () => {
     const { name, status, description, participants = [], champion, reasonCancellation } = torneo;
 
     return (
-        <div>
-            <div className="tournament-detail">
-                <h2>{name}</h2>
-                <p><b>Estado:</b> {status}</p>
-                <p><b>Descripción:</b> {description}</p>
-                <p><b>Participantes:</b></p>
-                <ul>
-                    {participants.length > 0 ? (
-                        participants.map((p, idx) => <li key={idx}>{p}</li>)
-                    ) : (
-                        <li>No hay participantes</li>
-                    )}
-                </ul>
-
-                {status.toLowerCase() === 'completed' && champion && (
-                    <p><b>🏆 Campeón:</b> {champion}</p>
+    <div className="tournament-container"> {/* AQUI es la corrección clave */}
+        <div className="tournament-detail">
+            <h2>{name}</h2>
+            <p><b>Estado:</b> {status}</p>
+            <p><b>Descripción:</b> {description}</p>
+            <p><b>Participantes:</b></p>
+            <ul>
+                {participants.length > 0 ? (
+                    participants.map((p, idx) => <li key={idx}>{p}</li>)
+                ) : (
+                    <li>No hay participantes</li>
                 )}
+            </ul>
 
-                {status.toLowerCase() === 'canceled' && reasonCancellation && (
-                    <p><b>Motivo de cancelación: </b> {reasonCancellation}</p>
-                )}
+            {status.toLowerCase() === 'completed' && champion && (
+                <p><b>🏆 Campeón:</b> {champion}</p>
+            )}
 
+            {status.toLowerCase() === 'canceled' && reasonCancellation && (
+                <p><b>Motivo de cancelación: </b> {reasonCancellation}</p>
+            )}
 
-            </div>
             <div className="tournament-actions">
-                {/* Botones de Cancelar y Finalizar */}
                 {status.toLowerCase() === 'upcoming' && (
                     <>
-                        <button onClick={handleCancelTournament}>Cancelar Torneo</button>
-                        <button onClick={handleFinalizeTournament}>Finalizar Torneo</button>
+                        <button onClick={ handleCancelTournament }> Cancelar Torneo </button>
                     </>
                 )}
             </div>
-            <div>
-                {/* Renderiza TournamentBracket solo si el torneo está en un estado donde se pueda jugar */}
-                {['upcoming', 'active'].includes(status?.toLowerCase()) && participants.length > 1 && (
-                    <TournamentBracket
-                        participants={participants}
-                        onChampionDetermined={setDeterminedChampion} // <- Pasa la función de callback
-                    />
-                )}
-
-                {/* Muestra al campeón si ya fue determinado por el Bracket */}
-                {determinedChampion && (
-                    <h2>Campeón del Torneo: {determinedChampion}</h2>
-                )}
-                
-            </div>
         </div>
-    );
+
+        <div className="tournament-bracket">
+            {['upcoming', 'active'].includes(status?.toLowerCase()) && participants.length > 1 && (
+                <TournamentBracket
+                    participants ={ participants }
+                    onFinalize = { handleFinalize }
+                />
+            )}
+        </div>
+    </div>
+);
+
 };
 
 export default TournamentDetail;

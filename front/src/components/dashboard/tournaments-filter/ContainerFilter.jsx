@@ -12,11 +12,13 @@ import TournamentCard from './TournamentCard.jsx';
 import '../../../css/container-filter.css';
 
 const ContainerFilter = ({ statusFilter }) => {
+
     const [tournaments, setTournaments] = useState([]);
     const  [ order, setOrder ]  = useState('recent')
     const [ view, setView ]  = useState('grid')
     const [ searchTerm, setSearchTerm ] = useState("")
     
+    // Filtreo y Orden
     const filtered = statusFilter === "totales"
         ? tournaments
         : tournaments.filter(t => t.status.toLocaleLowerCase()
@@ -50,6 +52,45 @@ const ContainerFilter = ({ statusFilter }) => {
         }
     })
 
+    // Handlers
+    const handleDeleteTournament = async (tournamentId) => {
+
+        if (!window.confirm('¿Estas seguro de eliminar este torneo?. Esta acción es irreversible.')) {
+            return // <- Si el usuario cancela, no hacemos nada.
+        }
+
+        // Validar token
+        const token = localStorage.getItem('token')
+        if (!token) {
+            alert('Tu sesión ha expirado. Por favor inicia sesion nuevamente')
+            return
+        }
+
+        try {
+            const urlApi = `${import.meta.env.VITE_API_URL}/tournaments/${tournamentId}`
+            const response = await fetch(urlApi, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+
+            if (response.ok) {
+                alert('Torneo eliminado con éxito!')
+                setTournaments(prevTournaments => prevTournaments.filter(t => t.id !== tournamentId))
+            } else {
+                const errorData = await response.json()
+                console.error('Error al eliminar el torneo: ', errorData)
+                alert('Hubo un error al eliminar el torneo, Intenta de nuevo.')
+            }
+        } catch (error) {
+            console.error('Error al eliminar el torneo: ', error)
+            alert('No se pudo conectar con el servidor. Revisa tu conexión de internet.')
+        }
+
+
+    }
+
     useEffect(() => {
         const fetchTournament = async () => {
             // Obtenemos el Token del localStorage
@@ -65,7 +106,7 @@ const ContainerFilter = ({ statusFilter }) => {
 
                 const response = await fetch(apiUrl, {
                     headers: {
-                        'Autorization': `Bearer ${token}`
+                        'Authorization': `Bearer ${token}`
                     }
                 })
                 // Si la respuesta es exitosa
@@ -144,16 +185,17 @@ const ContainerFilter = ({ statusFilter }) => {
             <div className={view === "grid" ? "grid-view" : "list-view"}>
                 {sorted.map((tournament) => (
                     <TournamentCard
-                        key={ tournament.id }
-                        id= { tournament.id }
-                        name={ tournament.name }
-                        status={ tournament.status }
-                        participants={ tournament.participants.length }
-                        description={ tournament.description }
-                        startDate={ tournament.startDate }
-                        endDate={ tournament.endDate }
-                        champion={ tournament.champion }
-                        reason_cancellation={ tournament.reason_cancelation }
+                        key ={ tournament.id }
+                        id = { tournament.id }
+                        name ={ tournament.name }
+                        status ={ tournament.status }
+                        participants ={ tournament.participants.length }
+                        description ={ tournament.description }
+                        startDate ={ tournament.startDate }
+                        endDate ={ tournament.endDate }
+                        champion ={ tournament.champion }
+                        reasonCancellation ={tournament.reasonCancellation}
+                        onDelete = {handleDeleteTournament}
                     />
                 ))}
             </div>

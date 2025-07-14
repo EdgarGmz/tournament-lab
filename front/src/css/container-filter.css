@@ -90,3 +90,9 @@
     font-size: 1.5rem;
     cursor: pointer;
 }
+
+.tournament-card {
+    position: relative;
+    padding-bottom: 40px;
+}
+

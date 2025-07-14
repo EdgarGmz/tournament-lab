@@ -1,4 +1,8 @@
-import { FcInfo } from "react-icons/fc";
+// Icons
+import { GoTrash } from "react-icons/go";
+import { MdPlayCircleOutline } from "react-icons/md";
+
+// Css
 import "../../../css/tournament-card.css";
 
 const statusConfig = {
@@ -14,10 +18,9 @@ const statusConfig = {
         bgColor: "#FFCDD2",
         fields: [
             { label: "Status", key: "status" },
-            { label: "Participantes", key: "participants", render: (v) => v.length },
             { label: "Inicio de torneo", key: "startDate" },
             { label: "Fecha de finalización", key: "endDate" },
-            { label: "Razón de cancelación", key: "reason_cancellation" }
+            { label: "Razón de cancelación", key: "reasonCancellation" }
         ]
     },
     completed: {
@@ -40,38 +43,43 @@ const TournamentCard = (props) => {
         <div
             className="tournament-card"
             style={{ backgroundColor: config?.bgColor || undefined }}
-        >
-            <h1 className="main-title">{props.name}</h1>
-            <label className="description">
-                <b>{props.description}</b>
-            </label>
-            <div className="extra-info">
-                {config ? (
-                    config.fields.map(({ label, key, render }) => (
-                        <label key={key}>
-                            <b>{label}: </b>
-                            {render ? render(props[key]) : props[key]}
-                        </label>
-                    ))
-                ) : (
-                    <label>Estado Desconocido</label>
-                )}
-                
-                <div className="card-actions">
-                    {/* Renderizado condicional */}
-                    {props.status.toLowerCase() === 'upcoming' && (
+            >
+                <h1 className="main-title">{ props.name }</h1>
+                <label className="description">
+                    <b>{ props.description }</b>
+                </label>
+
+                <div className="extra-info">
+                    {config ? (
+                        config.fields.map(({ label, key, render }) => (
+                            <label key={key}>
+                            <b> { label }: </b>
+                            { render ? render( props[ key ] ) : props[ key ] }
+                            </label>
+                        ))
+                    ) : (
+                        <label>Estado Desconocido</label>
+                    )}
+
+                    <div className="card-actions">
+                    <button className="action-button" onClick={() => props.onDelete(props.id)}>
+                        <GoTrash />
+                    </button>
+
+                    {['upcoming', 'active'].includes(props.status.toLowerCase()) && (
                         <a
                             className="action-button"
                             href={`/tournament/${props.id}`}
-                            target="_blanck"
-                            rel="nooper noreferrer"
+                            target="_blank"
+                            rel="noopener noreferrer"
                         >
-                            Iniciar <FcInfo />
+                            <MdPlayCircleOutline />
                         </a>
                     )}
-                </div>
+                    </div>
             </div>
         </div>
+
     );
 };
 

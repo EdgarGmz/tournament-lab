@@ -9,7 +9,7 @@ function shuffleArray(array) {
     return [...array].sort(() => Math.random() - 0.5);
 }
 
-function TournamentBracket({ participants, onChampionDetermined }) {
+function TournamentBracket({ participants, onFinalize }) {
     const [rounds, setRounds] = useState([]);
     const [currentRoundIndex, setCurrentRoundIndex] = useState(0);
 
@@ -33,7 +33,7 @@ function TournamentBracket({ participants, onChampionDetermined }) {
         currentMatches[matchIndex] = { ...currentMatches[matchIndex], winner: selected };
         updatedRounds[currentRoundIndex].matches = currentMatches;
         setRounds(updatedRounds);
-    };
+    }
 
     const handleNextRound = () => {
         const current = rounds[currentRoundIndex];
@@ -44,8 +44,8 @@ function TournamentBracket({ participants, onChampionDetermined }) {
         }
         if (winners.length === 1) {
             const champion = winners[0]
-            if (onChampionDetermined) {
-                onChampionDetermined(champion) // <- Llama a la función callback con el campeón
+            if (onFinalize) {
+                onFinalize(champion) // <- Llama a la función callback con el campeón
             }
             return; // Torneo finalizado
         }

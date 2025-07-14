@@ -62,12 +62,12 @@ namespace TournamentLab.Core.Services
 
         public async Task<Tournament?> UpdateTournamentAsync(
             int id,
-            string name,
-            string description,
-            List<string> participants,
-            DateTime startDate,
+            string? name,
+            string? description,
+            List<string>? participants,
+            DateTime? startDate,
             DateTime? endDate,
-            string tournamentType,
+            string? tournamentType,
             string? status = null,
             string? champion = null,
             string? ReasonCancellation = null
@@ -79,33 +79,32 @@ namespace TournamentLab.Core.Services
                 return null;
             }
 
-            // Actualizar la propiedades de la entidad con los parámetros recibidos
-            existingTournament.Name = name;
-            existingTournament.Description = description;
-            existingTournament.Participants = participants;
-            existingTournament.StartDate = startDate;
-            existingTournament.EndDate = endDate ?? existingTournament.EndDate;
-            existingTournament.Tournament_Type = tournamentType;
+            if (!string.IsNullOrEmpty(name)) existingTournament.Name = name;
+            if (description != null) existingTournament.Description = description;
+            if (participants != null)
+            {
+                existingTournament.Participants.Clear();
+                existingTournament.Participants.AddRange(participants);
+            }
+            if (startDate.HasValue) existingTournament.StartDate = startDate.Value;
+            if (endDate.HasValue) existingTournament.EndDate = endDate.Value;
+            if (!string.IsNullOrEmpty(tournamentType)) existingTournament.Tournament_Type = tournamentType;
 
-            if (status != null)
+            if (!string.IsNullOrEmpty(status))
             {
                 existingTournament.Status = status;
+                if (status.ToLower() == "completed" || status.ToLower() == "canceled")
+                {
+                    existingTournament.EndDate = DateTime.UtcNow;
+                }
             }
 
-            if (champion != null)
-            {
-                existingTournament.Champion = champion;
-            }
-
-            if (ReasonCancellation != null)
-            {
-                existingTournament.ReasonCancellation = ReasonCancellation;
-            }
+            if (champion != null) existingTournament.Champion = champion;
+            if (ReasonCancellation != null) existingTournament.ReasonCancellation = ReasonCancellation;
 
             await _tournamentRepository.SaveChangeAsync();
 
             return existingTournament;
-
         }
 
         public async Task<bool> DeleteTournamentAsync(int id)
