@@ -59,45 +59,48 @@ const Login = () => {
         <div className='auth-container'>
             <div className='auth-card'>
                 <form onSubmit={handleSumbit}>
-        <h2 >Iniciar Sesión</h2>
+                    <h2 >Iniciar Sesión</h2>
 
-        {/* Input de Usuario */}
-        <div >
-            <label>Usuario</label>
-            <input
-            type="text"
-            value={usuario}
-            onChange={(e) => setUsuario(e.target.value)}
-            required
-            className="form-input"
-            />
-        </div>
+                    {/* Input de Usuario */}
 
-        {/* Input de Contraseña */}
-        <div>
-            <label>Password</label>
-            <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            className="form-input"
-            />
-        </div>
+                    <div className="input-group">
+                        <i className="fas fa-user icon" />
+                        <input
+                        type="text"
+                        placeholder="Usuario"
+                        value={usuario}
+                        onChange={e => setUsuario(e.target.value)}
+                        required
+                        className="form-input"
+                        />
+                    </div>
 
-        {/* Botón */}
-        <div>
-            <button type="submit">Ingresar</button>
-        </div>
+                    {/* Input de Contraseña */}
+                    <div className="input-group">
+                        <i className="fas fa-lock icon" />
+                        <input
+                        type="password"
+                        placeholder="Contraseña"
+                        value={password}
+                        onChange={e => setPassword(e.target.value)}
+                        required
+                        className="form-input"
+                        />
+                    </div>
 
-        {/* Enlace para registro */}
-        <p>
-            ¿No tienes cuenta? <a href="/register">Crea una</a>
-        </p>
-        </form> 
+                    {/* Botón */}
+                    <div>
+                        <button type="submit">Ingresar</button>
+                    </div>
+
+                    {/* Enlace para registro */}
+                    <p>
+                        ¿No tienes cuenta? <a href="/register">Crea una</a>
+                    </p>
+                </form> 
             </div>
         </div>   
-    )
+    );
 
 }
 

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
+import '../css/auth2.css';
+
 
 const Register = () => {
     // Creamos los estados para cada uno de los campos del formulario
@@ -65,67 +67,64 @@ const Register = () => {
     }
 
     return (
+        
         <div className="auth-container" >
             <div className="auth-card">
                 <form onSubmit={handleSubmit}>
-                <h1 >Crea una nueva cuenta</h1>
+                    <h1>Crea una nueva cuenta</h1>
 
-                {/* Nombre de usuario */}
-                <div >
-                    <label>Nombre de usuario</label>
-                    <input
+                    <div className="input-group">
+                        <i className="fas fa-user icon" />
+                        <input
                         type="text"
+                        placeholder="Nombre de usuario"
                         className="form-control"
-                        onChange={(e) => setUserName(e.target.value)}
+                        onChange={e => setUserName(e.target.value)}
                         required
-                    />
-                </div>
+                        />
+                    </div>
 
-                {/* Correo electrónico */}
-                <div>
-                    <label>Correo electrónico</label>
-                    <input
+                    <div className="input-group">
+                        <i className="fas fa-envelope icon" />
+                        <input
                         type="email"
+                        placeholder="Correo electrónico"
                         className="form-control"
-                        onChange={(e) => setEmail(e.target.value)}
+                        onChange={e => setEmail(e.target.value)}
                         required
-                    />
-                </div>
+                        />
+                    </div>
 
-                {/* Contraseña */}
-                <div>
-                    <label>Contraseña</label>
-                    <input
+                    <div className="input-group">
+                        <i className="fas fa-lock icon" />
+                        <input
                         type="password"
+                        placeholder="Contraseña"
                         className="form-control"
-                        onChange={(e) => setPassword(e.target.value)}
+                        onChange={e => setPassword(e.target.value)}
                         required
-                    />
-                </div>
+                        />
+                    </div>
 
-                {/* Confirmar contraseña */}
-                <div >
-                    <label>Confirmar contraseña</label>
-                    <input
+                    <div className="input-group">
+                        <i className="fas fa-lock icon" />
+                        <input
                         type="password"
+                        placeholder="Confirmar contraseña"
                         className="form-control"
-                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        onChange={e => setConfirmPassword(e.target.value)}
                         required
-                    />
-                </div>
+                        />
+                    </div>
 
-                {/* Botón de registro */}
-                <div>
                     <button type="submit">Registrar</button>
-                </div>
 
-                <hr />
+                    <hr />
 
-                {/* Enlaces y ayuda */}
-                <p>
-                    ¿Ya tienes cuenta? <Link to="/login">Inicia sesión</Link>
-                </p>
-            </form>
+                    <p>
+                        ¿Ya tienes cuenta? <Link to="/login">Inicia sesión</Link>
+                    </p>
+                </form>
             </div>
         </div>
     );
