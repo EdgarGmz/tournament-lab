@@ -39,7 +39,8 @@ const Register = () => {
 
         try{
             // Petición POST al endpoint de registro
-            const response = await fetch(`${API_URL}/auth/register`,{
+            const apiUrl = `${import.meta.env.VITE_API_URL}`
+            const response = await fetch(`${apiUrl}/auth/register`,{
                 method: 'POST',
                 headers:{
                     'Content-Type': 'application/json',

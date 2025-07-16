@@ -1723,7 +1723,10 @@
           "Microsoft.EntityFrameworkCore": "9.0.7"
         },
         "runtime": {
-          "TournamentLab.Core.dll": {}
+          "TournamentLab.Core.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "TournamentLab.Infrastructure/1.0.0": {
@@ -1734,7 +1737,10 @@
           "TournamentLab.Core": "1.0.0"
         },
         "runtime": {
-          "TournamentLab.Infrastructure.dll": {}
+          "TournamentLab.Infrastructure.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }

@@ -280,12 +280,6 @@ D:\tournament-lab\back\src\TournamentLab.Api\obj\Debug\net8.0\refint\TournamentL
 D:\tournament-lab\back\src\TournamentLab.Api\obj\Debug\net8.0\TournamentLab.Api.pdb
 D:\tournament-lab\back\src\TournamentLab.Api\obj\Debug\net8.0\TournamentLab.Api.genruntimeconfig.cache
 D:\tournament-lab\back\src\TournamentLab.Api\obj\Debug\net8.0\ref\TournamentLab.Api.dll
-C:\tournament-lab\back\src\TournamentLab.Api\obj\Debug\net8.0\staticwebassets\msbuild.TournamentLab.Api.Microsoft.AspNetCore.StaticWebAssets.props
-C:\tournament-lab\back\src\TournamentLab.Api\obj\Debug\net8.0\staticwebassets\msbuild.build.TournamentLab.Api.props
-C:\tournament-lab\back\src\TournamentLab.Api\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.TournamentLab.Api.props
-C:\tournament-lab\back\src\TournamentLab.Api\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.TournamentLab.Api.props
-C:\tournament-lab\back\src\TournamentLab.Api\obj\Debug\net8.0\staticwebassets.pack.json
-C:\tournament-lab\back\src\TournamentLab.Api\obj\Debug\net8.0\TournamentLab.Api.csproj.CopyComplete
 C:\tournament-lab\back\src\TournamentLab.Api\bin\Debug\net8.0\Microsoft.Build.Locator.dll
 C:\tournament-lab\back\src\TournamentLab.Api\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll
 C:\tournament-lab\back\src\TournamentLab.Api\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
@@ -324,3 +318,11 @@ C:\tournament-lab\back\src\TournamentLab.Api\bin\Debug\net8.0\tr\Microsoft.CodeA
 C:\tournament-lab\back\src\TournamentLab.Api\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 C:\tournament-lab\back\src\TournamentLab.Api\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 C:\tournament-lab\back\src\TournamentLab.Api\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
+C:\tournament-lab\back\src\TournamentLab.Api\bin\Debug\net8.0\TournamentLab.Api.staticwebassets.endpoints.json
+C:\tournament-lab\back\src\TournamentLab.Api\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\tournament-lab\back\src\TournamentLab.Api\obj\Debug\net8.0\rjimswa.dswa.cache.json
+C:\tournament-lab\back\src\TournamentLab.Api\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+C:\tournament-lab\back\src\TournamentLab.Api\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+C:\tournament-lab\back\src\TournamentLab.Api\obj\Debug\net8.0\staticwebassets.build.json.cache
+C:\tournament-lab\back\src\TournamentLab.Api\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\tournament-lab\back\src\TournamentLab.Api\obj\Debug\net8.0\Tourname.248AFE8A.Up2Date

@@ -317,7 +317,6 @@ D:\tournament-lab\back\tests\TournamentLab.Test\obj\Debug\net8.0\refint\Tourname
 D:\tournament-lab\back\tests\TournamentLab.Test\obj\Debug\net8.0\TournamentLab.Test.pdb
 D:\tournament-lab\back\tests\TournamentLab.Test\obj\Debug\net8.0\TournamentLab.Test.genruntimeconfig.cache
 D:\tournament-lab\back\tests\TournamentLab.Test\obj\Debug\net8.0\ref\TournamentLab.Test.dll
-C:\tournament-lab\back\tests\TournamentLab.Test\obj\Debug\net8.0\TournamentLab.Test.csproj.CopyComplete
 C:\tournament-lab\back\tests\TournamentLab.Test\bin\Debug\net8.0\Microsoft.Extensions.Configuration.dll
 C:\tournament-lab\back\tests\TournamentLab.Test\bin\Debug\net8.0\Microsoft.Extensions.Configuration.FileExtensions.dll
 C:\tournament-lab\back\tests\TournamentLab.Test\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Json.dll
@@ -330,3 +329,4 @@ C:\tournament-lab\back\tests\TournamentLab.Test\bin\Debug\net8.0\System.IO.Pipel
 C:\tournament-lab\back\tests\TournamentLab.Test\bin\Debug\net8.0\System.Text.Encodings.Web.dll
 C:\tournament-lab\back\tests\TournamentLab.Test\bin\Debug\net8.0\System.Text.Json.dll
 C:\tournament-lab\back\tests\TournamentLab.Test\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
+C:\tournament-lab\back\tests\TournamentLab.Test\obj\Debug\net8.0\Tourname.3C4AFCDB.Up2Date

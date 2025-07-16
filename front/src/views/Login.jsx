@@ -33,8 +33,9 @@ const Login = () => {
             if(response.ok){
                 const data = await response.json()
 
-                // Guardamos el token en el almacenamiento local del servidor
+                // Guardamos el token y el nombre del usuario en el almacenamiento local del servidor
                 localStorage.setItem('token', data.token)
+                localStorage.setItem('user_name', usuario)
 
                 // Aquí podrías guardar el token de autenticación (lo veremos después)
                 console.log('Login exitoso. Token: ', data.token)

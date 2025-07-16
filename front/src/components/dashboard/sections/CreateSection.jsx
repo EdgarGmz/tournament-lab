@@ -204,7 +204,7 @@ const CreateSection = () => {
             min={new Date().toISOString().split("T")[0]}
           />
         </div>
-        {formErrors.description && <ErrorMessage message={formErrors.description} />}
+        {formErrors.start_date && <ErrorMessage message={formErrors.start_date} />}
 
         {/* AGREGAR PARTICIPANTES */}
         <div className="form-group">
