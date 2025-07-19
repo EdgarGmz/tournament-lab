@@ -146,3 +146,7 @@ dist-ssr
 bin/
 obj/
 .vs/
+
+**/bin/
+**/obj/
+*.cache
