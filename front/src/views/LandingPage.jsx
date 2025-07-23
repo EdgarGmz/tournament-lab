@@ -32,10 +32,7 @@ const LandingPage = () => {
           </div>
         </div>
       </nav>
-
-      {/* CAROUSEL */}
-      // TODO: Implementar un carrousell
-
+      
       <main className="landing">
 
       {/* Para qué es */}
