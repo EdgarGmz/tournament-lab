@@ -1,0 +1,28 @@
+:root {
+    --color-bg: #0f0f0f;
+    --color-bg-secondary: #1c1c1c;
+    --color-text: #f1f1f1;
+    --color-muted: #bbbbbb;
+
+    --color-primary: #ff5722;
+    --color-primary-hover: #e64a19;
+    --color-accent: #ff9100;
+    --color-danger: #ef5350;
+    --color-success: #66bb6a;
+    --color-info: #29b6f6;
+
+    --color-disabled-bg: #444;
+    --color-disabled-text: #999;
+    
+
+    --border-radius: 10px;
+    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+
+    --font-main: 'Ubuntu', sans-serif;
+    --font-size-base: 1rem;
+    --font-size-sm: 0.875rem;
+    --font-size-lg: 1.25rem;
+
+    --transition-fast: 0.2s ease;
+    --transition-base: 0.3s ease;
+}

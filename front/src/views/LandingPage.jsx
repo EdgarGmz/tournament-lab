@@ -19,6 +19,7 @@ const LandingPage = () => {
           <span className="logo">Tournament Lab</span>
 
           <ul className="nav-menu">
+            <li><a href='#proyecto'>¿Que es Tournament Lab?</a></li>
             <li><a href="#para-que-es">¿Para qué es?</a></li>
             <li><a href="#como-utilizarlo">¿Cómo utilizarlo?</a></li>
             <li><a href="#ventajas">Ventajas</a></li>
@@ -33,7 +34,43 @@ const LandingPage = () => {
         </div>
       </nav>
       
-      <main className="landing">
+    <main className="landing">
+      {/* Qué es? */}
+      <section id='poryecto' className='section'>
+        <div className='container'>
+          <div className='text'>
+            <h2>Sobre nuestro Proyecto</h2>
+            <p>
+              <strong>Tournament Lab</strong> nació como un proyecto académico en la <strong>Universidad Tecnológica Santa Catarina </strong> 
+               con el propósito de aplicar los conocimientos en desarrollo de software para crear una solución real y funcional para le gestión 
+              de torneos.
+            </p>
+
+            <h4>Tecnologías utilizadas</h4>
+            <ul>
+              <li><strong>Frontend: </strong>React con Vite para la interfaz rápida y moderna.</li>
+              <li><strong>Backend: </strong>API RESTful robusta construida con .NET y C#.</li>
+              <li><strong>Base de Datos: </strong>SQL Server para la persitencia de datos.</li>
+              <li><strong>Devops: </strong>Docker para facilitar el despliegue y la portabilidad.</li>
+            </ul>
+
+            <h4>Metodologías y Principios</h4>
+            <p>
+              Para asegurar la calidad y mantenibilidad del código, el desarrollo se guió por practicas y Principios
+              clave como:
+            </p>
+            <ul>
+              <li><strong>Arquitectura Limpia (Clean Code):</strong> Para una clara separación de responsabilidades.</li>
+              <li><strong>Principios SOLID:</strong> Para crear un software robusto, mantenible y extensible</li>
+              <li><strong>Principios KISS (Keep It Simple Stupid):</strong> Para favorecer soluciones sencillas y fáciles de entender.</li>
+              <li><strong>YAGNI (You Ain't Gonna Need It):</strong> Para sobreingeniería y añadir funcionalidades sólo cuando son necesarias.</li>
+              <li><strong>GitFlow:</strong> Como flujo de trabajo para la colaboración y control de versiones ordenado.</li>            
+            </ul>
+          </div>
+
+        </div>
+
+      </section>
 
       {/* Para qué es */}
       <section id="para-que-es" className="section">
