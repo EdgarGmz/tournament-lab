@@ -8,11 +8,29 @@
     text-decoration: none;
     color: #eaecef;
     cursor: pointer;
-    transition: background 0.2s ease;
+    transition: background 0.2s ease, padding 0.3s;
 }
 
-.item-navbar p {
+.item-navbar:hover {
+    background: #3a3f44;
+}
+
+.item-navbar .item-label {
     margin: 0;
     font-size: 18px;
     color: #eaecef;
+    white-space: nowrap;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.sidenav.collapsed .item-navbar {
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.sidenav.collapsed .item-label {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
 }

@@ -392,16 +392,19 @@ export const navSections = [
         name: "Totales",
         section: "totales",
       },
-      {
-        icon: FcOk,
-        name: "Completados",
-        section: "completados",
-      },
+      
       {
         icon: FcIdea,
         name: "Activos",
         section: "activos",
       },
+
+      {
+        icon: FcOk,
+        name: "Completados",
+        section: "completados",
+      },
+      
       {
         icon: FcCancel,
         name: "Cancelados",

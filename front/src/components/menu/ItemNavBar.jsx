@@ -3,7 +3,9 @@ import '../../css/itemNavBar.css';
 const ItemNavBar = ({ icon: Icon, name, onClick }) => {
   return (
     <span onClick={onClick} className='item-navbar'>
-        <Icon size = {30}/>
+        <div className='item-icon'>
+            <Icon size = {30} />
+        </div>
         <span className='item-label'> {name} </span>
     </span>
   );
