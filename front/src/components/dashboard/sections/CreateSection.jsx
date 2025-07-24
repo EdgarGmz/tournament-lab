@@ -103,8 +103,6 @@ const CreateSection = () => {
       tournament_type: form.tournament_type
     }
 
-    console.log("Enviando los siguientes datos a la API: ", tournamentData)
-
     try {
       // Construimos la URL y hacemos la petición POST
       const apiURL = `${import.meta.env.VITE_API_URL}/tournaments`
@@ -143,7 +141,6 @@ const CreateSection = () => {
     setParticipantsInput("")
     setParticipantsList([])
     setFormErrors({})
-
     setForm({
       name:"",
       participants: [],

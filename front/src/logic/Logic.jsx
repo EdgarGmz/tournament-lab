@@ -7,8 +7,6 @@ import ContainerFilter from '../components/dashboard/tournaments-filter/Containe
 // CONSTANTS
 import { sectionTitles, statusFilters } from '../constants/constanst';
 
-
-
 export const getTitle = (section) => sectionTitles[section] || `Bienvenido a Tournament-Lab, ${localStorage.getItem('user_name').toUpperCase()}`;
 
 const sectionComponentMap = {
