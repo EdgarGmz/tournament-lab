@@ -15,13 +15,13 @@ const TOURNAMENT_TYPES = [
   { value: "videojuegos", label: "Video Juegos" },
   { value: "juegosmesa", label: "Juegos de Mesa" },
   { value: "deporte", label: "Deporte" },
+  { value: "inteligencia", label: "Inteligencia" }
 ]
 
 
 const CreateSection = () => {
 
   const navigate = useNavigate()
-
   const [form, setForm] = useState({
     name: "",
     participants: [],
@@ -30,6 +30,7 @@ const CreateSection = () => {
     description: "",
     tournament_type: "",
   });
+
   // States
   const [participantInput, setParticipantsInput] = useState("")
   const [participantsList, setParticipantsList] = useState([])
@@ -45,8 +46,7 @@ const CreateSection = () => {
 
     if (participant && !participantsList.includes(participant)) {
       setParticipantsList((prev) => [...prev, participant]);
-      setForm((prev) => ({ ...prev, participant: "" }));
-
+      setForm((prev) => ({ ...prev, participant: "" }))
       setParticipantsInput("")
     }
   }
@@ -63,8 +63,8 @@ const CreateSection = () => {
     if (!form.name.trim()) {
       newErrors.name = "El nombre del torneo debe ser obligatorio!"
     }
-      if (participantsList.length === 0) {
-      newErrors.participantsList = "Debe haber almenos un participante!"
+      if (participantsList.length < 2) {
+      newErrors.participantsList = "Debe haber almenos dos participante para registrar un torneo!"
     }
       if (!form.start_date) {
       newErrors.start_date = "La fehcha de inicio debe ser obligatoria!"
@@ -76,18 +76,16 @@ const CreateSection = () => {
       newErrors.description = "La descripción del torneo es obligatorio!"
     }
 
-
     // Si hay errores, actualizamos el estado de errores y detenemos la función
     if (Object.keys(newErrors).length > 0) {
       setFormErrors(newErrors)
       return
-    }
-    
+    }    
 
     // Obtenemos el token de autenticación
     const token = localStorage.getItem('token')
     if (!token) {
-      alert("Tu sesión ha expirado. Por favor, inicia sesión de nuevo.")
+      alert("Tu sesión ha expirado. Por favor. Inicia sesión de nuevo.")
 
       // Redirigimos al Login
       navigate('/login')
@@ -141,13 +139,25 @@ const CreateSection = () => {
       alert("No se pudo conectar con el servidor. Revisa tu conexión de internet")
     }
   }
+  const handleClean = () => {
+    setParticipantsInput("")
+    setParticipantsList([])
+    setFormErrors({})
+
+    setForm({
+      name:"",
+      participants: [],
+      start_date: "",
+      end_date: "",
+      description: "",
+      tournament_type: "",
+    })
+  }
 
   const participantExists =
     participantInput.trim() !== "" &&
     participantsList.includes(participantInput.trim())
-  
 
-  
   return (
     <div className="section-container">
       <form onSubmit={handleSubmit}>
@@ -204,7 +214,7 @@ const CreateSection = () => {
             min={new Date().toISOString().split("T")[0]}
           />
         </div>
-        {formErrors.description && <ErrorMessage message={formErrors.description} />}
+        {formErrors.start_date && <ErrorMessage message={formErrors.start_date} />}
 
         {/* AGREGAR PARTICIPANTES */}
         <div className="form-group">
@@ -262,7 +272,7 @@ const CreateSection = () => {
           <button type="submit" className="btn btn-primary">
             Guardar
           </button>
-          <button type="button" className="btn btn-primary">
+          <button type="button" onClick={handleClean} className="btn btn-primary">
             Cancelar
           </button>
         </div>

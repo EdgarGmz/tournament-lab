@@ -21,7 +21,7 @@ const ContainerFilter = ({ statusFilter }) => {
     // Filtreo y Orden
     const filtered = statusFilter === "totales"
         ? tournaments
-        : tournaments.filter(t => t.status.toLocaleLowerCase()
+        : tournaments.filter(t => t.status?.toLocaleLowerCase()
                 .includes(statusFilter
                     .toLocaleLowerCase()))
     

@@ -2,6 +2,9 @@
 // COMPONENTS
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
+import Squad from '../img/squad.png';
+import img1 from '../img/img1.png';
+import logo from '../img/Logo_ut.png';
 
 // CSS
 import '../css/landing-page.css'
@@ -11,94 +14,110 @@ const LandingPage = () => {
     <div>
 
       {/* NAVBAR */}
-      <nav>
-        <div>
-          <span>Tournament Lab</span>
+      <nav className="navbar">
+        <div className="nav-container">
+          <span className="logo">Tournament Lab</span>
 
-          {/* Nav Items */}
-          <ul>
-              <li>
-                <a href='#para-que-es'>¿Para que es?</a>
-              </li>
-              <li>
-                <a href='#como-utilizarlo'>¿Cómo utilizarlo?</a>
-              </li>
-              <li>
-                <a href='#ventajas'>Ventajas</a>
-              </li>
-              <li>
-                <a href='#quienes-somos'>¿Quiénes somos?</a>
-              </li>
-              <li>
-                <a href='#escuela'>Nuestra Escuela</a>
-              </li>
+          <ul className="nav-menu">
+            <li><a href="#para-que-es">¿Para qué es?</a></li>
+            <li><a href="#como-utilizarlo">¿Cómo utilizarlo?</a></li>
+            <li><a href="#ventajas">Ventajas</a></li>
+            <li><a href="#quienes-somos">¿Quiénes somos?</a></li>
+            <li><a href="#escuela">Nuestra Escuela</a></li>
           </ul>
 
-          {/* INCIO DE SESION / REGISTRARSE */}
-          <div>
-            <Link to="/login">Login</Link>
-            <Link to="/register">Registrarse</Link>
-          </div>
-          <div>
-            
+          <div className="nav-auth">
+            <Link to="/login" className="btn-link login">Login</Link>
+            <Link to="/register" className="btn-link register">Registrarse</Link>
           </div>
         </div>
       </nav>
+      
+      <main className="landing">
 
-      {/* CAROUSEL */}
-      // TODO: Implementar un carrousell
-
-      {/* PARA QUE ES */}
-      <section id="para-que-es">
-        <h2>¿Para qué es Tournament Lab?</h2>
-        <div>
-          <div>
+      {/* Para qué es */}
+      <section id="para-que-es" className="section">
+        <div className="container">
+          <div className="text">
+            <h2>¿Para qué es Tournament Lab?</h2>
             <p>
-              Es una plataforma para organizar y participar en torneos de forma sencilla, pensada para juegos como Magic, Yu-Gi-Oh!, Pokémon, y videojuegos.
+              Es una plataforma para organizar y participar en torneos de forma sencilla,
+              pensada para juegos como Magic, Yu-Gi-Oh!, Pokémon y videojuegos.
             </p>
           </div>
-          <div>
-            <img src="/img/torneo.jpg" alt="Torneo" />
+          <div className="image">
+            <img src={img1} alt="Torneo" class="copa" />
           </div>
         </div>
       </section>
 
-      {/* COMO UTILIZARLO */}
-      <section id="como-utilizarlo">
-        <h2>¿Cómo utilizarlo?</h2>
-        <p>
-          Regístrate, crea o únete a un torneo, y gestiona todo desde tu panel. Ideal para organizadores, jugadores o comunidades.
-        </p>
-      </section>
-
-      {/* VENTAJAS */}
-      <section id="ventajas">
-        <h2>Ventajas</h2>
-        <ul>
-          <li>✅ Fácil de usar</li>
-          <li>✅ Adaptado a torneos presenciales o en línea</li>
-          <li>✅ Seguimiento de resultados y estadísticas</li>
-        </ul>
-      </section>
-
-      {/* QUIENES SOMOS */}
-      <section id="quienes-somos">
-        <h2 >¿Quiénes somos?</h2>
-        <p >Este proyecto fue desarrollado por un equipo de estudiantes apasionados por la tecnología y los juegos.</p>
-        <div >
-          <img src="/img/equipo.jpg"  alt="Equipo" />
+      {/* Cómo utilizarlo */}
+      <section id="como-utilizarlo" className="section section-alt">
+        <div className="container single">
+          <div className="text">
+            <h2>¿Cómo utilizarlo?</h2>
+            <p>
+              Regístrate, crea o únete a un torneo, y gestiona todo desde tu panel.
+              Ideal para organizadores, jugadores o comunidades.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* ESCUELA */}
-      <section id="escuela">
-        <h2 >¿De qué escuela somos?</h2>
-        <p >Universidad Tecnológica Santa Catarina - Ingeniería y Gestión de Desarrollo de Software.</p>
-        <div>
-          <img src="/img/logo-escuela.png" alt="Logo Escuela" style={{ maxWidth: '150px' }} />
+      {/* Ventajas */}
+      <section id="ventajas" className="section">
+        <div className="container single">
+          <div className="text">
+            <h2>Ventajas</h2>
+            <ul>
+              <li>Fácil de usar</li>
+              <li>Adaptado a torneos presenciales o en línea</li>
+              <li>Seguimiento de resultados y estadísticas</li>
+            </ul>
+          </div>
         </div>
       </section>
 
+      {/* Quiénes somos */}
+      <section id="quienes-somos" className="section section-alt">
+        <div className="container">
+          <div className="image">
+            <img src={Squad} alt="Equipo" />
+          </div>
+          <div className="text">
+            <h2>¿Quiénes somos?</h2>
+            <p>
+              Este proyecto fue desarrollado por un equipo de estudiantes apasionados
+              por la tecnología y los juegos.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Escuela */}
+      <section id="escuela" className="section">
+        <div className="container single center">
+          <div className="text">
+            <h2>¿De qué escuela somos?</h2>
+            <p>
+              Universidad Tecnológica Santa Catarina –
+              Ingeniería y Gestión de Desarrollo de Software.
+            </p>
+            <img src={logo} alt="Logo Escuela" class="loguito" className="logo-escuela" width="400" height="300" />
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Action */}
+      <section id="cta" className="section section-alt cta">
+        <div className="container single center">
+          <h2>¿Listo para crear tu primer torneo?</h2>
+          <p>Únete gratis y lleva tus competencias al siguiente nivel.</p>
+          <Link to="/register" className="btn-primary">Regístrate ahora</Link>
+        </div>
+      </section>
+
+    </main>
       {/* FOOTER */}
       <Footer />
     </div>

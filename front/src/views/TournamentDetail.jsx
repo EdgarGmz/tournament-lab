@@ -139,8 +139,8 @@ const TournamentDetail = () => {
     const { name, status, description, participants = [], champion, reasonCancellation } = torneo;
 
     return (
-    <div className="tournament-container"> {/* AQUI es la corrección clave */}
-        <div className="tournament-detail">
+    <div className="tournament-container"> 
+        <aside className="tournament-detail">
             <h2>{name}</h2>
             <p><b>Estado:</b> {status}</p>
             <p><b>Descripción:</b> {description}</p>
@@ -168,7 +168,7 @@ const TournamentDetail = () => {
                     </>
                 )}
             </div>
-        </div>
+        </aside>
 
         <div className="tournament-bracket">
             {['upcoming', 'active'].includes(status?.toLowerCase()) && participants.length > 1 && (
@@ -178,6 +178,24 @@ const TournamentDetail = () => {
                 />
             )}
         </div>
+
+        {/* AYUDA VISUAL PARA EL USUARIO */}
+        <aside className='help'>
+            <h2>¿Como funciona el bracket?</h2>
+            <p> <b>1.Selecciona al ganador: </b> Para cada enfrentamiento, haz click sobre el nombre del participante que ganó la partida.
+                Verás que su botón cambia de color para marcarlo como vencedor.
+            </p>
+
+            <p> <b>2.Avanza a la siguiente ronda: </b> Una vez que hayas elegido un ganador para todas las partidas de la ronda actual,
+                se habilitará el botón "Siguiente Ronda". Haz click en él para continuar.
+            </p>
+
+            <p> <b>3.Llega hasta el fina: </b> Repide el proceso en cada ronda. Los ganadores avanzarán y se enfrentarán entre sí hasta 
+                que solo quede un participante.
+            </p>
+
+            <p> <b>4.Corona al campeón: </b> Cuando llegues a la última partida, haz click en "Finalizar Torneo" para declarar al campeón.</p>
+        </aside>        
     </div>
 );
 

@@ -1,9 +1,40 @@
-.bracket-container {
-    text-align: center;
-    margin: 2rem auto;
-    max-width: 600px;
+/* Contenedor principal de toda la sección del torneo */
+.tournament-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 20px;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: auto;
 }
 
+/* Columna izquierda: información del torneo */
+.tournament-info {
+    background-color: #e3f2fd;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    height: fit-content;
+}
+
+/* Columna centro: el bracket */
+.bracket-container {
+    text-align: center;
+    margin: 0 auto;
+}
+
+/* Columna derecha: ayuda visual */
+.help {
+    background-color: #f1f8e9;
+    border-left: 5px solid #8bc34a;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    height: fit-content;
+}
+
+/* Estilos compartidos */
 .match {
     display: flex;
     justify-content: center;
@@ -18,21 +49,61 @@ button {
     background: #f2f2f2;
     cursor: pointer;
     border-radius: 6px;
-    transition: background 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 button.winner {
     background-color: #c8e6c9;
     font-weight: bold;
+    box-shadow: 0 0 0 2px #81c784 inset;
+    border-color: #388e3c;
 }
 
 .bye {
     font-style: italic;
-    color: gray
+    color: gray;
 }
 
 .next-round {
     margin-top: 20px;
     background: #2196f3;
     color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.next-round:hover {
+    background: #1976d2;
+}
+
+.next-round:disabled {
+    background: #90caf9;
+    cursor: not-allowed;
+}
+
+/* Textos en los paneles laterales */
+.help h2, .tournament-info h2 {
+    margin-top: 0;
+    font-size: 1.2rem;
+}
+
+.help p, .tournament-info p {
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+/* Responsive: en móviles se apilan */
+@media (max-width: 768px) {
+    .tournament-layout {
+        display: block;
+    }
+
+    .help,
+    .tournament-info {
+        margin-bottom: 2rem;
+    }
 }
