@@ -1,0 +1,173 @@
+/* === NAVBAR === */
+.navbar {
+  background-color: #000;
+  box-shadow: var(--box-shadow);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 0.8rem 0;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo */
+.nav-logo img {
+  height: 80px;
+  margin-right: 5rem;
+  margin-left: 0;
+}
+
+/* Hamburguesa */
+.nav-hamburger {
+  display: none;
+  font-size: 1.8rem;
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+/* Menú */
+.nav-menu {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.nav-menu li a {
+  font-weight: 500;
+  color: var(--color-text);
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--border-radius);
+  transition: background-color var(--transition-fast);
+  text-align: center;
+}
+
+.nav-menu li a:hover {
+  background-color: var(--color-primary-hover);
+}
+
+/* Autenticación */
+.nav-auth {
+  display: flex;
+  gap: 1rem;
+  margin-left: 4rem;
+}
+
+.btn-link.login,
+.btn-link.register {
+  padding: 0.4rem 1rem;
+  background-color: transparent;
+  border: 1px solid var(--color-primary);
+  border-radius: var(--border-radius);
+  color: var(--color-primary);
+  transition: all var(--transition-base);
+}
+
+.btn-link.register {
+  background-color: var(--color-primary);
+  color: var(--color-text);
+}
+
+.btn-link.login:hover,
+.btn-link.register:hover {
+  transform: translateY(-2px);
+  background-color: var(--color-primary-hover);
+  color: var(--color-text);
+}
+
+/* === LANDING SECTIONS === */
+.landing {
+  background: 
+    linear-gradient(rgba(15, 15, 15, 0.7), rgba(15, 15, 15, 0.7)),
+    url('../../img/bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* Opcional: efecto parallax */
+} 
+
+.section {
+  padding: 4rem 1.5rem;
+  min-height: calc(100vh - var(--navbar-height));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: transparent;
+}
+
+.section.alt {
+  background-color: var(--color-bg-secondary);
+}
+
+.section.center {
+  text-align: center;
+}
+
+/* Info tecnologías */
+.info-tecnologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.info-tecnologies-text,
+.info-tecnologies-methodologies {
+  flex: 1 1 300px;
+}
+
+/* Miembros */
+.members {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+/* Imagen copita */
+.copa {
+  max-width: 250px;
+  margin: 1.5rem auto;
+  display: block;
+}
+
+/* Imagen de la escuela */
+.loguito {
+  margin-top: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .nav-hamburger {
+    display: block;
+  }
+
+  .nav-menu {
+    position: absolute;
+    top: var(--navbar-height);
+    left: 0;
+    width: 100%;
+    background-color: var(--color-bg-secondary);
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem 0;
+    display: none;
+  }
+
+  .nav-menu.active {
+    display: flex;
+  }
+
+  .nav-auth {
+    display: none;
+  }
+}

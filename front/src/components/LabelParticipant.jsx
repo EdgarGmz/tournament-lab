@@ -1,5 +1,6 @@
 import { RxCross1 } from "react-icons/rx";
-import '../css/label-participant.css';
+
+// import '../css/label-participant.css';
 
 function LabelParticipant({ name, onClick }) {
   return (

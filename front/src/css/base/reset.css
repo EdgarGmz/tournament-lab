@@ -34,7 +34,6 @@ button, input, select, textarea {
 /* Imagenes y Multimedia */
 img, picture, video, canvas, svg {
     max-width: 100%;
-    display: block;
 }
 
 /* Formularios con herencia */

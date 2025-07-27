@@ -1,0 +1,43 @@
+.container-participant {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    background-color: var(--color-primary);
+    color: #fff;
+
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    cursor: default;
+
+    font-family: var(--font-main); /* <- posiblemente lo cambie */
+    font-size: 0.875rem;
+    font-weight: 500;
+
+    transition: background-color var(--transition), box-shadow var(--transition);
+}
+
+.container-participant:hover {
+    background-color: var(--color-primary-hover);
+}
+
+/* Nombre del participante */
+.participant-name {
+    color: #fff;
+    white-space: nowrap;
+}
+
+/* Icono de eliminar */
+.icon-remove {
+    display: none;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: opacity var(--transition);
+}
+
+/* Mostrar el icono al pasar el mouse */
+.container-participant:hover .icon-remove {
+    display: inline;
+}
+

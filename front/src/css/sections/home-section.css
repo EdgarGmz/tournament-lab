@@ -1,0 +1,104 @@
+/* Contenedor general */
+.home-section {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  font-family: var(--font-main);
+  color: var(--color-text);
+}
+
+/* Título */
+.home-section h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: var(--color-primary);
+}
+
+/* Descripción */
+.home-description {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 2rem auto;
+  line-height: 1.6;
+  font-size: 1rem;
+  color: var(--color-muted);
+}
+
+/* Tarjeta principal destacada */
+.stat-card.total-card {
+  background-color: var(--color-bg-secondary);
+  border: 2px solid var(--color-primary);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  text-align: center;
+  margin: 0 auto 2rem auto;
+  box-shadow: var(--box-shadow);
+  max-width: 400px;
+}
+
+.stat-card.total-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-primary);
+}
+
+.stat-number {
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--color-primary);
+}
+
+/* Contenedor horizontal de estadísticas */
+.status-container {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+/* Tarjetas de estado */
+.stat-card {
+  background-color: var(--color-bg-secondary);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  width: 220px;
+  text-align: center;
+  box-shadow: var(--box-shadow);
+}
+
+.stat-card h3 {
+  font-size: 1rem;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+}
+
+.stat-percentage {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* Colores por estado */
+.stat-card.active .stat-percentage {
+  color: orange;
+}
+
+.stat-card.completed .stat-percentage {
+  color: #4ade80;
+}
+
+.stat-card.canceled .stat-percentage {
+  color: #f87171;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .status-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .stat-card {
+    width: 100%;
+  }
+}

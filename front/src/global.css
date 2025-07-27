@@ -1,21 +1,49 @@
 /* Fuente general de la app */
-@import './css/base/variables.css';
 @import './css/base/reset.css';
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+@import './css/base/typography.css';
+@import './css/base/variables.css';
+
+@import './css/layout/container.css';
+@import './css/layout/grid.css';
+@import './css/layout/responsive.css';
+
+@import './css/components/button.css';
+@import './css/components/input.css';
+@import './css/components/card.css';
+@import './css/components/error-message.css';
+@import './css/components/label-participant.css';
+
+@import './css/shared/auth.css';
+@import './css/shared/menu-bar.css';
+@import './css/shared/item-navbar.css';
+@import './css/shared/landing-page.css';
+@import './css/shared/member.css';
+
+@import './css/sections/tournament-card.css';
+@import './css/sections/tournament-detail.css';
+@import './css/sections/settings-section.css';
+@import './css/sections/create-section.css';
+@import './css/sections/container-filter.css';
+@import './css/sections/dashboard.css';
+@import './css/sections/home-section.css';
+ 
 
 html, body {
   margin: 0;
   padding: 0;
   font-family: var(--font-main);
-  background-color: var(--color-bg);
-  color: var(--color-text)
+  background-color: var(--color-bg);  
+  color: var(--color-text);
+  font-size: var(--font-size-base);
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--navbar-height);
 }
 
 /* Enlaces */
 a {
   color: var(--color-primary);
   text-decoration: none;
-  transition: color var(--transition);
+  transition: color var(--transition-base);
 }
 
 a:hover {
@@ -32,7 +60,7 @@ button {
   background-color: var(--color-primary);
   color: var(--color-text);
   cursor: pointer;
-  transition: background-color var(--transition), transform var(--transition)
+  transition: background-color var(--transition-base), transform var(--transition-base)
 }
 
 button:hover {
@@ -55,7 +83,7 @@ input, select, textarea {
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius);
   padding: 0.6rem 1rem;
-  transition: border-color var(--transition);
+  transition: border-color var(--transition-base);
 }
 
 input:focus, select:focus, textarea:focus {

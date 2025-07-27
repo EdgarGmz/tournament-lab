@@ -7,7 +7,7 @@ import ButtonBar from "./ButtonBar"
 import ItemNavBar from "./ItemNavBar"
 
 // CSS
-import "../../css/menu-bar.css"
+// import "../../css/menu-bar.css"
 
 const NavBar = ({ menuOpen, toggleMenu, onSelectSection }) => {
   const navigate = useNavigate();

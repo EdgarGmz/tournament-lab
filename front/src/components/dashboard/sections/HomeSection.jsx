@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import '../../../css/home-section.css';
+
+// import '../../../css/home-section.css';
 
 const HomeSection = () => {
   const [tournaments, setTournaments] = useState([])

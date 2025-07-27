@@ -1,3 +1,9 @@
+/* Fuente primaria */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Fuente secundaria */
+@import url('https://fonts.googleapis.com/css2?family=Bitcount+Prop+Single:wght@100..900&display=swap');
+
 :root {
     --color-bg: #0f0f0f;
     --color-bg-secondary: #1c1c1c;
@@ -18,11 +24,14 @@
     --border-radius: 10px;
     --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 
-    --font-main: 'Ubuntu', sans-serif;
+    --font-main: 'Roboto', sans-serif;
+    --font-secondary: "Bitcount Prop Single", system-ui;
     --font-size-base: 1rem;
     --font-size-sm: 0.875rem;
     --font-size-lg: 1.25rem;
 
     --transition-fast: 0.2s ease;
     --transition-base: 0.3s ease;
+
+    --navbar-height: 80px;
 }

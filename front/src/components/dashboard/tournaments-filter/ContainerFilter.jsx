@@ -9,7 +9,7 @@ import { TfiViewListAlt } from "react-icons/tfi";
 import TournamentCard from './TournamentCard.jsx';
 
 // CSS
-import '../../../css/container-filter.css';
+// import '../../../css/container-filter.css';
 
 const ContainerFilter = ({ statusFilter }) => {
 
