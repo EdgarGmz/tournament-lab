@@ -1,0 +1,75 @@
+:root {
+    --break-sm: 480px;
+    --break-md: 768px;
+    --break-lg: 1024px;
+    --break-xl: 1280px;    
+}
+
+/* == Utilidades responsivas == */
+/* Texto centrado en pantallas pequeñas */
+.text-center-sm {
+    text-align: left;
+}
+
+@media (max-width: var(--break-sm)){
+    .text-center-sm {
+        text-align: center;
+    }
+}
+
+/* Mostrar / Ocultar según su tamaño */
+.hidden-sm {
+    display: block;
+}
+
+@media (max-width: var(--break-sm)){
+    .hidden-sm {
+        display: none !important;
+    }
+}
+
+.visible-sm {
+    display: none;
+}
+
+@media (max-width: var(--break-sm)){
+    .visible-sm {
+        display: block !important;
+    }
+}
+
+
+/* Responsive Padding */
+.p-responsive {
+    padding: 2rem;
+}
+
+@media (max-width: var(--break-sm)){
+    .p-responsive {
+        padding: 0.75rem;
+    }
+}
+
+/* Ajuste responsivo de secciones  */
+.section-stack {
+    display: flex;
+    gap: 2rem;
+}
+
+@media (max-width: var(--break-md)) {
+    .section-stack {
+        flex-direction: column;
+    }
+}
+
+/* Grid responsivo alternativo */
+.grid-sm-1 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+@media (max-width: var(--break-sm)) {
+    .grid-sm-1 {
+        grid-template-columns: 1fr;
+    }
+}

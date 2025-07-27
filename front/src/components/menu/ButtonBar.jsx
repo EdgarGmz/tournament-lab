@@ -1,11 +1,14 @@
-import { FaArrowCircleLeft, FaArrowCircleRight } from "react-icons/fa";
+import { FaArrowCircleLeft } from "react-icons/fa";
 
-const ButtonBar = ({toggleMenu, menuOpen})=>{
-    return (
-        <button onClick={toggleMenu} className="menu-btn">
-                {menuOpen ? <FaArrowCircleLeft /> : <FaArrowCircleRight />}
-        </button>
-    )
-}
+const ButtonBar = ({ toggleMenu, menuOpen }) => {
+  return (
+    <button onClick={toggleMenu} className="menu-btn">
+      <FaArrowCircleLeft
+        color="white"
+        className={`menu-icon ${!menuOpen ? "collapsed" : ""}`}
+      />
+    </button>
+  );
+};
 
-export default ButtonBar
+export default ButtonBar;

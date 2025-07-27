@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import '../css/auth2.css';
+// import '../css/auth2.css';
 
 
 const Register = () => {

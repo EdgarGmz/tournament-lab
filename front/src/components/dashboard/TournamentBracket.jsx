@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 
 // CSS
-import '../../css/tournament-match.css';
+// import '../../css/tournament-match.css';
 
 
 function shuffleArray(array) {

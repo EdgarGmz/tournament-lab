@@ -1,0 +1,62 @@
+/* Grilla base responsiva */
+.grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+/* Grillas adaptables por columnas */
+.grid-2 {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.grid-3 {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.grid-4 {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+/* Grilla fija (útil para pantallas grandes) */
+.grid-fixed-3 {
+    grid-template-columns:  1fr 2fr 1fr;
+}
+
+/* Grilla con auto ajuste */
+.grid-auto {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+/* Alineaciones comunes */
+.grid-center {
+    justify-items: center;
+    align-items: center;
+}
+
+.grid-start {
+    justify-items: start;
+}
+
+.grid-end {
+    justify-items: center;
+}
+
+.grid-end {
+    justify-items: end;
+}
+
+/* Espacio Vertical entre filas */
+.grid-gap-sm {
+    gap: 1rem;
+}
+
+.grid-gap-lg {
+    gap: 2rem;
+}
+
+/* Responsive collapsable a una sola columna */
+@media (max-width: 768px){
+    .grid-fixed-3 {
+        grid-template-columns: 1fr;
+    }
+}

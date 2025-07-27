@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 const API_URL = import.meta.env.VITE_API_URL;
 
 // CSS
-import '../css/auth.css';
+// import '../css/auth.css';
 
 const Login = () => {
     const [usuario, setUsuario] = useState('')
@@ -59,7 +59,7 @@ const Login = () => {
     return (
         <div className='auth-container'>
             <div className='auth-card'>
-                <form onSubmit={handleSumbit}>
+                <form  onSubmit={handleSumbit}>
                     <h2 >Iniciar Sesión</h2>
 
                     {/* Input de Usuario */}
@@ -73,6 +73,7 @@ const Login = () => {
                         onChange={e => setUsuario(e.target.value)}
                         required
                         className="form-input"
+                        autoComplete='off'
                         />
                     </div>
 
@@ -86,6 +87,7 @@ const Login = () => {
                         onChange={e => setPassword(e.target.value)}
                         required
                         className="form-input"
+                        autoComplete='off'
                         />
                     </div>
 

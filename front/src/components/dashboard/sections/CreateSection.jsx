@@ -6,7 +6,8 @@ import { useNavigate } from "react-router-dom";
 import LabelParticipant from "../../LabelParticipant";
 
 // CSS
-import "../../../css/create-section.css";
+// import "../../../css/create-section.css";
+
 import ErrorMessage from "./ErrorMessage";
 
 const TOURNAMENT_TYPES = [
