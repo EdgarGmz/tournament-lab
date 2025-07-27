@@ -6,7 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import TournamentBracket from '../components/dashboard/TournamentBracket';
 
 // Css
-import '../css/tournament-detail.css';
+// import '../css/tournament-detail.css';
 
 const TournamentDetail = () => {
     const { id } = useParams();
@@ -181,20 +181,27 @@ const TournamentDetail = () => {
 
         {/* AYUDA VISUAL PARA EL USUARIO */}
         <aside className='help'>
-            <h2>¿Como funciona el bracket?</h2>
-            <p> <b>1.Selecciona al ganador: </b> Para cada enfrentamiento, haz click sobre el nombre del participante que ganó la partida.
+            <h1>¿Como funciona el bracket?</h1>
+            <h3>1. Selecciona al ganador: </h3> 
+            <p> 
+                Para cada enfrentamiento, haz click sobre el nombre del participante que ganó la partida.
                 Verás que su botón cambia de color para marcarlo como vencedor.
             </p>
-
-            <p> <b>2.Avanza a la siguiente ronda: </b> Una vez que hayas elegido un ganador para todas las partidas de la ronda actual,
+            
+            <h3>2. Avanza a la siguiente ronda: </h3> 
+            <p> 
+                Una vez que hayas elegido un ganador para todas las partidas de la ronda actual,
                 se habilitará el botón "Siguiente Ronda". Haz click en él para continuar.
             </p>
 
-            <p> <b>3.Llega hasta el fina: </b> Repide el proceso en cada ronda. Los ganadores avanzarán y se enfrentarán entre sí hasta 
+            <h3>3. Llega hasta el fina: </h3> 
+            <p> 
+                Repide el proceso en cada ronda. Los ganadores avanzarán y se enfrentarán entre sí hasta 
                 que solo quede un participante.
             </p>
 
-            <p> <b>4.Corona al campeón: </b> Cuando llegues a la última partida, haz click en "Finalizar Torneo" para declarar al campeón.</p>
+            <h3>4. Corona al campeón: </h3>
+            <p>  Cuando llegues a la última partida, haz click en "Finalizar Torneo" para declarar al campeón.</p>
         </aside>        
     </div>
 );

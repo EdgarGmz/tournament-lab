@@ -1,0 +1,50 @@
+/* Fuente base */
+body {
+    font-family: var(--font-main);
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+    color: var(--color-text);
+}
+
+/* Títulos */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    color: var(--color-accent);
+}
+
+h1 {font-size: 2.25rem;}
+h2 {font-size: 1.75rem;}
+h3 {font-size: 1.5rem;}
+h4 {font-size: 1.25rem;}
+h5 {font-size: 1rem;}
+h6 {font-size: 0.875rem;}
+
+/* Párrafos */
+p {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: var(--color-text);
+}
+
+/* Enlaces destacados */
+a {
+    font-weight: 500;
+    transition: color var(--transition);
+}
+
+/* Pequeño */
+small {
+    font-size: 0.875rem;
+    color: var(--color-muted);
+}
+
+/* Textos utilitarios */
+.text-center {
+    text-align: center;
+}
+
+.text-muted {
+    color: var(--color-muted)
+}

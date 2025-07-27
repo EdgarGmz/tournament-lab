@@ -7,7 +7,7 @@ import NavBar from "../components/menu/NavBar";
 import { getTitle, renderSection } from '../logic/Logic';
 
 // CSS
-import '../css/dashboard.css';
+// import '../css/dashboard.css';
 
 const Dashboard = () => {
     const [menuOpen, setMenuOpen] = useState(true);
