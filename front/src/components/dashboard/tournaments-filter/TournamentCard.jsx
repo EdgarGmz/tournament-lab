@@ -1,5 +1,4 @@
 // Icons
-import { MdDelete } from "react-icons/md";
 import { MdPlayCircleOutline } from 'react-icons/md'
 
 const statusConfig = {
@@ -54,7 +53,7 @@ const TournamentCard = (props) => {
 
                 <div className="card-actions">
                 <button className="action-button delete" onClick={() => props.onDelete(props.id)}>
-                    <MdDelete />
+                    ❌ 
                 </button>
 
                 {['upcoming', 'active'].includes(props.status.toLowerCase()) && (

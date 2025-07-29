@@ -7,7 +7,12 @@
 :root {
     --color-bg: #0f0f0f;
     --color-bg-secondary: #1c1c1c;
+
+    --color-bg-acc: #2c2c2c; 
+    --color-bg-gradient: linear-gradient(135deg, #1c1c1c 0%, #b0b0b0 50%, #000000 100%);
+
     --color-text: #f1f1f1;
+    --color-text-secondary: #b0b0b0;
     --color-muted: #bbbbbb;
 
     --color-primary: #ff5722;

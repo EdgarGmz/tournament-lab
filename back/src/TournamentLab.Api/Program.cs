@@ -145,10 +145,17 @@ app.MapPost("/api/tournaments", async (
     
 }).RequireAuthorization();
 
-// Get: Obtener todos los torneos 
-app.MapGet("/api/tournaments", async (TournamentService tournamentService) =>
+// Get: Obtener todos los torneos de un usuario
+app.MapGet("/api/tournaments", async (TournamentService tournamentService, HttpContext httpContext) =>
 {
-    var tournaments = await tournamentService.GetAllTournamentsAsync();
+    var userIdClaim = httpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+    if (userIdClaim == null)
+    {
+        return Results.Unauthorized();
+    }
+
+    var userId = int.Parse(userIdClaim.Value);
+    var tournaments = await tournamentService.GetTournamentsByUserIdAsync(userId);
 
     var tournamentDto = tournaments.Select(t => new TournamentDto
     {
@@ -166,7 +173,7 @@ app.MapGet("/api/tournaments", async (TournamentService tournamentService) =>
     });
 
     return Results.Ok(tournamentDto);
-});
+}).RequireAuthorization();
 
 // Get: Obtener un torneo por ID
 app.MapGet("/api/tournaments/{id}", async (int id, TournamentService tournamentService) =>

@@ -1,10 +1,6 @@
 // HOOKS
 import { useEffect, useState } from 'react';
 
-// CSS
-// import '../../css/tournament-match.css';
-
-
 function shuffleArray(array) {
     return [...array].sort(() => Math.random() - 0.5);
 }

@@ -6,13 +6,34 @@ const HomeSection = () => {
   const [tournaments, setTournaments] = useState([])
   
   useEffect(() => {
-    const apiUrl = `${import.meta.env.VITE_API_URL}/tournaments`
+    const fetchTournaments = async () => {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        console.log('No se encontró el token de autenticación');
+        return;
+      }
 
-    fetch(apiUrl)
-      .then(res => res.json())
-      .then(data => setTournaments(data))
-      .catch(error => console.error('Error al obtener torneo: ', error))
-  }, [])
+      try {
+        const apiUrl = `${import.meta.env.VITE_API_URL}/tournaments`;
+        const response = await fetch(apiUrl, {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          setTournaments(data);
+        } else {
+          console.log('Error al obtener los torneos', response.statusText);
+        }
+      } catch (error) {
+        console.error('Error al obtener torneo: ', error);
+      }
+    };
+
+    fetchTournaments();
+  }, []);
 
   // Lógica para calcular estadisticas
   const totalTournaments = tournaments.length

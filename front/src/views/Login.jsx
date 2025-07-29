@@ -1,5 +1,5 @@
 // Hooks
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 //Image
@@ -11,6 +11,14 @@ const Login = () => {
     const [usuario, setUsuario] = useState(location.state?.username || '')
     const [password, setPassword] = useState('')
     const navigate = useNavigate()
+    const passwordInputRef = useRef(null);
+
+    useEffect(() => {
+  // Si viene desde registro, enfoca el campo de contraseña
+  if (location.state?.username && passwordInputRef.current) {
+    passwordInputRef.current.focus();
+  }
+}, [location]);
 
 
     const handleSumbit = async (e) => {
@@ -62,7 +70,7 @@ const Login = () => {
             <div className='auth-card'>                
                 <form  onSubmit={handleSumbit}>
 
-                    <div className='auth-header center'>
+                    <div className='auth-header center' onClick={() => navigate('/') }>
                         <img src={logo} alt='logo' />
                         <h2 className='text-center'>Iniciar Sesión</h2>
                     </div>
@@ -89,6 +97,7 @@ const Login = () => {
                         placeholder="Contraseña"
                         value={password}
                         onChange={e => setPassword(e.target.value)}
+                        ref={passwordInputRef}
                         required
                         className="form-input"
                         autoComplete='off'

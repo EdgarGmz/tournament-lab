@@ -106,3 +106,7 @@
   flex: 1 1 calc(25% - 1rem);
   min-width: 180px;
 }
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}

@@ -17,8 +17,11 @@
 
 /* Elevación al hover */
 .tournament-card:hover {
+  color: var(--color-text);
   transform: translateY(-4px);
+  background: var(--color-bg-gradient);
   box-shadow: 0 10px 30px rgba(255, 87, 34, 0.15);
+  font-size: var(--font-size-lg);
 }
 
 /* Título principal */

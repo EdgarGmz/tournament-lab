@@ -54,12 +54,18 @@
   flex-direction: column;
   align-items: center;
   margin-bottom: 1.5rem;
+  
 }
 
 .auth-header img {
   width: 120px;
   height: auto;
   margin-bottom: 0.5rem;
+  cursor: pointer;
+}
+
+.auth-header img:hover{
+  filter: drop-shadow(0 6px 12px rgb(255, 255, 255));
 }
 
 

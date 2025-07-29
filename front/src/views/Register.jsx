@@ -104,7 +104,7 @@ const Register = () => {
             <div className="auth-card">
                 <form onSubmit={handleSubmit}>
 
-                   <div className='auth-header center'>
+                   <div className='auth-header center' onClick={() => navigate('/') }>
                         <img src={logo} alt="logo" />
                         <h2 className='text-center'>Registrate</h2>
                     </div>
