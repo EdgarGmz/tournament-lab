@@ -13,7 +13,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TournamentLab.Test")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
+<<<<<<< HEAD
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+84c2c74e0e3e07a739a359e2cb0733b068bf4d72")]
+=======
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+281cb4bf444061a40e8421610079f65f57b85b40")]
+>>>>>>> 3c26188db9f8b7667d25a09b1ea96edcd01fb154
 [assembly: System.Reflection.AssemblyProductAttribute("TournamentLab.Test")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TournamentLab.Test")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

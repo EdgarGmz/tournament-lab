@@ -1,13 +1,69 @@
 /* Contenedor principal centrado en la pantalla  */
 .auth-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    background-image: url('../../img/auth/auth1.png');
+    background-size: cover;
+    background-position: center;
+    animation: 
+      float 10s ease-in-out infinite,
+      slideshow 20s infinite alternate;
 
-  background: linear-gradient(135deg, #121212, #1f1f1f);
-  padding: 2rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+
 }
+
+.auth-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1; /* Asegura que el fondo se muestre detrás del contenido */
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(10px, -15px) scale(1.02);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+
+@keyframes slideshow {  
+  0% { background-image: url('../../img/auth/auth1.png'); }
+  20% { background-image: url('../../img/auth/auth2.png'); }
+  40% { background-image: url('../../img/auth/auth3.png'); }
+  80% { background-image: url('../../img/auth/auth4.png'); }
+  100% { background-image: url('../../img/auth/auth1.png'); }
+}
+
+.auth-header{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.auth-header img {
+  width: 120px;
+  height: auto;
+  margin-bottom: 0.5rem;
+}
+
+
+
 
 /* Tarjeta de formulario */
 .auth-card {
@@ -141,4 +197,47 @@
     font-size: 1.5rem;
   }
 }
+
+/* Pasword Strength */
+.password-strength {
+  height: 10px;
+  width: 100%;
+  border-radius: var(--border-radius);
+  background-color: #333;
+  margin-top: 0.3rem;
+  overflow: hidden;;
+}
+
+.password-bar {
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.bar-weak {
+  width: 25%;
+  background-color: var(--color-danger);
+}
+
+.bar-medium {
+  width: 50%;
+  background-color: var(--color-accent);
+}
+
+.bar-strong {
+  width: 100%;
+  background-color: var(--color-success);
+}
+
+.text-danger {
+  color: var(--color-danger);
+}
+
+.text-warning {
+  color: var(--color-accent);
+}
+
+.text-success {
+  color: var(--color-success);
+}
+
 

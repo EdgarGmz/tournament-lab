@@ -1,22 +1,23 @@
-// Components
+// Hooks
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
-// Define API_URL or import it from your config
-const API_URL = import.meta.env.VITE_API_URL;
-
-// CSS
-// import '../css/auth.css';
+//Image
+import logo from '../img/logo.png';
 
 const Login = () => {
-    const [usuario, setUsuario] = useState('')
+    const location = useLocation();
+
+    const [usuario, setUsuario] = useState(location.state?.username || '')
     const [password, setPassword] = useState('')
     const navigate = useNavigate()
+
 
     const handleSumbit = async (e) => {
         e.preventDefault()
         try{
             // Hacemos la petición POST a nuestro backend
+            const API_URL = import.meta.env.VITE_API_URL;
             const response = await fetch(`${API_URL}/auth/login`, {
                 method: 'POST',
                 headers: {
@@ -58,13 +59,16 @@ const Login = () => {
 
     return (
         <div className='auth-container'>
-            <div className='auth-card'>
+            <div className='auth-card'>                
                 <form  onSubmit={handleSumbit}>
-                    <h2 >Iniciar Sesión</h2>
+
+                    <div className='auth-header center'>
+                        <img src={logo} alt='logo' />
+                        <h2 className='text-center'>Iniciar Sesión</h2>
+                    </div>
 
                     {/* Input de Usuario */}
-
-                    <div className="input-group">
+                    <div className="input input-group">
                         <i className="fas fa-user icon" />
                         <input
                         type="text"
@@ -78,7 +82,7 @@ const Login = () => {
                     </div>
 
                     {/* Input de Contraseña */}
-                    <div className="input-group">
+                    <div className="input input-group">
                         <i className="fas fa-lock icon" />
                         <input
                         type="password"
@@ -95,7 +99,7 @@ const Login = () => {
                     <div>
                         <button type="submit">Ingresar</button>
                     </div>
-
+                    <hr />
                     {/* Enlace para registro */}
                     <p>
                         ¿No tienes cuenta? <a href="/register">Crea una</a>
