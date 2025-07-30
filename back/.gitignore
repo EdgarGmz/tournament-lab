@@ -85,3 +85,16 @@ publish/
 # Misc
 .env
 *.swp
+
+# Others
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.vscode-test
+bin/
+obj/
+**/bin/
+**/obj/
+
