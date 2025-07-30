@@ -9,14 +9,15 @@ import { sectionTitles, statusFilters } from '../constants/constanst';
 
 export const getTitle = (section) => sectionTitles[section] || `Bienvenido a Tournament-Lab, ${localStorage.getItem('user_name').toUpperCase()}`;
 
-const sectionComponentMap = {
-    inicio: <HomeSection />,
-    crear: <CreateSection />,
-    configuracion: <SettingsSection />,
-    totales: <ContainerFilter statusFilter={statusFilters.totales} />,
-    completados: <ContainerFilter statusFilter={statusFilters.completados} />,
-    activos: <ContainerFilter statusFilter={statusFilters.activos} />,
-    cancelados: <ContainerFilter statusFilter={statusFilters.cancelados} />
-};
-
-export const renderSection = (section) => sectionComponentMap[section] || <HomeSection />;
+export const renderSection = (section, setActiveSection) => {
+    const sectionComponentMap = {
+        inicio: <HomeSection />,
+        crear: <CreateSection />,
+        configuracion: <SettingsSection />,
+        totales: <ContainerFilter statusFilter={statusFilters.totales} onSectionChange={setActiveSection} />,
+        completados: <ContainerFilter statusFilter={statusFilters.completados} onSectionChange={setActiveSection} />,
+        activos: <ContainerFilter statusFilter={statusFilters.activos} onSectionChange={setActiveSection} />,
+        cancelados: <ContainerFilter statusFilter={statusFilters.cancelados} onSectionChange={setActiveSection} />
+    }
+    return sectionComponentMap[section] || <HomeSection />;
+}

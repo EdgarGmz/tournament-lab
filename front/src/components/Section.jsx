@@ -1,5 +1,5 @@
 // Section helper component for DRY
-function Section({ id, title, children, image, imageAlt, imageClass, alt, center, className }) {
+function SectionCard({ id, title, children, image, imageAlt, imageClass, alt, center, className }) {
   return (
     <section
       id={id}
@@ -25,4 +25,4 @@ function Section({ id, title, children, image, imageAlt, imageClass, alt, center
   );
 }
 
-export default Section;
+export default SectionCard;

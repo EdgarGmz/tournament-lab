@@ -1,10 +1,12 @@
-import '../../../css/error-message.css';
+import { RiErrorWarningLine } from "react-icons/ri";
+
 const ErrorMessage = ({ message }) => {
     return (
         <div className='error'>
-            {message}
+            <RiErrorWarningLine/> {message}
         </div>
     );
 }
 
 export default ErrorMessage;
+
