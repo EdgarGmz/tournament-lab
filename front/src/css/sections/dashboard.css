@@ -1,0 +1,33 @@
+/* dashboard.css */
+
+/* Contenedor general */
+.dashboard {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-main);
+}
+
+/* Contenido principal */
+.dashboard-content {
+  margin-left: 240px;
+  padding: 2rem;
+  width: 100%;
+  transition: margin-left var(--transition);
+}
+
+/* Ajuste cuando la barra lateral está colapsada */
+.sidenav.collapsed ~ .dashboard-content {
+  margin-left: 72px;
+}
+
+/* Caja de contenido */
+.dashboard-content > .content-box {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  box-shadow: var(--box-shadow);
+  transition: background-color var(--transition), box-shadow var(--transition);
+}

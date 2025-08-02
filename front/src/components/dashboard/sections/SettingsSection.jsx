@@ -4,7 +4,7 @@ import { useState } from 'react'
 // COMPONENTS
 
 // CSS
-import '../../../css/settings-section.css'
+// import '../../../css/settings-section.css'
 
 const SettingsSection = () => {
     const [ userName, setUserName ] = useState("")

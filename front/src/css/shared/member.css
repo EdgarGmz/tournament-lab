@@ -1,0 +1,71 @@
+.member-container {
+  perspective: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;  
+}
+
+.card {
+  width: 180px;
+  height: 250px;
+  animation: float 3s ease-in-out infinite;
+  position: relative;
+  background-color: transparent;
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s;
+  
+}
+
+.card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: none;
+}
+
+.card-face img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+}
+
+.card-label {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  color: var(--color-accent);
+  text-align: center;
+  padding: 0.5rem;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+/* Parte trasera */
+.card-back {
+  transform: rotateY(180deg);
+}
+
+/* Flotación */
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}

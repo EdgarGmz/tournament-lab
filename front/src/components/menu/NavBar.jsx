@@ -7,20 +7,31 @@ import ButtonBar from "./ButtonBar"
 import ItemNavBar from "./ItemNavBar"
 
 // CSS
-import "../../css/menu-bar.css"
+// import "../../css/menu-bar.css"
 
 const NavBar = ({ menuOpen, toggleMenu, onSelectSection }) => {
   const navigate = useNavigate();
 
   const handleItemClick = (item) => {
-    if (item.section) onSelectSection(item.section)
-    else if (item.logout) {
-      // Borramos el token del almacenamiento local
+    if (item.section) {
+      onSelectSection(item.section)
+      return
+    }
+    
+    if (item.logout) {
+      const confirmed = window.confirm('¿Deseas cerrar sesión?')
+
+      if (!confirmed) return
+      
+      // Limpiar el localStorage
       localStorage.removeItem('token')
+      
 
-      // Mostramos una alerta al usuario
-      alert('Haz cerrado sesión!')
+      // Confirmación del usuario
+      alert(`¡Haz finalizado la sesión, hasta pronto ${localStorage.getItem('user_name').toUpperCase()}!`)
+      localStorage.removeItem('user_name')
 
+      // Rederigir al inicio
       navigate('/')
     }
   }

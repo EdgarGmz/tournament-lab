@@ -1,0 +1,80 @@
+/* Botón base */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: var(--font-main);
+    font-size: 1rem;
+    font-weight: 600;
+
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+
+    transition: background-color var(--transition), transform var(--transition), color var(--transition);
+}
+
+/* Botón primario */
+.btn-primary {
+    background-color: var(--color-primary);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-hover);
+    transform: translateY(-1px);
+}
+
+/* Botón secundario (bordeado) */
+.btn-outline {
+    background: transparent;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+}
+
+.btn-outline:hover {
+    background-color: var(--color-primary);
+    color: #fff;
+}
+
+/* Botón gris para cancelar o neutral */
+.btn-secondary {
+    background-color: #444;
+    color: #eee;
+}
+
+.btn-secondary:hover {
+    background-color: #555;
+}
+
+/* Botón Deshabilitado */
+.btn:disabled,
+.btn.btn:disabled {
+    background-color: #333;
+    color: #888;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Tamaños */
+.btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+}
+
+.btn-lg {
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+}
+
+/* Botón con ícono */
+.btn-icon {
+    gap: 0.5rem;
+}
+
+.btn-icon i,
+.btn-icon svg {
+    font-size: 1.2rem;
+}

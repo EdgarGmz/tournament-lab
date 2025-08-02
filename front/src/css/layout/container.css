@@ -1,0 +1,47 @@
+/* Container general de centrado */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Contenedor más estrecho (util para formularios o tarjetas) */
+.container-sm {
+    max-width: 600px;
+    padding: 1.5rem;
+    margin: 0 auto;
+}
+
+/* Contenedor para secciones centradas */
+.section {
+    padding: 3rem 1rem;
+    margin: 0 auto;
+    background-color: var(--color-bg-secondary);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+/* Variante sin fondo */
+.section.clear {
+    background-color: transparent;
+    box-shadow: none;
+}
+
+/* Título principal de la sección */
+.section-title {
+    font-size: 1.75rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: bold;
+    color: var(--color-primary)
+}
+
+/* Contenedor flexible (para listas, tarjetas, filtros, etc.) */
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: flex-start;
+}

@@ -2,16 +2,15 @@
 import { useEffect, useState } from 'react';
 
 // Components
+import TournamentCard from './TournamentCard.jsx';
+import SectionCard from '../../Section.jsx';
+
+// Icons
 import { BsGrid3X3GapFill } from "react-icons/bs";
 import { MdOutlineSearch } from "react-icons/md";
 import { TfiViewListAlt } from "react-icons/tfi";
-// import { tournaments } from '../../../constants/constanst.js';
-import TournamentCard from './TournamentCard.jsx';
 
-// CSS
-import '../../../css/container-filter.css';
-
-const ContainerFilter = ({ statusFilter }) => {
+const ContainerFilter = ({ statusFilter, onSectionChange }) => {
 
     const [tournaments, setTournaments] = useState([]);
     const  [ order, setOrder ]  = useState('recent')
@@ -111,7 +110,7 @@ const ContainerFilter = ({ statusFilter }) => {
                 })
                 // Si la respuesta es exitosa
                 if (response.ok) {
-                    const data = await response.json() // <- Convertimos la respuesta a json.
+                    const data = await response.json() 
                     setTournaments(data)
                 } else {
                     // Si hay un error en la respuesta (ejemplo: 401 No autorizado)
@@ -124,13 +123,62 @@ const ContainerFilter = ({ statusFilter }) => {
         }
         // Llamamos a la función que queremos acabamos de crear
         fetchTournament()
-    }, []) // <- El [] vacío significa que este código se ejecutará solo una vez 
+    }, []) 
 
+    // Funcionalidad para mensaje 'No encontrado'
+    const SortedTournamentCard = () => {
+        return (
+            sorted.map((tournament) => (
+                <TournamentCard
+                    key={tournament.id}
+                    id={tournament.id}
+                    name={tournament.name}
+                    status={tournament.status}
+                    participants={tournament.participants.length}
+                    description={tournament.description}
+                    startDate={tournament.startDate}
+                    endDate={tournament.endDate}
+                    champion={tournament.champion}
+                    reasonCancellation={tournament.reasonCancellation}
+                    onDelete={handleDeleteTournament}
+                />
+            ))
+        )
+    }
+
+    const LengthTournamentCard = SortedTournamentCard().length
+
+    const getNotFoundMessage = () => {
+        switch(statusFilter){
+            case 'upcoming':
+                return <SectionCard id="no-tournaments-active" title="No hay torneos activos" alt={true} center={true} className="empty-section">
+                    <button onClick={() => onSectionChange('crear')}> Crear Torneo </button>
+                </SectionCard>
+
+            case 'completed':
+                return <SectionCard id="no-tournaments-completed" title="No hay torneos completados" alt={true} center={true} className="empty-section">
+                    <button onClick={() => onSectionChange('activos')}> Ir a Torneos Activos </button> 
+                </SectionCard>
+            
+            case 'canceled':
+                return <SectionCard id="no-tournaments-canceled" title="No hay torneos  cancelados" alt={true} center={true} className="empty-section">
+                    <button onClick={() => onSectionChange('activos')}> Ir a Torneos Activos </button> 
+                </SectionCard>
+                
+            case 'totales':
+                return <SectionCard id="no-tournaments-total" title="No hay torneos registrados" alt={true} center={true} className="empty-section">
+                    <button onClick={() => onSectionChange('crear')}> Crear Torneo </button> 
+                </SectionCard>  
+            default:
+                return <SectionCard id="no-tournaments" title="No hay torneos registrados" alt={true} center={true} className="empty-section">
+                    <p>Error!</p>
+                </SectionCard>
+        }
+    }
 
     return (
         <div className="container-filter">
             <div className="filter-toolbar">
-
                 {/* BUSCAR */}
                 <div className='search-box'>
                     <input
@@ -182,22 +230,8 @@ const ContainerFilter = ({ statusFilter }) => {
             </div>
 
             {/* TOURNAMENT-CARDS */}
-            <div className={view === "grid" ? "grid-view" : "list-view"}>
-                {sorted.map((tournament) => (
-                    <TournamentCard
-                        key ={ tournament.id }
-                        id = { tournament.id }
-                        name ={ tournament.name }
-                        status ={ tournament.status }
-                        participants ={ tournament.participants.length }
-                        description ={ tournament.description }
-                        startDate ={ tournament.startDate }
-                        endDate ={ tournament.endDate }
-                        champion ={ tournament.champion }
-                        reasonCancellation ={tournament.reasonCancellation}
-                        onDelete = {handleDeleteTournament}
-                    />
-                ))}
+            <div className={view === "grid" ? "grid-view" : "list-view"}>                
+                { LengthTournamentCard > 0 ? SortedTournamentCard() : <p>{getNotFoundMessage()}</p> }                
             </div>
         </div>
         

@@ -60,6 +60,11 @@ namespace TournamentLab.Core.Services
             return await _tournamentRepository.GetAllTournamentsAsync();
         }
 
+        public async Task<IEnumerable<Tournament>> GetTournamentsByUserIdAsync(int userId)
+        {
+            return await _tournamentRepository.GetTournamentByUserIdAsync(userId);
+        }
+
         public async Task<Tournament?> UpdateTournamentAsync(
             int id,
             string? name,

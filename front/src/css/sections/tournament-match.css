@@ -1,0 +1,148 @@
+/* tournament-match.css */
+
+/* === CONTENEDOR PRINCIPAL === */
+.tournament-layout {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: var(--color-text);
+  font-family: var(--font-main);
+}
+
+/* === COLUMNA IZQUIERDA: INFO DEL TORNEO === */
+.tournament-info {
+  background-color: var(--color-bg-secondary);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  height: fit-content;
+}
+
+.tournament-info h2 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: var(--color-primary);
+}
+
+.tournament-info p {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+
+/* === COLUMNA CENTRAL: BRACKETS === */
+.bracket-container {
+  text-align: center;
+  overflow-x: auto;
+  padding: 1rem;
+}
+
+/* === COLUMNA DERECHA: AYUDA VISUAL === */
+.help {
+  background-color: #1a261a;
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  border-left: 4px solid #4ade80;
+  font-size: 0.95rem;
+  height: fit-content;
+  color: var(--color-text);
+}
+
+.help h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #8bffb0;
+}
+
+.help p {
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+
+/* === EMPAREJAMIENTOS === */
+.match {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+/* Botón de jugador */
+button {
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--border-radius);
+  font-size: 0.95rem;
+  font-weight: 500;
+  border: 1px solid var(--color-border);
+  background-color: #222;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: background-color var(--transition), transform var(--transition);
+}
+
+button:hover {
+  background-color: var(--color-primary);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+/* Botón marcado como ganador */
+button.winner {
+  background-color: #34d399;
+  border-color: #059669;
+  color: #fff;
+  font-weight: bold;
+  box-shadow: 0 0 0 2px #05966966 inset;
+}
+
+/* Etiqueta de bye */
+.bye {
+  font-style: italic;
+  color: #999;
+  font-size: 0.9rem;
+}
+
+/* Botón para pasar de ronda */
+.next-round {
+  margin-top: 2rem;
+  background-color: var(--color-primary);
+  color: white;
+  font-weight: bold;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius);
+  border: none;
+  cursor: pointer;
+  transition: background-color var(--transition), transform var(--transition);
+}
+
+.next-round:hover {
+  background-color: var(--color-primary-hover);
+  transform: translateY(-1px);
+}
+
+.next-round:disabled {
+  background-color: #444;
+  color: #999;
+  cursor: not-allowed;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .tournament-layout {
+    display: block;
+  }
+
+  .tournament-info,
+  .help {
+    margin-bottom: 2rem;
+  }
+
+  .bracket-container {
+    padding: 0;
+  }
+}

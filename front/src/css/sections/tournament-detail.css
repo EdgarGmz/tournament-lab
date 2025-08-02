@@ -1,0 +1,164 @@
+/* === LAYOUT PRINCIPAL === */
+.tournament-container {
+  display: grid;
+  grid-template-columns: 280px 1fr 280px;
+  height: 100vh;
+  font-family: var(--font-main);
+  background-color: var(--color-bg);
+}
+
+/* === DETALLES IZQUIERDOS === */
+.tournament-detail {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text);
+  padding: 2rem 1.5rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-y: auto;
+
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
+}
+
+.tournament-detail h2 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: var(--color-primary);
+}
+
+.tournament-detail p,
+.tournament-detail li {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+}
+
+.tournament-detail ul {
+  margin-top: 0.5rem;
+  padding-left: 1.25rem;
+}
+
+/* === ESTADO DEL TORNEO === */
+.status {
+  display: inline-block;
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  text-transform: capitalize;
+  font-size: 0.875rem;
+}
+
+.status.upcoming {
+  background-color: #facc15;
+  color: #1f2937;
+}
+
+.status.active {
+  background-color: #34d399;
+  color: #064e3b;
+}
+
+.status.completed {
+  background-color: #4ade80;
+  color: #14532d;
+}
+
+.status.canceled {
+  background-color: #f87171;
+  color: #7f1d1d;
+}
+
+/* === BRACKET CENTRAL === */
+.tournament-bracket {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2.5rem;
+  overflow-x: auto;
+  background-color: var(--color-bg-secondary);
+  border-left: 1px solid var(--color-border);
+  border-right: 1px solid var(--color-border);
+}
+
+/* === PANEL DERECHO DE AYUDA === */
+.help {
+  background-color: #1a261a;
+  color: var(--color-text);
+  border-left: 4px solid #4ade80;
+
+  padding: 2rem;
+  overflow-y: auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-size: 0.95rem;
+}
+
+.help h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #8bffb0;
+}
+
+.help p {
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+
+/* === BOTONES DE ACCIÓN === */
+.tournament-actions {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.tournament-actions button {
+  padding: 0.75rem;
+  font-weight: bold;
+  font-size: 1rem;
+
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+
+  transition: background-color var(--transition), transform var(--transition);
+}
+
+.tournament-actions button:hover {
+  background-color: var(--color-primary-hover);
+  transform: translateY(-1px);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 1024px) {
+  .tournament-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    height: auto;
+  }
+
+  .tournament-detail,
+  .tournament-bracket,
+  .help {
+    border: none;
+    padding: 1.5rem;
+  }
+
+  .tournament-detail {
+    order: 1;
+  }
+
+  .tournament-bracket {
+    order: 2;
+  }
+
+  .help {
+    order: 3;
+    background-color: #172a1b;
+    border-top: 4px solid #4ade80;
+  }
+}

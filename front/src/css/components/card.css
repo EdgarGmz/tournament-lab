@@ -1,0 +1,47 @@
+/* Estilos para cualquier tarjeta */
+.card {
+    background-color: var(--color-bg-secondary);
+    color: var(--color-text);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 1.5rem;
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+/* Hover con elevación */
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(255, 87, 34, 0.2);
+}
+
+/* Título dentro de la tarjeta */
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--color-primary);
+}
+
+/* Texto o contenido dentro de la tarjeta */
+.card-content {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-text);
+}
+
+/* Área de acciones (botones u opciones) */
+.card-actions {
+    margin-top: 1.25rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+/* Variantes de tamaño */
+.card-sm {
+    padding: 1rem;
+}
+
+.card-lg {
+    padding: 2rem;
+}

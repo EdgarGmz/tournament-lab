@@ -1,0 +1,123 @@
+/* Contenedor principal de filtros */
+.container-filter {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background-color: var(--color-bg-secondary);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+/* Barra de herramientas de filtros */
+.filter-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* Etiqueta */
+.filter-toolbar label {
+  font-weight: bold;
+  color: var(--color-text);
+  margin-right: 0.5rem;
+  font-size: 0.95rem;
+}
+
+/* Select de ordenamiento */
+.select-order {
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  outline: none;
+  
+
+  transition: border-color var(--transition);
+}
+
+.select-order:focus {
+  border-color: var(--color-primary);
+}
+
+/* Botones de toggle de vista */
+.view-toggle button {
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: var(--border-radius);
+  background-color: #444;
+  color: #eee;
+  cursor: pointer;
+  transition: background-color var(--transition), transform var(--transition);
+  margin-right: 0.5rem; /* Espacio entre botones */
+}
+
+.view-toggle button:last-child {
+  margin-right: 0; /* Elimina el margen del último botón */
+}
+
+.view-toggle button:hover {
+  background-color: var(--color-primary);
+  color: white;
+  transform: translateY(-1px);
+}
+
+.view-toggle button.active {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+/* Vista de tarjetas */
+.grid-view {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+/* Vista de lista */
+.list-view {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* Caja de búsqueda */
+.search-box {
+  display: flex;
+  align-items: center;
+  background-color: var(--color-bg);
+  border: 2px solid var(--color-border);
+  border-radius: var(--border-radius);
+  padding: 0.5rem 1rem;
+  width: 100%;
+  max-width: 400px;
+  transition: border-color var(--transition);
+}
+
+.search-box:hover,
+.search-box:focus-within {
+  border-color: var(--color-primary);
+}
+
+.search-box input {
+  flex: 1;
+  background-color: transparent;
+  border: none;
+  color: var(--color-text);
+  font-size: 1rem;
+  padding-right: 0.5rem;
+  outline: none;
+}
+
+.search-icon {
+  font-size: 1.25rem;
+  color: var(--color-primary);
+  cursor: pointer;
+}

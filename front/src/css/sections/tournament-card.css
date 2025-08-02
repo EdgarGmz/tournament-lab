@@ -1,0 +1,123 @@
+.tournament-card {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text);
+
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  margin: 1rem 0;
+
+  box-shadow: var(--box-shadow);
+  transition: transform var(--transition), box-shadow var(--transition);
+
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Elevación al hover */
+.tournament-card:hover {
+  color: var(--color-text);
+  transform: translateY(-4px);
+  background: var(--color-bg-gradient);
+  box-shadow: 0 10px 30px rgba(255, 87, 34, 0.15);
+  font-size: var(--font-size-lg);
+}
+
+/* Título principal */
+.main-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+/* Descripción breve */
+.description {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+  display: block;
+  color: var(--color-text);
+}
+
+/* Información extendida oculta al inicio */
+.extra-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+
+  transition: opacity 0.3s ease, max-height 0.4s ease;
+}
+
+/* Mostrar en hover */
+.tournament-card:hover .extra-info {
+  opacity: 1;
+  max-height: 500px; /* Ajustable si hay más info */
+}
+
+/* Acciones */
+.card-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+/* Estilo base para todos los botones */
+.action-button {
+  width: 44px;
+  height: 44px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 1.25rem;
+  cursor: pointer;
+
+  color: white;
+  transition: background-color var(--transition), transform var(--transition);
+}
+
+/* Eliminar - Rojo */
+.action-button.delete {
+  background-color: var(--color-danger);
+}
+.action-button.delete:hover {
+  background-color: #c62828;
+  transform: scale(1.05);
+}
+
+/* Ir a torneo - Verde */
+.action-button.play {
+  background-color: var(--color-success);
+}
+.action-button.play:hover {
+  background-color: #2e7d32;
+  transform: scale(1.05);
+}
+
+/* Info o Detalles - Azul */
+.action-button.info {
+  background-color: var(--color-info);
+}
+.action-button.info:hover {
+  background-color: #0288d1;
+  transform: scale(1.05);
+}
+
+.action-button svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: white !important;
+  fill: currentColor !important;
+  stroke: currentColor !important;
+  display: block;
+}
+ 

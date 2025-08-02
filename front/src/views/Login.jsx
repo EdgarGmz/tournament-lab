@@ -1,22 +1,31 @@
-// Components
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+// Hooks
+import { useState, useEffect, useRef } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 
-// Define API_URL or import it from your config
-const API_URL = import.meta.env.VITE_API_URL;
-
-// CSS
-import '../css/auth.css';
+//Image
+import logo from '../img/logo.png';
 
 const Login = () => {
-    const [usuario, setUsuario] = useState('')
+    const location = useLocation();
+
+    const [usuario, setUsuario] = useState(location.state?.username || '')
     const [password, setPassword] = useState('')
     const navigate = useNavigate()
+    const passwordInputRef = useRef(null);
+
+    useEffect(() => {
+  // Si viene desde registro, enfoca el campo de contraseña
+  if (location.state?.username && passwordInputRef.current) {
+    passwordInputRef.current.focus();
+  }
+}, [location]);
+
 
     const handleSumbit = async (e) => {
         e.preventDefault()
         try{
             // Hacemos la petición POST a nuestro backend
+            const API_URL = import.meta.env.VITE_API_URL;
             const response = await fetch(`${API_URL}/auth/login`, {
                 method: 'POST',
                 headers: {
@@ -58,13 +67,16 @@ const Login = () => {
 
     return (
         <div className='auth-container'>
-            <div className='auth-card'>
-                <form onSubmit={handleSumbit}>
-                    <h2 >Iniciar Sesión</h2>
+            <div className='auth-card'>                
+                <form  onSubmit={handleSumbit}>
+
+                    <div className='auth-header center' onClick={() => navigate('/') }>
+                        <img src={logo} alt='logo' />
+                        <h2 className='text-center'>Iniciar Sesión</h2>
+                    </div>
 
                     {/* Input de Usuario */}
-
-                    <div className="input-group">
+                    <div className="input input-group">
                         <i className="fas fa-user icon" />
                         <input
                         type="text"
@@ -73,19 +85,22 @@ const Login = () => {
                         onChange={e => setUsuario(e.target.value)}
                         required
                         className="form-input"
+                        autoComplete='off'
                         />
                     </div>
 
                     {/* Input de Contraseña */}
-                    <div className="input-group">
+                    <div className="input input-group">
                         <i className="fas fa-lock icon" />
                         <input
                         type="password"
                         placeholder="Contraseña"
                         value={password}
                         onChange={e => setPassword(e.target.value)}
+                        ref={passwordInputRef}
                         required
                         className="form-input"
+                        autoComplete='off'
                         />
                     </div>
 
@@ -93,7 +108,7 @@ const Login = () => {
                     <div>
                         <button type="submit">Ingresar</button>
                     </div>
-
+                    <hr />
                     {/* Enlace para registro */}
                     <p>
                         ¿No tienes cuenta? <a href="/register">Crea una</a>
