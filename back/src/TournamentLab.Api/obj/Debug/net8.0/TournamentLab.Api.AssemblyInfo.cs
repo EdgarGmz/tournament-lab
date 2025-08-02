@@ -14,10 +14,14 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 <<<<<<< HEAD
+<<<<<<< HEAD
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 =======
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b015490cf0347e94dddcaea4fc8c6481881e8d51")]
 >>>>>>> 3ab530227b4d427a715516df7ae8d48ccb8292ee
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3ab530227b4d427a715516df7ae8d48ccb8292ee")]
+>>>>>>> 24e4fe75ccb0fb2893dea914440bcd127679966e
 [assembly: System.Reflection.AssemblyProductAttribute("TournamentLab.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TournamentLab.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
