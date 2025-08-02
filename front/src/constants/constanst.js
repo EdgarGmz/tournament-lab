@@ -1,5 +1,5 @@
 // COMPONENTS
-import { FcCancel, FcExport, FcIdea, FcManager, FcOk, FcPlus, FcSettings } from "react-icons/fc";
+import { FcCancel, FcExport, FcIdea, FcManager, FcOk, FcPlus } from "react-icons/fc";
 import { TfiCup } from "react-icons/tfi";
 
 const tournamentBase = (overrides) => ({
@@ -415,15 +415,10 @@ export const navSections = [
   {
     items: [
       {
-        icon: FcSettings,
-        name: "Configuración",
-        section: "configuracion",
-      },
-      {
         icon: FcExport,
         name: "Cerrar Sesión",
         logout: true,
-      },
+      }
     ],
   },
 ];
