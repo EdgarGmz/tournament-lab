@@ -142,7 +142,6 @@ const TournamentDetail = () => {
     <div className="tournament-container"> 
         <aside className="tournament-detail">
             <h2>{name}</h2>
-            <p><b>Estado:</b> {status}</p>
             <p><b>Descripción:</b> {description}</p>
             <p><b>Participantes:</b></p>
             <ul>
