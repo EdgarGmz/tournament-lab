@@ -11,7 +11,7 @@ namespace TournamentLab.Core.Entities
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public string Description { get; set; } = string.Empty;
-        public string Tournament_Type { get; set; }
+        public string Tournament_Type { get; set; } = string.Empty;
         public string? Champion { get; set; }
         public string? ReasonCancellation { get; set; }
 

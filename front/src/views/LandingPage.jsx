@@ -12,7 +12,7 @@ import { TbSql } from "react-icons/tb";
 
 // Images
 import logo from '../img/logo.png';
-import escuela from '../img/logo_ut.png'
+import logo_ut from '../img/logo_ut.png'
 import helen1 from '../img/members/helen1.jpg';
 import helen2 from '../img/members/helen2.jpg';
 import grecia1 from '../img/members/grecia2.jpg';
@@ -208,7 +208,7 @@ const LandingPage = () => {
             <p>
               Universidad Tecnológica Santa Catarina – Ingeniería y Gestión de Desarrollo de Software.
             </p>
-            <img src={escuela} alt="Logo Escuela" className="loguito" width="400" height="300" />
+            <img src={logo_ut} alt="Logo Escuela" className="loguito" width="400" height="300" />
           </Section>
 
 

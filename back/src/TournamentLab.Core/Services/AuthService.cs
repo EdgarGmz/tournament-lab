@@ -36,7 +36,6 @@ namespace TournamentLab.Core.Services
 
             // Guardar en la base de datos usando el repositorio
             await _authRepository.AddUserAsync(newUser);
-            await _authRepository.SaveChangesAsync();
 
             return newUser;
         }

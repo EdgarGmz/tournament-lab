@@ -22,11 +22,9 @@ namespace TournamentLab.Infrastructure.Repositories
         public async Task AddUserAsync(User user)
         {
             await _dbContext.Users.AddAsync(user);
-        }
-
-        public async Task SaveChangesAsync()
-        {
             await _dbContext.SaveChangesAsync();
         }
+
+        
     }
 }

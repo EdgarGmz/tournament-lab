@@ -11,6 +11,7 @@ const Register = () => {
     const[username, setUserName] = useState('')
     const[email, setEmail] = useState('')
     const[password, setPassword] = useState('')
+    const [showPassword, setShowPassword] = useState(false)
     const[confirmPassword, setConfirmPassword] = useState('')
     const navigate = useNavigate()
 
@@ -86,8 +87,8 @@ const Register = () => {
                     return { text: 'Segruidad: Baja', className: 'text-danger', barClass: 'bar-weak'};
                 case 2:
                 case 3:
-                    return { text: 'Seguridad: Media', className: 'text-warning', barClass: 'bar-medium' };
                 case 4:
+                    return { text: 'Seguridad: Media', className: 'text-warning', barClass: 'bar-medium' };                
                 case 5:
                     return { text: 'Seguridad: Alta', className: 'text-success', barClass: 'bar-strong' };
                 default:
@@ -106,7 +107,7 @@ const Register = () => {
 
                    <div className='auth-header center' onClick={() => navigate('/') }>
                         <img src={logo} alt="logo" />
-                        <h2 className='text-center'>Registrate</h2>
+                        <h2 className='text-center'>Registrate!</h2>
                     </div>
 
                     <div className="input-group">
@@ -131,25 +132,33 @@ const Register = () => {
                         />
                     </div>
 
-                    <div className="input-group">
+                    <div className="input-group password-group">
                         <i className="fas fa-lock icon" />
                         <input
-                            type="password"
+                            type={showPassword ? 'text' : 'password'}
                             placeholder="Contraseña"
                             className="form-control"
+                            value={password}
                             onChange={e => setPassword(e.target.value)}
                             required
                         />
+                        <button
+                            type="button"
+                            onClick={() => setShowPassword(prev => !prev)}
+                            className="toggle-password"
+                            title={showPassword ? 'Ocultar' : 'Mostrar'}
+                        >
+                            {showPassword ? <i className="fas fa-eye-slash"></i> : <i className="fas fa-eye"></i>}
+                        </button>
+                    </div>
                     { password && (
-                        <>
+                        <div className="password-strength-container">
                             <div className="password-strength">
                                 <div className={`password-bar ${passwordLabel.barClass}`}></div>
                             </div>
                             <small className={passwordLabel.className}>{passwordLabel.text}</small>
-                        </>
+                        </div>
                     )}
-
-                    </div>
 
                     <div className="input-group">
                         <i className="fas fa-lock icon" />
@@ -162,7 +171,7 @@ const Register = () => {
                         />
                     </div>
 
-                    <button type="submit">Registrar</button>
+                    <button className="register" type="submit">Registrar</button>
 
                     <hr />
 

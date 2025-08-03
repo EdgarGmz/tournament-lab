@@ -10,6 +10,7 @@ const Login = () => {
 
     const [usuario, setUsuario] = useState(location.state?.username || '')
     const [password, setPassword] = useState('')
+    const [showPassword, setShowPassword] = useState(false)
     const navigate = useNavigate()
     const passwordInputRef = useRef(null);
 
@@ -90,10 +91,10 @@ const Login = () => {
                     </div>
 
                     {/* Input de Contraseña */}
-                    <div className="input input-group">
-                        <i className="fas fa-lock icon" />
-                        <input
-                        type="password"
+                    <div className="input-group password-group">
+                    <i className="fas fa-lock icon" />
+                    <input
+                        type={showPassword ? 'text' : 'password'}
                         placeholder="Contraseña"
                         value={password}
                         onChange={e => setPassword(e.target.value)}
@@ -101,12 +102,21 @@ const Login = () => {
                         required
                         className="form-input"
                         autoComplete='off'
-                        />
+                    />
+                    <button
+                        type="button"
+                        onClick={() => setShowPassword(prev => !prev)}
+                        className="toggle-password"
+                        title={showPassword ? 'Ocultar' : 'Mostrar'}
+                    >
+                        {showPassword ? <i className="fas fa-eye-slash"></i> : <i className="fas fa-eye"></i>}
+                    </button>
                     </div>
+
 
                     {/* Botón */}
                     <div>
-                        <button type="submit">Ingresar</button>
+                        <button type="submit" className="btn-submit">Ingresar</button>
                     </div>
                     <hr />
                     {/* Enlace para registro */}

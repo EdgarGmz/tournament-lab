@@ -3,7 +3,7 @@ namespace TournamentLab.Api.DTOs
     public class TournamentDto
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
         public string Status { get; set; } = string.Empty;
         public List<string> Participants { get; set; } = new List<string>();
         public DateTime StartDate { get; set; }

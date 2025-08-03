@@ -57,7 +57,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 ValidateIssuerSigningKey = true,
                 ValidIssuer = builder.Configuration["Jwt:Issuer"],
                 ValidAudience = builder.Configuration["Jwt:Audience"],
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!))
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"] ?? ""))
             };
         });
 // Añadir servicio de autorización
@@ -118,13 +118,13 @@ app.MapPost("/api/tournaments", async (
 
     // Llamar al servicio "desempacando" los datos del DTO
     var newTournamentEntity = await tournamentService.CreateTournamentAsync(
-        tournamentDto.Name,
-        tournamentDto.Description,
-        tournamentDto.Participants,
+        tournamentDto.Name ?? "",
+        tournamentDto.Description ?? "",
+        tournamentDto.Participants ?? new List<string>(),
         userId,
         tournamentDto.StartDate ?? DateTime.Today,
         tournamentDto.EndDate,
-        tournamentDto.Tournament_Type
+        tournamentDto.Tournament_Type ?? ""
     );
 
     // Mapear la entidad de respuesta a un DTO para no exponer la entidad de BD
@@ -168,8 +168,8 @@ app.MapGet("/api/tournaments", async (TournamentService tournamentService, HttpC
         Description = t.Description,
         Tournament_Type = t.Tournament_Type,
         UserId = t.UserId,
-        Champion = t.Champion,
-        ReasonCancellation = t.ReasonCancellation
+        Champion = t.Champion ?? "",
+        ReasonCancellation = t.ReasonCancellation ?? ""
     });
 
     return Results.Ok(tournamentDto);
@@ -197,8 +197,8 @@ app.MapGet("/api/tournaments/{id}", async (int id, TournamentService tournamentS
         Description = tournament.Description,
         Tournament_Type = tournament.Tournament_Type,
         UserId = tournament.UserId,
-        Champion = tournament.Champion,
-        ReasonCancellation = tournament.ReasonCancellation
+        Champion = tournament.Champion ?? "",
+        ReasonCancellation = tournament.ReasonCancellation ?? ""
     };
 
     return Results.Ok(tournamentDto);
@@ -211,12 +211,12 @@ app.MapPut("/api/tournaments/{id}", async (int id,
 {
     var UpdatedTournament = await tournamentService.UpdateTournamentAsync(
         id,
-        tournamentDto.Name,
-        tournamentDto.Description,
-        tournamentDto.Participants,
+        tournamentDto.Name ?? "",
+        tournamentDto.Description ?? "",
+        tournamentDto.Participants ?? new List<string>(),
         tournamentDto.StartDate,
         tournamentDto.EndDate,
-        tournamentDto.Tournament_Type,
+        tournamentDto.Tournament_Type ?? "",
         tournamentDto.Status,
         tournamentDto.Champion,
         tournamentDto.ReasonCancellation
@@ -293,7 +293,7 @@ app.MapPost("/api/auth/login", async (LoginUserDto loginDto, AuthService authSer
     }
 
     // Generar el JWT si las credenciales son correctas 
-    var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["Jwt:Key"]));
+    var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["Jwt:Key"] ?? ""));
     var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
     var claims = new[]{
