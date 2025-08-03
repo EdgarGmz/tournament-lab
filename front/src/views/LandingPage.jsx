@@ -75,7 +75,7 @@ const members = [
   { name: "Helen Estefania", role: "Scrum Master", img1: helen1, img2: helen2 },
   { name: "Grecia González", role: "Analista de Negocios", img1: grecia1, img2: grecia2 },
   { name: "Aldo Chávez", role: "Diseñador UX/UI", img1: aldo1, img2: aldo2 },
-  { name: "Adrián Fuentes", role: "Tester", img1: adrian1, img2: adrian2 },
+  { name: "Adrián Fuentes", role: "Tester/QA", img1: adrian1, img2: adrian2 },
   { name: "Edgar Gómez", role: "Desarrollador", img1: edgar1, img2: edgar2 },
 ];
 
