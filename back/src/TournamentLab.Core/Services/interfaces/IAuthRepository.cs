@@ -6,6 +6,5 @@ namespace TournamentLab.Core.Services
     {
         Task<User?> GetUserByUsernameOrEmailAsync(string username, string email);
         Task AddUserAsync(User user);
-        Task SaveChangesAsync();
     }
 }

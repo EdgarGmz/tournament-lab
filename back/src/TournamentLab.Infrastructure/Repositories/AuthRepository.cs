@@ -24,7 +24,5 @@ namespace TournamentLab.Infrastructure.Repositories
             await _dbContext.Users.AddAsync(user);
             await _dbContext.SaveChangesAsync();
         }
-
-        
     }
 }

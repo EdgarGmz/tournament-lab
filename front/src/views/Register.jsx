@@ -11,16 +11,17 @@ const Register = () => {
     const[username, setUserName] = useState('')
     const[email, setEmail] = useState('')
     const[password, setPassword] = useState('')
-    const [showPassword, setShowPassword] = useState(false)
     const[confirmPassword, setConfirmPassword] = useState('')
+
     const navigate = useNavigate()
+    const [showPassword, setShowPassword] = useState(false)
 
     // Función para manejar el envío de formulario
     const handleSubmit = async (e) =>{
         e.preventDefault();
         
         const API_URL = import.meta.env.VITE_API_URL
-        console.log("La URL de la API que se está usando es:", import.meta.env.VITE_API_URL);
+        console.log("La URL de la API que se está usando es:", API_URL);
         
         // Validación simple: Las contraseñas deven coincidir
         if(password !== confirmPassword){
@@ -46,23 +47,23 @@ const Register = () => {
             // Petición POST al endpoint de registro
             const apiUrl = `${import.meta.env.VITE_API_URL}`
             const response = await fetch(`${apiUrl}/auth/register`,{
-                method: 'POST',
-                headers:{
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    username,
-                    email,
-                    password
-                })
+            method: 'POST',
+            headers:{
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                username: username, // Se envía tal como el usuario lo ingresa
+                email,
+                password
+            })
             })
 
             if(response.ok){
-                alert('Registro Exitoso! Ahora puedes iniciar sesión.')
-                navigate('/login', { state: { username}})
+            alert('Registro Exitoso! Ahora puedes iniciar sesión.')
+            navigate('/login', { state: { username}})
             }else{
-                const errorData = await response.json()
-                alert(`Error en el registro: ${errorData.message || 'No se pudo completar el registro'}`)
+            const errorData = await response.json()
+            alert(`Error en el registro: ${errorData.message || 'No se pudo completar el registro'}`)
             }
         }catch (error){
             console.error('No se pudo conectar al servidor: ', error)
