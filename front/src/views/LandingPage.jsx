@@ -185,13 +185,14 @@ const LandingPage = () => {
           </Section>
 
           {/* Ventajas */}
-          <Section id="ventajas" title="Ventajas" className='text-center'>
-            <ul >
-              {advantages.map((adv, i) => <li key={i}>{adv}</li>)}
-            </ul>
+          <Section id="ventajas" title="Ventajas" className="text-center">
+            <ol type='A'>
+              {advantages.map((adv, i) => (
+                <li key={i}>{adv}</li>
+              ))}
+            </ol>
           </Section>
 
-          {/* ¿Quiénes somos? */}
           <Section id="quienes-somos" title="¿Quiénes somos?" alt>
             <p>
               Este proyecto fue desarrollado por un equipo de estudiantes apasionados por la tecnología y los juegos.

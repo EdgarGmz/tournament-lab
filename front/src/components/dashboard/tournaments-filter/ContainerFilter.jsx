@@ -231,7 +231,7 @@ const ContainerFilter = ({ statusFilter, onSectionChange }) => {
 
             {/* TOURNAMENT-CARDS */}
             <div className={view === "grid" ? "grid-view" : "list-view"}>                
-                { LengthTournamentCard > 0 ? SortedTournamentCard() : <p>{getNotFoundMessage()}</p> }                
+                { LengthTournamentCard > 0 ? SortedTournamentCard() : <div>{getNotFoundMessage()}</div> }                
             </div>
         </div>
         
