@@ -1,5 +1,6 @@
 // Icons
 import { MdPlayCircleOutline } from 'react-icons/md'
+import { AiOutlineDelete } from "react-icons/ai"
 
 const statusConfig = {
     upcoming: {
@@ -52,9 +53,9 @@ const TournamentCard = (props) => {
                 )}
 
                 <div className="card-actions">
-                <button className="action-button delete" onClick={() => props.onDelete(props.id)}>
-                    ❌ 
-                </button>
+                <a className="action-button delete" onClick={() => props.onDelete(props.id)}>
+                    <AiOutlineDelete/>
+                </a>
 
                 {['upcoming', 'active'].includes(props.status.toLowerCase()) && (
                     <a

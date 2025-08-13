@@ -53,13 +53,13 @@
   transition: opacity 0.3s ease, max-height 0.4s ease;
 }
 
-/* Mostrar en hover */
+
 .tournament-card:hover .extra-info {
   opacity: 1;
-  max-height: 500px; /* Ajustable si hay más info */
+  max-height: 500px; 
 }
 
-/* Acciones */
+
 .card-actions {
   display: flex;
   justify-content: flex-end;
@@ -67,7 +67,7 @@
   margin-top: 1rem;
 }
 
-/* Estilo base para todos los botones */
+
 .action-button {
   width: 44px;
   height: 44px;
@@ -85,7 +85,7 @@
   transition: background-color var(--transition), transform var(--transition);
 }
 
-/* Eliminar - Rojo */
+
 .action-button.delete {
   background-color: var(--color-danger);
 }
@@ -94,7 +94,7 @@
   transform: scale(1.05);
 }
 
-/* Ir a torneo - Verde */
+
 .action-button.play {
   background-color: var(--color-success);
 }
@@ -103,7 +103,7 @@
   transform: scale(1.05);
 }
 
-/* Info o Detalles - Azul */
+
 .action-button.info {
   background-color: var(--color-info);
 }
