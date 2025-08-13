@@ -9,6 +9,7 @@ import Section from '../components/Section';
 import { FaReact, FaDocker, FaBars, FaTimes } from 'react-icons/fa';
 import { SiDotnet, SiVite } from 'react-icons/si';
 import { TbSql } from "react-icons/tb";
+import { VscAzureDevops } from "react-icons/vsc";
 
 // Images
 import logo from '../img/logo.png';
@@ -22,7 +23,7 @@ import aldo2 from '../img/members/aldo2.jpg';
 import adrian1 from '../img/members/adrian1.jpg';
 import adrian2 from '../img/members/adrian2.jpg';
 import edgar1 from '../img/members/edgar1.jpeg';
-import edgar2 from '../img/members/edgar2.jpeg';
+import edgar2 from '../img/members/edgar2.jpg';
 
 const navItems = [
   { href: '#proyecto', label: 'Nuestro Proyecto' },
@@ -37,7 +38,8 @@ const technologies = [
   { label: 'Frontend', value: 'React', icon: <FaReact />, extra: 'con Vite', extraIcon: <SiVite /> },
   { label: 'Backend', value: 'API RESTful con .NET y C#', icon: <SiDotnet /> },
   { label: 'Base de Datos', value: 'SQL Server', icon: <TbSql /> },
-  { label: 'DevOps', value: 'Docker', icon: <FaDocker /> },
+  { label: 'DevOps', value: 'Azure DevOps', icon: <VscAzureDevops /> },
+  { label: 'Contenedor', value: 'Docker (solo en el backend)', icon: <FaDocker /> }
 ];
 
 const methodologies = [
