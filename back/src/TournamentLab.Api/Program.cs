@@ -2,16 +2,17 @@ using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using TournamentLab.Core.Entities;
 using TournamentLab.Core.Services;
 using TournamentLab.Infrastructure.Data;
 using TournamentLab.Infrastructure.Repositories;
 using TournamentLab.Api.DTOs;
-using static BCrypt.Net.BCrypt;
 using System.Text;
 using System.Security.Claims;
 using System.IdentityModel.Tokens.Jwt;
 using System.ComponentModel.DataAnnotations;
+using DotNetEnv;
+
+DotNetEnv.Env.Load();
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,8 +34,18 @@ builder.Services.Configure<ForwardedHeadersOptions>(options =>
     options.ForwardedHeaders =
         ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
 });
+
+// Inicio: logica para construir la cadena de conexion
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+var dbPassword = Environment.GetEnvironmentVariable("DB_PASSWORD");
+
+// Se construye la cadena de conexion final 
+var finalConnectionString = $"{connectionString}Password={dbPassword}";
+
+// Fin: logica para construir la cadena de conexion
 builder.Services.AddDbContext<TournamentLabDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlServer(finalConnectionString));
+
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

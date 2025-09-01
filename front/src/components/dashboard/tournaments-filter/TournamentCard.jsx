@@ -1,7 +1,12 @@
 // Icons
+<<<<<<< Updated upstream
 import { MdPlayCircleOutline } from 'react-icons/md'
 import { AiOutlineDelete } from "react-icons/ai"
 
+=======
+import { MdPlayCircleOutline } from 'react-icons/md';
+import { TiDeleteOutline } from "react-icons/ti";
+>>>>>>> Stashed changes
 const statusConfig = {
     upcoming: {
         bgColor: "#FFF9C4", 
@@ -53,6 +58,7 @@ const TournamentCard = (props) => {
                 )}
 
                 <div className="card-actions">
+<<<<<<< Updated upstream
                 <a className="action-button delete" onClick={() => props.onDelete(props.id)}>
                     <AiOutlineDelete/>
                 </a>
@@ -65,8 +71,22 @@ const TournamentCard = (props) => {
                         rel="noopener noreferrer"
                     >
                     <MdPlayCircleOutline />
+=======
+                    <a className="action-button delete" onClick={() => props.onDelete(props.id)}>
+                        <TiDeleteOutline />
+>>>>>>> Stashed changes
                     </a>
-                )}
+
+                    {['upcoming', 'active'].includes(props.status.toLowerCase()) && (
+                        <a
+                            className="action-button play"
+                            href={`/tournament/${props.id}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                        <MdPlayCircleOutline />
+                        </a>
+                    )}
                 </div>
             </div>
             </div>

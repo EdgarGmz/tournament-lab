@@ -2,28 +2,32 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
-import Member from '../components/Meber';
+import Member from '../components/Member';
 import Section from '../components/Section';
 
 // ICONS
-import { FaReact, FaDocker, FaBars, FaTimes } from 'react-icons/fa';
+import { FaBars, FaDocker, FaReact, FaTimes } from 'react-icons/fa';
 import { SiDotnet, SiVite } from 'react-icons/si';
 import { TbSql } from "react-icons/tb";
 import { VscAzureDevops } from "react-icons/vsc";
 
 // Images
 import logo from '../img/logo.png';
-import logo_ut from '../img/logo_ut.png'
-import helen1 from '../img/members/helen1.jpg';
-import helen2 from '../img/members/helen2.jpg';
-import grecia1 from '../img/members/grecia2.jpg';
-import grecia2 from '../img/members/grecia1.jpg';
-import aldo1 from '../img/members/aldo1.jpg';
-import aldo2 from '../img/members/aldo2.jpg';
+import logo_ut from '../img/logo_ut.png';
 import adrian1 from '../img/members/adrian1.jpg';
 import adrian2 from '../img/members/adrian2.jpg';
+import aldo1 from '../img/members/aldo1.jpg';
+import aldo2 from '../img/members/aldo2.jpg';
 import edgar1 from '../img/members/edgar1.jpeg';
+<<<<<<< Updated upstream
 import edgar2 from '../img/members/edgar2.jpg';
+=======
+import edgar2 from '../img/members/edgar2.jpeg';
+import grecia2 from '../img/members/grecia1.jpg';
+import grecia1 from '../img/members/grecia2.jpg';
+import helen1 from '../img/members/helen1.jpg';
+import helen2 from '../img/members/helen2.jpg';
+>>>>>>> Stashed changes
 
 const navItems = [
   { href: '#proyecto', label: 'Nuestro Proyecto' },

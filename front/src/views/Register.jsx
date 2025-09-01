@@ -46,6 +46,7 @@ const Register = () => {
         try{
             // Petición POST al endpoint de registro
             const apiUrl = `${import.meta.env.VITE_API_URL}`
+            console.log('Conectado a: ' , apiUrl)
             const response = await fetch(`${apiUrl}/auth/register`,{
             method: 'POST',
             headers:{
@@ -60,7 +61,7 @@ const Register = () => {
 
             if(response.ok){
             alert('Registro Exitoso! Ahora puedes iniciar sesión.')
-            navigate('/login', { state: { username}})
+            navigate('/login', { state: { username } })
             }else{
             const errorData = await response.json()
             alert(`Error en el registro: ${errorData.message || 'No se pudo completar el registro'}`)
