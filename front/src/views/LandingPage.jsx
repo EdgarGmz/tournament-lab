@@ -19,15 +19,12 @@ import adrian2 from '../img/members/adrian2.jpg';
 import aldo1 from '../img/members/aldo1.jpg';
 import aldo2 from '../img/members/aldo2.jpg';
 import edgar1 from '../img/members/edgar1.jpeg';
-<<<<<<< Updated upstream
 import edgar2 from '../img/members/edgar2.jpg';
-=======
-import edgar2 from '../img/members/edgar2.jpeg';
 import grecia2 from '../img/members/grecia1.jpg';
 import grecia1 from '../img/members/grecia2.jpg';
 import helen1 from '../img/members/helen1.jpg';
 import helen2 from '../img/members/helen2.jpg';
->>>>>>> Stashed changes
+
 
 const navItems = [
   { href: '#proyecto', label: 'Nuestro Proyecto' },
