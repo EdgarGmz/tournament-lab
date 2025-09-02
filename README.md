@@ -38,7 +38,7 @@ Esta es la forma más sencilla de poner en funcionamiento todo el entorno de des
 
 1.  **Clona el repositorio:**
     ```bash
-    git clone git@ssh.dev.azure.com:v3/ProyectoUTSC02/tournament-lab/tournament-lab
+    git clone git@github.com:EdgarGmz/tournament-lab.git
     cd tournament-lab
     ```
 
@@ -114,11 +114,79 @@ git checkout -b ft/login-form
 git push origin ft/login-form
 ```
 
+---
+
+### Configurar llave SSH (GitHub)
+
+> #### Windows
+1. Abre **PowerShell** o **Git Bash**
+   - Puedes usar PowerShell, CMD o Git Bash (recomendado si usas GIT)
+
+2. Generar una nueva llave SSH
+    ```bash
+   ssh-keygen -t ed25519 -C "tu-correo@ejemplo.com"
+    ```
+    - Si ves un mensaje de **permision denied** o error, corre **PowerShell** como administrador.
+      Presione Enter para aceptar la ruta por defecto (C:\Users\TuUsuario\.ssh\id_ed25519)
+      Elige una contraseña segura o presiona Enter para dejarla en blanco.
+
+3. Iniciar el agente SSH
+``` bash
+eval &(ssh-agent -s)
+```
+Agregar la llave
+``` bash
+ssh-add ~/.ssh/id_ed25519
+```
+
+4. Copiar la llave pública
+``` bash
+cat ~/.ssh/id_ed25519.pub
+```
+O puedes abrir el archivo con:
+``` bash
+notepad ~/.ssh/id_ed25519.pub
+```
+
+5. Agregarla a GitHub
+   1. Ve a GitHub > Settings > SSH and GPG keys
+   2. Click en **New SSH key**
+   3. Pega el contenido copiado y guarda
+
+6. Probar conexión
+``` bash
+ssh -T git@github.com
+```
+---
+### macOS
+--
+1. Abre la terminal
+2. Generar una nueva llave SSH
+``` bash
+ssh-keygen -t ed25519 -C "tu-correo@ejemplo.com"
+```
+    Preciona Esc para aceptar la ruta por defecto
+    Escribe un passphrase si deseas mayor seguridad
+
+3. Iniciar el agente y agregar la llave
+``` bash
+eval "$(ssh-agent -s)"
+```
+
+``` bash
+ssh-add --apple-use-keychain ~/.ssh/id_ed25519
+```
+
+4. Copiar la llave al portapapeles
+``` bash
+pbcopy < ~/.ssh/id_25519.pub
+```
+
+---
 ### Contribuciones
 ¡Son bienvenidas! Abre un Issue o un Pull Request y asegúrate de seguir la guía de estilos y ramas.
 
-### Configurar llave SSH (Azure DevOps)
-Para contribuir al repositorio en Azure DevOps, es posible que necesites una clave SSH. Sigue los pasos de la [documentación oficial](https://learn.microsoft.com/en-us/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops) para generarla y añadirla a tu cuenta.
+
 
 ## 🧠 Créditos
 Desarrollado con ❤️ por estudiantes de UT para la gestión eficiente de torneos.
